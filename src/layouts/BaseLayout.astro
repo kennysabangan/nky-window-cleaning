@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  schema?: object | object[];
+}
+
+const { title, description, canonicalURL, schema } = Astro.props;
+const site = "https://nkywindowcleaningpros.com";
+const fullCanonical = canonicalURL || `${site}${Astro.url.pathname}`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={fullCanonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={fullCanonical} />
+  <meta property="og:site_name" content="NKY Window Cleaning Pros" />
+
+  <!-- CallRail DNI -->
+  <script type="text/javascript">
+    // CallRail Dynamic Number Insertion - replace ACCOUNT_ID with actual ID
+    var js = document.createElement('script');
+    js.src = 'https://cdn.callrail.com/companies/ACCOUNT_ID/1234567890/swap.js';
+    document.head.appendChild(js);
+  </script>
+
+  {schema && Array.isArray(schema) && schema.map((s) => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
+  {schema && !Array.isArray(schema) && (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )}
+</head>
+<body class="min-h-screen bg-white text-gray-900 antialiased">
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-50 bg-[#1e3a5f] text-white shadow-lg">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="text-lg font-bold tracking-tight hover:text-blue-200 transition-colors">
+        NKY Window Cleaning Pros
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="hover:text-blue-200 transition-colors">Home</a>
+        <a href="/window-cleaning/" class="hover:text-blue-200 transition-colors">Services</a>
+        <a href="/reviews/" class="hover:text-blue-200 transition-colors">Reviews</a>
+        <a href="/about/" class="hover:text-blue-200 transition-colors">About</a>
+      </div>
+      <a href="tel:+18595550100" class="callrail-number bg-white text-[#1e3a5f] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-50 transition-colors">
+        (859) 555-0100
+      </a>
+    </nav>
+    <!-- Mobile nav -->
+    <nav class="md:hidden max-w-6xl mx-auto px-4 pb-3 flex items-center justify-center gap-4 text-sm">
+      <a href="/" class="hover:text-blue-200 transition-colors">Home</a>
+      <a href="/window-cleaning/" class="hover:text-blue-200 transition-colors">Services</a>
+      <a href="/reviews/" class="hover:text-blue-200 transition-colors">Reviews</a>
+      <a href="/about/" class="hover:text-blue-200 transition-colors">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-16">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- NAP -->
+        <div>
+          <h3 class="text-white font-bold text-lg mb-3">NKY Window Cleaning Pros</h3>
+          <address class="not-italic text-sm leading-relaxed">
+            Northern Kentucky<br />
+            Serving the Greater NKY Area<br />
+            <a href="tel:+18595550100" class="callrail-number hover:text-white transition-colors">(859) 555-0100</a>
+          </address>
+        </div>
+        <!-- Services -->
+        <div>
+          <h3 class="text-white font-bold text-lg mb-3">Services</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="/window-cleaning/" class="hover:text-white transition-colors">Window Cleaning</a></li>
+            <li><a href="/window-cleaning/" class="hover:text-white transition-colors">Residential Cleaning</a></li>
+            <li><a href="/window-cleaning/" class="hover:text-white transition-colors">Commercial Cleaning</a></li>
+            <li><a href="/window-cleaning/" class="hover:text-white transition-colors">Screen & Track Cleaning</a></li>
+          </ul>
+        </div>
+        <!-- Service Areas -->
+        <div>
+          <h3 class="text-white font-bold text-lg mb-3">Service Areas</h3>
+          <ul class="text-sm space-y-2 columns-2">
+            <li><a href="/window-cleaning/florence-ky/" class="hover:text-white transition-colors">Florence, KY</a></li>
+            <li><a href="/window-cleaning/covington-ky/" class="hover:text-white transition-colors">Covington, KY</a></li>
+            <li><a href="/window-cleaning/fort-mitchell-ky/" class="hover:text-white transition-colors">Fort Mitchell, KY</a></li>
+            <li><a href="/window-cleaning/erlanger-ky/" class="hover:text-white transition-colors">Erlanger, KY</a></li>
+            <li><a href="/window-cleaning/newport-ky/" class="hover:text-white transition-colors">Newport, KY</a></li>
+            <li><a href="/window-cleaning/independence-ky/" class="hover:text-white transition-colors">Independence, KY</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+        <p>&copy; {new Date().getFullYear()} NKY Window Cleaning Pros. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

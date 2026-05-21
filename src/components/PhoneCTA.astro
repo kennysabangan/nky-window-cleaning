@@ -1,0 +1,16 @@
+---
+interface Props {
+  phone?: string;
+  label?: string;
+  variant?: "primary" | "secondary";
+}
+
+const { phone = "(859) 555-0100", label = "Call Now for a Free Estimate", variant = "primary" } = Astro.props;
+const href = `tel:+18595550100`;
+const classes = variant === "primary"
+  ? "inline-block bg-[#1e3a5f] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#163050] transition-colors shadow-md"
+  : "inline-block border-2 border-[#1e3a5f] text-[#1e3a5f] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#1e3a5f] hover:text-white transition-colors";
+---
+<a href={href} class={`callrail-number ${classes}`}>
+  📞 {label}: {phone}
+</a>

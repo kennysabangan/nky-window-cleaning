@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import FAQ from '../components/FAQ.astro';
+import PhoneCTA from '../components/PhoneCTA.astro';
+import { services, faqs } from '../data/services';
+import { cities } from '../data/cities';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "NKY Window Cleaning Pros",
+  "description": "Professional window cleaning services in Northern Kentucky. Residential and commercial window cleaning, screen cleaning, and post-construction cleanup.",
+  "url": "https://nkywindowcleaningpros.com",
+  "telephone": "+18595550100",
+  "areaServed": cities.map(c => ({
+    "@type": "City",
+    "name": c.name
+  })),
+  "serviceType": ["Window Cleaning", "Residential Window Cleaning", "Commercial Window Cleaning"],
+  "priceRange": "$$",
+  "image": "https://nkywindowcleaningpros.com/og-image.png"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+
+const combinedSchema = [schema, faqSchema];
+---
+
+<BaseLayout
+  title="NKY Window Cleaning Pros | Professional Window Cleaning in Northern Kentucky"
+  description="Northern Kentucky's trusted window cleaning service. Serving Florence, Covington, Fort Mitchell, and 15+ NKY cities. Call (859) 555-0100 for a free estimate."
+  schema={combinedSchema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Northern Kentucky's Most Trusted<br />Window Cleaning Professionals
+      </h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+        Streak-free windows, every time. Serving 15+ communities across NKY with reliable, affordable, and professional window cleaning.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <PhoneCTA />
+        <a href="/window-cleaning/" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-[#1e3a5f] transition-colors">
+          View Our Services
+        </a>
+      </div>
+      <!-- Trust signals -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-blue-200">
+        <span class="flex items-center gap-2">✓ Licensed & Insured</span>
+        <span class="flex items-center gap-2">✓ Satisfaction Guaranteed</span>
+        <span class="flex items-center gap-2">✓ Locally Owned</span>
+        <span class="flex items-center gap-2">✓ Free Estimates</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-3">Our Services</h2>
+      <p class="text-gray-600 text-center max-w-xl mx-auto mb-10">
+        From single-story homes to multi-level commercial buildings, we handle it all with care and precision.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map(service => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-10">Why NKY Homeowners Choose Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🛡️</div>
+          <h3 class="font-bold text-lg text-[#1e3a5f] mb-2">Fully Licensed & Insured</h3>
+          <p class="text-gray-600 text-sm">Your property is protected. We carry full liability insurance and workers' comp on every job.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">⏰</div>
+          <h3 class="font-bold text-lg text-[#1e3a5f] mb-2">Always On Time</h3>
+          <p class="text-gray-600 text-sm">We respect your schedule. Our team arrives on time and completes the job efficiently — guaranteed.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✨</div>
+          <h3 class="font-bold text-lg text-[#1e3a5f] mb-2">Streak-Free Guarantee</h3>
+          <p class="text-gray-600 text-sm">Not happy? We come back and re-clean at no charge. Your satisfaction is our only standard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-3">Frequently Asked Questions</h2>
+      <p class="text-gray-600 text-center mb-10">Everything you need to know about our window cleaning services.</p>
+      <div class="space-y-3">
+        {faqs.map(faq => (
+          <FAQ question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-3">Areas We Serve</h2>
+      <p class="text-gray-600 text-center max-w-xl mx-auto mb-10">
+        Professional window cleaning throughout Northern Kentucky and surrounding communities.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        {cities.map(city => (
+          <a href={`/window-cleaning/${city.slug}/`} class="bg-white rounded-lg p-3 text-center text-sm font-medium text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-colors border border-gray-200">
+            {city.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-[#1e3a5f] text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Ready for Crystal-Clear Windows?</h2>
+      <p class="text-blue-200 text-lg mb-8">Call now for a free, no-obligation estimate. We'll have your windows looking like new.</p>
+      <PhoneCTA label="Call Now" />
+    </div>
+  </section>
+</BaseLayout>

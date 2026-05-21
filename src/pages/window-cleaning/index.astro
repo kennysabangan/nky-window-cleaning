@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhoneCTA from '../../components/PhoneCTA.astro';
+import { services } from '../../data/services';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Window Cleaning",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "NKY Window Cleaning Pros",
+    "telephone": "+18595550100"
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Kentucky"
+  },
+  "description": "Professional window cleaning services for residential and commercial properties in Northern Kentucky."
+};
+---
+
+<BaseLayout
+  title="Window Cleaning Services in Northern Kentucky | NKY Window Cleaning Pros"
+  description="Expert window cleaning for homes and businesses across Northern Kentucky. Interior, exterior, screens, tracks, and post-construction cleanup. Call (859) 555-0100."
+  canonicalURL="https://nkywindowcleaningpros.com/window-cleaning/"
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Professional Window Cleaning Services in Northern Kentucky
+      </h1>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
+        From single-story homes to commercial buildings, we deliver streak-free results that let the light in and keep the grime out.
+      </p>
+      <PhoneCTA />
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-10">What We Offer</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {services.map(service => (
+          <div class="flex gap-4 items-start bg-gray-50 p-6 rounded-xl border border-gray-100">
+            <span class="text-4xl flex-shrink-0">{service.icon}</span>
+            <div>
+              <h3 class="text-xl font-bold text-[#1e3a5f] mb-2">{service.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-10">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">1</div>
+          <h3 class="font-bold text-[#1e3a5f] mb-2">Call Us</h3>
+          <p class="text-gray-600 text-sm">Give us a call at (859) 555-0100 and tell us about your windows.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">2</div>
+          <h3 class="font-bold text-[#1e3a5f] mb-2">Get Your Estimate</h3>
+          <p class="text-gray-600 text-sm">We'll provide a clear, upfront price — no hidden fees, no surprises.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">3</div>
+          <h3 class="font-bold text-[#1e3a5f] mb-2">We Clean</h3>
+          <p class="text-gray-600 text-sm">Our team arrives on time, works efficiently, and treats your property with care.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">4</div>
+          <h3 class="font-bold text-[#1e3a5f] mb-2">Enjoy the View</h3>
+          <p class="text-gray-600 text-sm">Crystal-clear windows, inside and out. Not happy? We'll re-clean for free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] mb-4">Transparent Pricing</h2>
+      <p class="text-gray-600 mb-8 max-w-xl mx-auto">
+        Every home is different. That's why we provide free, personalized estimates based on the number of windows, accessibility, and type of cleaning needed.
+      </p>
+      <div class="bg-gray-50 rounded-xl p-8 border border-gray-200 max-w-md mx-auto">
+        <h3 class="text-2xl font-bold text-[#1e3a5f] mb-2">Free Estimate</h3>
+        <p class="text-gray-600 text-sm mb-6">No obligation. No pressure. Just honest pricing.</p>
+        <PhoneCTA label="Call for Your Free Estimate" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1e3a5f] text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Let's Get Those Windows Clean</h2>
+      <p class="text-blue-200 text-lg mb-8">Call now and see why Northern Kentucky trusts NKY Window Cleaning Pros.</p>
+      <PhoneCTA label="Call Now" />
+    </div>
+  </section>
+</BaseLayout>

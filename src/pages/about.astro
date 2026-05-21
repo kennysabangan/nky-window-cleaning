@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhoneCTA from '../components/PhoneCTA.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About NKY Window Cleaning Pros",
+  "description": "Learn about NKY Window Cleaning Pros — Northern Kentucky's trusted window cleaning professionals.",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "NKY Window Cleaning Pros",
+    "telephone": "+18595550100"
+  }
+};
+---
+
+<BaseLayout
+  title="About Us | NKY Window Cleaning Pros"
+  description="Learn about NKY Window Cleaning Pros — Northern Kentucky's trusted, locally owned window cleaning service. Licensed, insured, and committed to streak-free results."
+  canonicalURL="https://nkywindowcleaningpros.com/about/"
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">About NKY Window Cleaning Pros</h1>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto">
+        Locally owned. Professionally trained. Committed to making every window in Northern Kentucky crystal clear.
+      </p>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] mb-6">Our Story</h2>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>
+          NKY Window Cleaning Pros was founded with a simple belief: every home and business in Northern Kentucky deserves windows that let the light in. What started as a one-person operation serving a handful of neighborhoods has grown into one of the region's most trusted window cleaning services.
+        </p>
+        <p>
+          We built our reputation one window at a time. Our founder saw a gap in the market — homeowners and business owners who wanted professional-quality window cleaning without the hassle of dealing with unreliable contractors. We set out to change that by showing up on time, doing exceptional work, and treating every property with the respect it deserves.
+        </p>
+        <p>
+          Today, we serve over 15 communities across Northern Kentucky, from Florence to Fort Thomas and everywhere in between. Our team has grown, but our values haven't changed: quality work, honest pricing, and a 100% satisfaction guarantee on every job.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-10">Our Mission & Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-xl font-bold text-[#1e3a5f] mb-3">Our Mission</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            To provide Northern Kentucky homeowners and businesses with the highest quality window cleaning services — delivered by professionals who care about the details, respect your property, and stand behind their work.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-gray-100">
+          <h3 class="text-xl font-bold text-[#1e3a5f] mb-3">What We Value</h3>
+          <ul class="text-gray-600 text-sm space-y-2">
+            <li>• <strong>Reliability</strong> — We show up when we say we will.</li>
+            <li>• <strong>Quality</strong> — Every window cleaned to perfection.</li>
+            <li>• <strong>Integrity</strong> — Honest pricing, no hidden fees.</li>
+            <li>• <strong>Respect</strong> — Your property is treated like our own.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-[#1e3a5f] mb-4">Our Team</h2>
+      <p class="text-gray-600 max-w-xl mx-auto mb-8">
+        Every member of our team is background-checked, fully insured, and trained to deliver the streak-free results you expect. We're proud of the people who make NKY Window Cleaning Pros what it is.
+      </p>
+      <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+        <p class="text-gray-500 text-sm italic">Team photos coming soon. In the meantime, give us a call and meet our friendly staff firsthand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1e3a5f] text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Let's Work Together</h2>
+      <p class="text-blue-200 text-lg mb-8">Ready to experience the difference? Call us today for a free estimate.</p>
+      <PhoneCTA label="Call Now" />
+    </div>
+  </section>
+</BaseLayout>

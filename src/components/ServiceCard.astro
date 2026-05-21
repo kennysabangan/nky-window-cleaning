@@ -1,0 +1,16 @@
+---
+interface Props {
+  service: {
+    title: string;
+    description: string;
+    icon: string;
+  };
+}
+
+const { service } = Astro.props;
+---
+<article class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
+  <span class="text-3xl" role="img" aria-hidden="true">{service.icon}</span>
+  <h3 class="text-lg font-bold text-[#1e3a5f] mt-3 mb-2">{service.title}</h3>
+  <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+</article>

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhoneCTA from '../../components/PhoneCTA.astro';
+import { cities } from '../../data/cities';
+import { services } from '../../data/services';
+
+export function getStaticPaths() {
+  return cities.map(city => ({
+    params: { city: city.slug },
+    props: { city }
+  }));
+}
+
+const { city } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "NKY Window Cleaning Pros",
+  "description": `Professional window cleaning services in ${city.name}. Residential and commercial window cleaning by NKY Window Cleaning Pros.`,
+  "url": `https://nkywindowcleaningpros.com/window-cleaning/${city.slug}/`,
+  "telephone": "+18595550100",
+  "areaServed": {
+    "@type": "City",
+    "name": city.name,
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "KY",
+      "addressCountry": "US"
+    }
+  },
+  "serviceType": ["Window Cleaning", "Residential Window Cleaning", "Commercial Window Cleaning"]
+};
+---
+
+<BaseLayout
+  title={`Window Cleaning in ${city.name} | NKY Window Cleaning Pros`}
+  description={`Professional window cleaning services in ${city.name}. Streak-free results, reliable service, and free estimates. Call (859) 555-0100 today.`}
+  canonicalURL={`https://nkywindowcleaningpros.com/window-cleaning/${city.slug}/`}
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Window Cleaning in {city.name}
+      </h1>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
+        Trusted by homeowners and businesses throughout {city.name}. Streak-free results, every visit.
+      </p>
+      <PhoneCTA />
+    </div>
+  </section>
+
+  <!-- City Intro -->
+  <section class="py-12 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-gray-700 text-lg leading-relaxed">{city.intro}</p>
+    </div>
+  </section>
+
+  <!-- Services in this city -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-[#1e3a5f] text-center mb-8">Window Cleaning Services We Offer in {city.name}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {services.map(service => (
+          <div class="flex gap-4 items-start bg-white p-5 rounded-xl border border-gray-100">
+            <span class="text-3xl flex-shrink-0">{service.icon}</span>
+            <div>
+              <h3 class="font-bold text-[#1e3a5f] mb-1">{service.title}</h3>
+              <p class="text-gray-600 text-sm">{service.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why locals choose us -->
+  <section class="py-12 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-[#1e3a5f] mb-6">Why {city.name} Residents Trust Us</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-3">
+          <span class="text-[#1e3a5f] font-bold">✓</span>
+          <span>Licensed, insured, and background-checked technicians</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#1e3a5f] font-bold">✓</span>
+          <span>Flexible scheduling — we work around your availability</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#1e3a5f] font-bold">✓</span>
+          <span>Eco-friendly, professional-grade cleaning solutions</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#1e3a5f] font-bold">✓</span>
+          <span>100% satisfaction guarantee on every job</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-[#1e3a5f] font-bold">✓</span>
+          <span>Locally owned and operated — we're your neighbors</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Service Area Radius -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold text-[#1e3a5f] mb-4">Serving {city.name} and Surrounding Areas</h2>
+      <p class="text-gray-600">
+        From {city.name}, we also serve nearby communities within a 15-mile radius. Whether you're in {city.name} proper or a neighboring town, we're just a phone call away.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        {cities.filter(c => c.slug !== city.slug).slice(0, 6).map(c => (
+          <a href={`/window-cleaning/${c.slug}/`} class="text-sm bg-white px-3 py-1.5 rounded-full border border-gray-200 text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-colors">
+            {c.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1e3a5f] text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+      <p class="text-blue-200 text-lg mb-8">Call now for a free estimate on window cleaning in {city.name}.</p>
+      <PhoneCTA label="Call Now" />
+    </div>
+  </section>
+</BaseLayout>

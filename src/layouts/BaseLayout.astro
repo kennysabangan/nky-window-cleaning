@@ -43,70 +43,75 @@ const fullCanonical = canonicalURL || `${site}${Astro.url.pathname}`;
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   )}
 </head>
-<body style="margin:0; padding:0;">
+<body>
 
-<!-- Header — simple, not fancy -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5; color:#fff; padding:10px 0;">
-  <tr>
-    <td align="center" style="padding:10px 15px;">
-      <table width="780" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td style="font-size:20px; font-weight:bold; color:#fff;">
-            <a href="/" style="color:#fff; text-decoration:none;">NKY Window Cleaning Pros</a>
-          </td>
-          <td align="right" style="font-size:14px;">
-            <a href="tel:+18595550100" class="callrail-number" style="color:#fff; font-weight:bold; text-decoration:none; background:#fff; color:#1a6bb5; padding:6px 14px; border:2px solid #fff;">📞 (859) 555-0100</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+<!-- Header -->
+<header class="bg-brand text-white border-b border-white/10 shadow-sm">
+  <div class="container">
+    <div class="flex flex-col items-center gap-2 py-3 sm:flex-row sm:justify-between sm:items-center">
+      <a href="/" class="text-lg font-bold text-white no-underline hover:no-underline tracking-tight">
+        NKY Window Cleaning Pros
+      </a>
+      <a href="tel:+18595550100" class="callrail-number inline-flex items-center gap-1.5 bg-white text-brand font-semibold text-sm px-4 py-2 rounded-md no-underline hover:bg-gray-100 transition-colors min-h-[48px] justify-center">
+        📞 (859) 555-0100
+      </a>
+    </div>
+  </div>
+</header>
 
-<!-- Simple nav bar -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f5f5; border-bottom:1px solid #ddd;">
-  <tr>
-    <td align="center" style="padding:6px 15px; font-size:14px;">
-      <a href="/" style="color:#1a6bb5; text-decoration:none; margin:0 10px;">Home</a>
-      |
-      <a href="/window-cleaning/" style="color:#1a6bb5; text-decoration:none; margin:0 10px;">Window Cleaning Services</a>
-      |
-      <a href="/reviews/" style="color:#1a6bb5; text-decoration:none; margin:0 10px;">Reviews</a>
-      |
-      <a href="/about/" style="color:#1a6bb5; text-decoration:none; margin:0 10px;">About Us</a>
-    </td>
-  </tr>
-</table>
+<!-- Nav -->
+<nav class="bg-gray-50 border-b border-gray-200">
+  <div class="container">
+    <div class="flex flex-wrap justify-center gap-x-1 gap-y-1 py-2.5 text-sm">
+      <a href="/" class="text-brand no-underline hover:no-underline px-2 py-1">Home</a>
+      <span class="text-gray-300">|</span>
+      <a href="/window-cleaning/" class="text-brand no-underline hover:no-underline px-2 py-1">Services</a>
+      <span class="text-gray-300">|</span>
+      <a href="/reviews/" class="text-brand no-underline hover:no-underline px-2 py-1">Reviews</a>
+      <span class="text-gray-300">|</span>
+      <a href="/about/" class="text-brand no-underline hover:no-underline px-2 py-1">About Us</a>
+    </div>
+  </div>
+</nav>
 
 <main>
   <slot />
 </main>
 
-<!-- Footer — simple -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#333; color:#ccc; margin-top:30px;">
-  <tr>
-    <td align="center" style="padding:20px 15px;">
-      <table width="780" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td style="color:#fff; font-size:16px; font-weight:bold; padding-bottom:8px;">
-            NKY Window Cleaning Pros
-          </td>
-        </tr>
-        <tr>
-          <td style="color:#ccc; font-size:13px; line-height:1.8; padding-bottom:8px;">
-            📞 Call Us: <a href="tel:+18595550100" class="callrail-number" style="color:#fff; text-decoration:none;">(859) 555-0100</a><br>
-            Serving Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, Bellevue, Cold Spring, Taylor Mill, Villa Hills, Crescent Springs, Lakeside Park, Park Hills, and all of Northern Kentucky.
-          </td>
-        </tr>
-        <tr>
-          <td style="color:#999; font-size:12px; padding-top:10px; border-top:1px solid #555;">
-            &copy; {new Date().getFullYear()} NKY Window Cleaning Pros. All rights reserved. | Window Cleaning Northern Kentucky | Residential &amp; Commercial Window Cleaning
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+<!-- Footer -->
+<footer class="bg-gray-800 text-gray-300 mt-10">
+  <div class="container py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Column 1: Brand -->
+      <div>
+        <p class="text-white font-bold text-base mb-2">NKY Window Cleaning Pros</p>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Professional window cleaning services in Northern Kentucky. Locally owned and operated.
+        </p>
+      </div>
+      <!-- Column 2: Contact -->
+      <div>
+        <p class="text-white font-semibold text-sm mb-2">Contact Us</p>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          📞 <a href="tel:+18595550100" class="callrail-number text-white no-underline">(859) 555-0100</a><br/>
+          Free estimates on all window cleaning services.
+        </p>
+      </div>
+      <!-- Column 3: Service Areas -->
+      <div>
+        <p class="text-white font-semibold text-sm mb-2">Service Areas</p>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Florence · Covington · Fort Mitchell · Erlanger · Newport · Independence · Edgewood · Fort Thomas · Bellevue · Cold Spring · Taylor Mill · Villa Hills · Crescent Springs · Lakeside Park · Park Hills
+        </p>
+      </div>
+    </div>
+    <div class="border-t border-gray-600 mt-6 pt-4">
+      <p class="text-xs text-gray-500 text-center">
+        &copy; {new Date().getFullYear()} NKY Window Cleaning Pros. All rights reserved. | Window Cleaning Northern Kentucky | Residential &amp; Commercial Window Cleaning
+      </p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

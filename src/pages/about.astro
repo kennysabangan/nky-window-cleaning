@@ -22,25 +22,28 @@ const schema = {
   schema={schema}
 >
 
-<!-- Banner -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5; color:#fff; padding:25px 0;">
-  <tr>
-    <td align="center" style="padding:25px 15px;">
-      <h1 style="color:#fff; font-size:28px; margin:0 0 10px 0;">About NKY Window Cleaning Pros</h1>
-      <p style="color:#cce4f7; font-size:16px; margin:0 0 15px 0;">Locally owned window cleaning company serving Northern Kentucky.</p>
-      <PhoneCTA />
-    </td>
-  </tr>
-</table>
+<!-- Hero -->
+<section class="hero-section">
+  <div class="container">
+    <h1>About NKY Window Cleaning Pros</h1>
+    <p class="hero-sub">Locally owned window cleaning company serving Northern Kentucky.</p>
+    <PhoneCTA />
+  </div>
+</section>
 
 <!-- Photo -->
-<div style="text-align:center; padding:10px;">
-  <img src="/photos/window-cleaning-7.jpg" alt="NKY Window Cleaning Pros team" style="width:100%; max-width:600px; height:auto;" />
+<div class="container py-6 text-center">
+  <img
+    src="/photos/window-cleaning-7.jpg"
+    alt="NKY Window Cleaning Pros team"
+    class="site-photo mx-auto max-w-2xl"
+    loading="eager"
+  />
 </div>
 
 <!-- About content -->
 <div class="content-section">
-  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">Who We Are</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Who We Are</h2>
 
   <p>NKY Window Cleaning Pros is a locally owned and operated window cleaning company based in Northern Kentucky. We clean windows on homes, offices, storefronts, and commercial buildings across Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across NKY.</p>
 
@@ -48,13 +51,18 @@ const schema = {
 
   <p>Today, we serve over 15 communities across Northern Kentucky. Our window cleaning team is fully licensed, insured, and background-checked. We show up on time, do the job right, and stand behind our work with a 100% satisfaction guarantee.</p>
 
-  <img src="/photos/window-cleaning-8.jpg" alt="Window cleaning in Northern Kentucky" style="width:100%; max-width:500px; height:auto; display:block; margin:15px auto;" />
+  <img
+    src="/photos/window-cleaning-8.jpg"
+    alt="Window cleaning in Northern Kentucky"
+    class="site-photo mx-auto max-w-lg my-6"
+    loading="lazy"
+  />
 
-  <h2 style="color:#1a6bb5; font-size:22px;">What We Do</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">What We Do</h2>
 
   <p>We provide window cleaning services for residential and commercial properties throughout Northern Kentucky. Our services include:</p>
 
-  <ul style="line-height:2; padding-left:20px;">
+  <ul>
     <li><strong>Residential window cleaning</strong> — interior and exterior window cleaning for homes of all sizes across NKY</li>
     <li><strong>Commercial window cleaning</strong> — storefronts, offices, restaurants, and commercial buildings</li>
     <li><strong>Screen and track cleaning</strong> — we clean your screens and vacuum out the tracks</li>
@@ -63,9 +71,9 @@ const schema = {
     <li><strong>Post-construction cleanup</strong> — removing paint, stickers, and debris from new windows</li>
   </ul>
 
-  <h2 style="color:#1a6bb5; font-size:22px;">Why Northern Kentucky Trusts Us</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">Why Northern Kentucky Trusts Us</h2>
 
-  <ul style="line-height:2; padding-left:20px;">
+  <ul>
     <li>Licensed and insured window cleaning company</li>
     <li>Background-checked, professional technicians</li>
     <li>On-time arrival — we respect your schedule</li>
@@ -76,20 +84,18 @@ const schema = {
     <li>Free estimates — just call (859) 555-0100</li>
   </ul>
 
-  <h2 style="color:#1a6bb5; font-size:22px;">Where We Serve</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">Where We Serve</h2>
 
   <p>We provide window cleaning services throughout Northern Kentucky, including Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, Bellevue, Cold Spring, Taylor Mill, Villa Hills, Crescent Springs, Lakeside Park, and Park Hills. If you're in Northern Kentucky and need your windows cleaned, call us at (859) 555-0100.</p>
 </div>
 
-<!-- Phone CTA -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f5f5; border-top:2px solid #1a6bb5; border-bottom:2px solid #1a6bb5;">
-  <tr>
-    <td align="center" style="padding:20px 15px;">
-      <p style="font-size:16px; color:#333; margin:0 0 5px 0; font-weight:bold;">Ready to Get Your Windows Cleaned?</p>
-      <p style="font-size:13px; color:#666; margin:0 0 10px 0;">Call now for a free estimate.</p>
-      <PhoneCTA />
-    </td>
-  </tr>
-</table>
+<!-- CTA -->
+<section class="bg-gray-50 border-y-2 border-brand">
+  <div class="cta-strip container">
+    <p class="cta-heading">Ready to Get Your Windows Cleaned?</p>
+    <p class="cta-sub">Call now for a free estimate.</p>
+    <PhoneCTA />
+  </div>
+</section>
 
 </BaseLayout>

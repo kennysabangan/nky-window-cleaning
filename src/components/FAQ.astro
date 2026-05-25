@@ -6,7 +6,7 @@ interface Props {
 
 const { question, answer } = Astro.props;
 ---
-<div style="margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #ddd;">
-  <p style="font-size:16px; font-weight:bold; color:#1a6bb5; margin:0 0 6px 0;">{question}</p>
-  <p style="font-size:14px; color:#444; margin:0; line-height:1.6;">{answer}</p>
+<div class="faq-item">
+  <p class="faq-q">{question}</p>
+  <p class="faq-a">{answer}</p>
 </div>

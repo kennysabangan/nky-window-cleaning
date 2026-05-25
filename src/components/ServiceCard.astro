@@ -9,8 +9,14 @@ interface Props {
 
 const { service } = Astro.props;
 ---
-<div style="margin-bottom:25px; border-bottom:1px solid #eee; padding-bottom:20px;">
-  <img src={service.photo || "/photos/window-cleaning-1.jpg"} alt={service.title} style="width:100%; max-width:400px; height:auto; display:block; margin-bottom:10px;" />
-  <h3 style="font-size:18px; font-weight:bold; color:#1a6bb5; margin:0 0 6px 0;">{service.title}</h3>
-  <p style="font-size:14px; color:#444; margin:0; line-height:1.6;">{service.description}</p>
+<div class="service-card">
+  <img
+    src={service.photo || "/photos/window-cleaning-1.jpg"}
+    alt={service.title}
+    loading="lazy"
+  />
+  <div class="card-body">
+    <h3>{service.title}</h3>
+    <p>{service.description}</p>
+  </div>
 </div>

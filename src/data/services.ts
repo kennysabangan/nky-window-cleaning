@@ -10,37 +10,19 @@ export const services: Service[] = [
     title: "Residential Window Cleaning",
     slug: "residential",
     description: "We clean windows on houses of all sizes across Northern Kentucky. Inside and out — we get rid of dirt, hard water spots, fingerprints, and buildup. Your home windows will look brand new after we're done. We clean windows in Florence, Covington, Fort Mitchell, and all across NKY.",
-    photo: "/photos/window-cleaning-1.jpg"
+    photo: "/photos/residential.jpg"
   },
   {
     title: "Commercial Window Cleaning",
     slug: "commercial",
     description: "Own a business in Northern Kentucky? We clean windows on storefronts, offices, restaurants, and commercial buildings. Clean windows make your business look professional and inviting. We work around your schedule so we don't interrupt your business day.",
-    photo: "/photos/window-cleaning-2.jpg"
+    photo: "/photos/commercial.jpg"
   },
   {
     title: "Screen & Track Cleaning",
     slug: "screen-track",
     description: "We don't just clean the glass. We also wash your window screens and vacuum out the tracks. Dirty screens and clogged tracks make your windows look bad even when the glass is clean. We take care of everything so your windows look their best.",
-    photo: "/photos/window-cleaning-3.jpg"
-  },
-  {
-    title: "Gutter Cleaning",
-    slug: "gutter-cleaning",
-    description: "Clogged gutters cause water damage to your roof and foundation. We clean out leaves, debris, and buildup from your gutters so rainwater flows properly. Most homes in NKY need gutter cleaning at least twice a year.",
-    photo: "/photos/window-cleaning-4.jpg"
-  },
-  {
-    title: "Pressure Washing",
-    slug: "pressure-washing",
-    description: "We pressure wash driveways, sidewalks, decks, siding, and more. Pressure washing removes years of dirt, mold, and grime from concrete, brick, and wood surfaces. Makes your property look fresh and clean.",
-    photo: "/photos/window-cleaning-5.jpg"
-  },
-  {
-    title: "Post-Construction Cleanup",
-    slug: "post-construction",
-    description: "Just built a new home or finished a renovation? We remove paint, stickers, labels, drywall dust, and debris from your new windows. New construction leaves windows covered in stuff that needs professional removal. We do it without scratching the glass.",
-    photo: "/photos/window-cleaning-6.jpg"
+    photo: "/photos/screen-cleaning.jpg"
   }
 ];
 

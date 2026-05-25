@@ -9,14 +9,14 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "NKY Window Cleaning Pros",
-  "description": "Professional window cleaning services in Northern Kentucky. Residential and commercial window cleaning, screen cleaning, gutter cleaning, and pressure washing in Florence, Covington, Fort Mitchell, and all NKY cities.",
+  "description": "Professional window cleaning services in Northern Kentucky. Residential and commercial window cleaning, screen and track cleaning in Florence, Covington, Fort Mitchell, and all NKY cities.",
   "url": "https://nkywindowcleaningpros.com",
   "telephone": "+18595550100",
   "areaServed": cities.map(c => ({
     "@type": "City",
     "name": c.name
   })),
-  "serviceType": ["Window Cleaning", "Residential Window Cleaning", "Commercial Window Cleaning", "Gutter Cleaning", "Pressure Washing"],
+  "serviceType": ["Window Cleaning", "Residential Window Cleaning", "Commercial Window Cleaning", "Screen and Track Cleaning"],
   "priceRange": "$$",
   "image": "https://nkywindowcleaningpros.com/og-image.png"
 };
@@ -43,26 +43,33 @@ const combinedSchema = [schema, faqSchema];
   schema={combinedSchema}
 >
 
-<!-- Hero -->
-<section class="hero-section">
-  <div class="container">
-    <h1>Window Cleaning in Northern Kentucky</h1>
-    <p class="hero-sub">
-      We clean windows in Florence, Covington, Fort Mitchell, Erlanger, Newport, and all across Northern Kentucky. Residential and commercial window cleaning that you can count on.
-    </p>
-    <PhoneCTA />
+<!-- Hero with large image -->
+<section class="relative">
+  <img
+    src="/photos/hero.jpg"
+    alt="Window cleaning technician at work in Northern Kentucky"
+    class="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-cover"
+    loading="eager"
+  />
+  <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+    <div class="text-center text-white px-4 max-w-3xl">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">Professional Window Cleaning in Northern Kentucky</h1>
+      <p class="text-lg md:text-xl mb-6 text-white/90">Streak-free windows for homes and businesses in Florence, Covington, Fort Mitchell, Erlanger, and all across NKY.</p>
+      <a href="tel:+18595550100" class="inline-flex items-center gap-2 bg-white text-brand font-bold text-lg px-8 py-4 rounded-md no-underline hover:bg-gray-100 transition-colors">
+        📞 Call (859) 555-0100
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- Photo -->
-<div class="container py-6 text-center">
-  <img
-    src="/photos/window-cleaning-1.jpg"
-    alt="Window cleaning in Northern Kentucky"
-    class="site-photo mx-auto max-w-2xl"
-    loading="eager"
-  />
-</div>
+<!-- CTA banner right after hero -->
+<section class="bg-brand text-white">
+  <div class="cta-strip container text-center">
+    <p class="text-lg md:text-xl font-semibold mb-1">Get a Free Estimate — Call Today</p>
+    <p class="text-brand-light text-sm mb-3">We serve all of Northern Kentucky. Fast, reliable, streak-free.</p>
+    <PhoneCTA label="Call (859) 555-0100" />
+  </div>
+</section>
 
 <!-- Main content -->
 <div class="content-section">
@@ -72,41 +79,15 @@ const combinedSchema = [schema, faqSchema];
 
   <p>NKY Window Cleaning Pros has been cleaning windows across Northern Kentucky for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it. Our window cleaning service is reliable, affordable, and always streak-free.</p>
 
-  <img
-    src="/photos/window-cleaning-2.jpg"
-    alt="Residential window cleaning in NKY"
-    class="site-photo mx-auto max-w-lg my-6"
-    loading="lazy"
-  />
-
   <p>We use professional-grade window cleaning equipment and eco-friendly cleaning solutions. Our purified water window cleaning system leaves zero residue on your glass. That means your windows stay cleaner longer after we clean them. Regular window cleaning with a professional service is the best way to keep your Northern Kentucky home or business looking great.</p>
 </div>
 
-<!-- Mid-page CTA -->
-<section class="bg-gray-50 border-y-2 border-brand">
-  <div class="cta-strip container">
-    <p class="cta-heading">Need Your Windows Cleaned?</p>
-    <p class="cta-sub">We serve all of Northern Kentucky. Call now for a free estimate.</p>
-    <PhoneCTA />
-  </div>
-</section>
-
-<!-- Photo -->
-<div class="container py-6 text-center">
-  <img
-    src="/photos/window-cleaning-3.jpg"
-    alt="Commercial window cleaning NKY"
-    class="site-photo mx-auto max-w-2xl"
-    loading="lazy"
-  />
-</div>
-
-<!-- Services grid -->
+<!-- Services -->
 <div class="content-section">
   <h2 class="text-brand text-xl md:text-2xl font-bold mb-6">Our Window Cleaning Services</h2>
-  <p class="mb-6">We offer window cleaning and related services for homes and businesses throughout Northern Kentucky:</p>
+  <p class="mb-6">We offer window cleaning services for homes and businesses throughout Northern Kentucky:</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
     {services.map(service => (
       <div class="service-card">
         <img src={service.photo} alt={service.title} loading="lazy" />
@@ -139,8 +120,8 @@ const combinedSchema = [schema, faqSchema];
   </div>
 
   <div class="review-card">
-    <p class="quote">"I hired them for post-construction window cleanup after we built an addition. They removed all the paint spots and stickers without scratching anything. Very professional window cleaning service."</p>
-    <p class="attribution">— Mike D., Erlanger KY</p>
+    <p class="quote">"We get our windows cleaned twice a year with NKY Window Cleaning Pros. They always do a great job and our home in Edgewood looks wonderful every time. Reliable window cleaning company."</p>
+    <p class="attribution">— Karen L., Edgewood KY</p>
   </div>
 </div>
 
@@ -157,16 +138,6 @@ const combinedSchema = [schema, faqSchema];
   </ul>
 </div>
 
-<!-- Photo -->
-<div class="container py-6 text-center">
-  <img
-    src="/photos/window-cleaning-4.jpg"
-    alt="Window cleaning service areas Northern Kentucky"
-    class="site-photo mx-auto max-w-2xl"
-    loading="lazy"
-  />
-</div>
-
 <!-- FAQ -->
 <div class="content-section">
   <h2 class="text-brand text-xl md:text-2xl font-bold mb-6">Frequently Asked Questions About Window Cleaning</h2>
@@ -178,7 +149,7 @@ const combinedSchema = [schema, faqSchema];
 
 <!-- Final CTA -->
 <section class="bg-brand text-white">
-  <div class="cta-strip container">
+  <div class="cta-strip container text-center">
     <h2 class="text-white text-xl md:text-2xl font-bold mb-2">Ready to Get Your Windows Cleaned?</h2>
     <p class="text-brand-light text-base mb-4">Call now for a free estimate on window cleaning in Northern Kentucky.</p>
     <PhoneCTA label="Call Now" />

@@ -1,32 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhoneCTA from '../components/PhoneCTA.astro';
+import { siteConfig } from '../config';
 
-const schema = {
+const { businessName, phone, siteUrl, serviceKeyword, serviceKeywordPlural, city, region, cities } = siteConfig;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "About Us", "item": `${siteUrl}/about/` },
+  ],
+};
+
+const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "About NKY Window Cleaning Pros",
-  "description": "Learn about NKY Window Cleaning Pros — Northern Kentucky's trusted window cleaning professionals serving Florence, Covington, Fort Mitchell, and all NKY cities.",
+  "name": `About ${businessName}`,
+  "description": `Learn about ${businessName} — ${city}'s trusted ${serviceKeyword} professionals serving Florence, Covington, Fort Mitchell, and all ${region} cities.`,
   "mainEntity": {
     "@type": "LocalBusiness",
-    "name": "NKY Window Cleaning Pros",
-    "telephone": "+18595550100"
-  }
+    "name": businessName,
+    "telephone": siteConfig.phoneE164,
+  },
 };
 ---
 
 <BaseLayout
-  title="About Us | NKY Window Cleaning Pros | Window Cleaning Northern Kentucky"
-  description="NKY Window Cleaning Pros is a locally owned window cleaning company serving Northern Kentucky. We clean windows in Florence, Covington, Fort Mitchell, Erlanger, and all across NKY. Licensed, insured, and committed to streak-free results."
-  canonicalURL="https://nkywindowcleaningpros.com/about/"
-  schema={schema}
+  title={`About Us | ${businessName} | ${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} ${city}`}
+  description={`${businessName} is a locally owned ${serviceKeyword} company serving ${city}. We clean windows in Florence, Covington, Fort Mitchell, Erlanger, and all across ${region}. Licensed, insured, and committed to streak-free results.`}
+  canonicalURL={`${siteUrl}/about/`}
+  schema={[breadcrumbSchema, aboutPageSchema]}
 >
 
 <!-- Hero -->
 <section class="hero-section">
   <div class="container">
-    <h1>About NKY Window Cleaning Pros</h1>
-    <p class="hero-sub">Locally owned window cleaning company serving Northern Kentucky.</p>
+    <h1>About {businessName}</h1>
+    <p class="hero-sub">Locally owned {serviceKeyword} company serving {city}.</p>
     <PhoneCTA />
   </div>
 </section>
@@ -35,7 +47,7 @@ const schema = {
 <div class="container py-6 text-center">
   <img
     src="/photos/team.jpg"
-    alt="NKY Window Cleaning Pros team"
+    alt={`${businessName} team`}
     class="site-photo mx-auto max-w-2xl"
     loading="eager"
   />
@@ -45,45 +57,45 @@ const schema = {
 <div class="content-section">
   <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Who We Are</h2>
 
-  <p>NKY Window Cleaning Pros is a locally owned and operated window cleaning company based in Northern Kentucky. We clean windows on homes, offices, storefronts, and commercial buildings across Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across NKY.</p>
+  <p>{businessName} is a locally owned and operated {serviceKeyword} company based in {city}. We clean windows on homes, offices, storefronts, and commercial buildings across Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}.</p>
 
-  <p>We started this company because we saw a need for a reliable window cleaning service in Northern Kentucky. Too many homeowners and business owners were dealing with window cleaning companies that didn't show up on time, didn't do a thorough job, or charged too much. We set out to be different.</p>
+  <p>We started this company because we saw a need for a reliable {serviceKeyword} service in {city}. Too many homeowners and business owners were dealing with {serviceKeyword} companies that didn't show up on time, didn't do a thorough job, or charged too much. We set out to be different.</p>
 
-  <p>Today, we serve over 15 communities across Northern Kentucky. Our window cleaning team is fully licensed, insured, and background-checked. We show up on time, do the job right, and stand behind our work with a 100% satisfaction guarantee.</p>
+  <p>Today, we serve over 15 communities across {city}. Our {serviceKeyword} team is fully licensed, insured, and background-checked. We show up on time, do the job right, and stand behind our work with a 100% satisfaction guarantee.</p>
 
   <img
     src="/photos/residential.jpg"
-    alt="Window cleaning in Northern Kentucky"
+    alt={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city}`}
     class="site-photo mx-auto max-w-lg my-6"
     loading="lazy"
   />
 
   <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">What We Do</h2>
 
-  <p>We provide window cleaning services for residential and commercial properties throughout Northern Kentucky. Our services include:</p>
+  <p>We provide {serviceKeywordPlural} for residential and commercial properties throughout {city}. Our services include:</p>
 
   <ul>
-    <li><strong>Residential window cleaning</strong> — interior and exterior window cleaning for homes of all sizes across NKY</li>
-    <li><strong>Commercial window cleaning</strong> — storefronts, offices, restaurants, and commercial buildings</li>
-    <li><strong>Screen and track cleaning</strong> — we clean your screens and vacuum out the tracks</li>
+    {siteConfig.services.map((s) => (
+      <li><strong>{s.title}</strong> — {s.description.split('.').slice(0, 2).join('.')}.</li>
+    ))}
   </ul>
 
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">Why Northern Kentucky Trusts Us</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">Why {city} Trusts Us</h2>
 
   <ul>
-    <li>Licensed and insured window cleaning company</li>
+    <li>Licensed and insured {serviceKeyword} company</li>
     <li>Background-checked, professional technicians</li>
     <li>On-time arrival — we respect your schedule</li>
     <li>Professional-grade equipment and eco-friendly cleaning solutions</li>
     <li>Purified water system that leaves zero residue on your glass</li>
-    <li>100% satisfaction guarantee on every window cleaning job</li>
-    <li>Locally owned and operated in Northern Kentucky</li>
-    <li>Free estimates — just call (859) 555-0100</li>
+    <li>100% satisfaction guarantee on every {serviceKeyword} job</li>
+    <li>Locally owned and operated in {city}</li>
+    <li>Free estimates — just call {phone}</li>
   </ul>
 
   <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">Where We Serve</h2>
 
-  <p>We provide window cleaning services throughout Northern Kentucky, including Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, Bellevue, Cold Spring, Taylor Mill, Villa Hills, Crescent Springs, Lakeside Park, and Park Hills. If you're in Northern Kentucky and need your windows cleaned, call us at (859) 555-0100.</p>
+  <p>We provide {serviceKeywordPlural} throughout {city}, including {cities.map((c) => c.name).join(', ')}. If you're in {city} and need your windows cleaned, call us at {phone}.</p>
 </div>
 
 <!-- CTA -->

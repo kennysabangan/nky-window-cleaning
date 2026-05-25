@@ -2,50 +2,60 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PhoneCTA from '../../components/PhoneCTA.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
-import { cities } from '../../data/cities';
-import { services } from '../../data/services';
+import { siteConfig } from '../../config';
+import type { City } from '../../config';
 
 export function getStaticPaths() {
-  return cities.map(city => ({
+  return siteConfig.cities.map((city) => ({
     params: { city: city.slug },
-    props: { city }
+    props: { city },
   }));
 }
 
-const { city } = Astro.props;
+const { city } = Astro.props as { city: City };
+const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, region, services, cities } = siteConfig;
 
-const schema = {
+// City-specific Service schema (LocalBusiness is already provided by BaseLayout)
+const cityServiceSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "NKY Window Cleaning Pros",
-  "description": `Professional window cleaning services in ${city.name}. Residential and commercial window cleaning by NKY Window Cleaning Pros.`,
-  "url": `https://nkywindowcleaningpros.com/window-cleaning/${city.slug}/`,
-  "telephone": "+18595550100",
+  "@type": "Service",
+  "serviceType": serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1),
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": businessName,
+  },
   "areaServed": {
     "@type": "City",
     "name": city.name,
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "KY",
-      "addressCountry": "US"
-    }
   },
-  "serviceType": ["Window Cleaning", "Residential Window Cleaning", "Commercial Window Cleaning"]
+  "description": `Professional ${serviceKeywordPlural} in ${city.name}. Residential and commercial ${serviceKeyword} by ${businessName}.`,
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1), "item": `${siteUrl}/window-cleaning/` },
+    { "@type": "ListItem", "position": 3, "name": `${city.name}`, "item": `${siteUrl}/window-cleaning/${city.slug}/` },
+  ],
+};
+
+const nearbyCities = cities.filter((c) => c.slug !== city.slug);
 ---
 
 <BaseLayout
-  title={`Window Cleaning in ${city.name} | NKY Window Cleaning Pros`}
-  description={`Need window cleaning in ${city.name}? NKY Window Cleaning Pros provides residential and commercial window cleaning in ${city.name} and all across Northern Kentucky. Call (859) 555-0100 for a free estimate.`}
-  canonicalURL={`https://nkywindowcleaningpros.com/window-cleaning/${city.slug}/`}
-  schema={schema}
+  title={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city.name} | ${businessName}`}
+  description={`Need ${serviceKeyword} in ${city.name}? ${businessName} provides residential and commercial ${serviceKeywordPlural} in ${city.name} and all across ${regionCity}. Call ${phone} for a free estimate.`}
+  canonicalURL={`${siteUrl}/window-cleaning/${city.slug}/`}
+  schema={[breadcrumbSchema, cityServiceSchema]}
 >
 
 <!-- Hero -->
 <section class="hero-section">
   <div class="container">
-    <h1>Window Cleaning in {city.name}</h1>
-    <p class="hero-sub">Residential and commercial window cleaning in {city.name}, Kentucky. Streak-free results, every time.</p>
+    <h1>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city.name}</h1>
+    <p class="hero-sub">Residential and commercial {serviceKeyword} in {city.name}, Kentucky. Streak-free results, every time.</p>
     <PhoneCTA />
   </div>
 </section>
@@ -54,7 +64,7 @@ const schema = {
 <div class="container py-6 text-center">
   <img
     src="/photos/hero.jpg"
-    alt={`Window cleaning in ${city.name}`}
+    alt={`Professional ${serviceKeyword} in ${city.name} — ${businessName}`}
     class="site-photo mx-auto max-w-2xl"
     loading="eager"
   />
@@ -62,20 +72,20 @@ const schema = {
 
 <!-- City intro -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Window Cleaning Services in {city.name}</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services in {city.name}</h2>
 
   <p>{city.intro}</p>
 
-  <p>If you're looking for reliable window cleaning in {city.name}, look no further. NKY Window Cleaning Pros has been cleaning windows in {city.name} and the surrounding Northern Kentucky communities for years. We clean windows on homes, offices, storefronts, and commercial buildings throughout {city.name}. Whether you need residential window cleaning or commercial window cleaning, we've got you covered.</p>
+  <p>If you're looking for reliable {serviceKeyword} in {city.name}, look no further. {businessName} has been cleaning windows in {city.name} and the surrounding {regionCity} communities for years. We clean windows on homes, offices, storefronts, and commercial buildings throughout {city.name}. Whether you need residential {serviceKeyword} or commercial {serviceKeyword}, we've got you covered.</p>
 
   <img
     src="/photos/residential.jpg"
-    alt={`Residential window cleaning ${city.name}`}
+    alt={`Residential ${serviceKeyword} ${city.name} by ${businessName}`}
     class="site-photo mx-auto max-w-lg my-6"
     loading="lazy"
   />
 
-  <p>Our window cleaning service in {city.name} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. The purified water system we use leaves zero residue, so your windows in {city.name} stay cleaner longer.</p>
+  <p>Our {serviceKeyword} service in {city.name} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. The purified water system we use leaves zero residue, so your windows in {city.name} stay cleaner longer.</p>
 </div>
 
 <!-- Quote Form -->
@@ -84,7 +94,7 @@ const schema = {
 <!-- CTA -->
 <section class="bg-gray-50 border-y-2 border-brand">
   <div class="cta-strip container">
-    <p class="cta-heading">Need Window Cleaning in {city.name}?</p>
+    <p class="cta-heading">Need {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city.name}?</p>
     <p class="cta-sub">Call now for a free estimate.</p>
     <PhoneCTA />
   </div>
@@ -92,13 +102,13 @@ const schema = {
 
 <!-- Services offered in this city -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Window Cleaning Services We Offer in {city.name}</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services We Offer in {city.name}</h2>
 
-  <p>We provide a full range of window cleaning services in {city.name} and throughout Northern Kentucky:</p>
+  <p>We provide a full range of {serviceKeywordPlural} in {city.name} and throughout {regionCity}:</p>
 
   <ul>
-    {services.map(service => (
-      <li><strong>{service.title}</strong> — {service.description.split('.').slice(0, 2).join('.')}.</li>
+    {services.map((s) => (
+      <li><strong>{s.title}</strong> — {s.description.split('.').slice(0, 2).join('.')}.</li>
     ))}
   </ul>
 </div>
@@ -107,7 +117,7 @@ const schema = {
 <div class="container py-6 text-center">
   <img
     src="/photos/commercial.jpg"
-    alt={`Window cleaning team ${city.name}`}
+    alt={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} team serving ${city.name} commercial properties`}
     class="site-photo mx-auto max-w-2xl"
     loading="lazy"
   />
@@ -115,27 +125,27 @@ const schema = {
 
 <!-- Why choose us -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Why {city.name} Residents Choose Us for Window Cleaning</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Why {city.name} Residents Choose Us for {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)}</h2>
 
   <ul>
-    <li>Licensed and insured window cleaning company serving Northern Kentucky</li>
-    <li>Background-checked technicians who treat your {city.name} home with respect</li>
+    <li>Licensed and insured {serviceKeyword} company serving {regionCity}</li>
+    <li>Background-checked technicians who treat your {city.name.replace(/, KY$/, '')} home with respect</li>
     <li>Flexible scheduling — we work around your availability</li>
-    <li>Eco-friendly, professional-grade window cleaning solutions</li>
-    <li>100% satisfaction guarantee on every window cleaning job</li>
-    <li>Locally owned and operated — we're your Northern Kentucky neighbors</li>
+    <li>Eco-friendly, professional-grade {serviceKeyword} solutions</li>
+    <li>100% satisfaction guarantee on every {serviceKeyword} job</li>
+    <li>Locally owned and operated — we're your {regionCity} neighbors</li>
   </ul>
 </div>
 
 <!-- Nearby cities -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">We Also Serve These Nearby Northern Kentucky Cities</h2>
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">We Also Serve These Nearby {regionCity} Cities</h2>
 
-  <p>In addition to window cleaning in {city.name}, we also provide window cleaning services in these nearby Northern Kentucky communities:</p>
+  <p>In addition to {serviceKeyword} in {city.name}, we also provide {serviceKeywordPlural} in these nearby {regionCity} communities:</p>
 
   <ul>
-    {cities.filter(c => c.slug !== city.slug).slice(0, 8).map(c => (
-      <li><a href={`/window-cleaning/${c.slug}/`}>Window Cleaning in {c.name}</a></li>
+    {nearbyCities.map((c) => (
+      <li><a href={`/window-cleaning/${c.slug}/`}>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {c.name}</a></li>
     ))}
   </ul>
 </div>
@@ -144,7 +154,7 @@ const schema = {
 <section class="bg-brand text-white">
   <div class="cta-strip container">
     <h2 class="text-white text-xl md:text-2xl font-bold mb-2">Get Your Windows Cleaned in {city.name} Today</h2>
-    <p class="text-brand-light text-base mb-4">Call now for a free estimate on window cleaning in {city.name}, KY.</p>
+    <p class="text-brand-light text-base mb-4">Call now for a free {serviceKeyword} estimate in {city.name}, KY.</p>
     <PhoneCTA label="Call Now" />
   </div>
 </section>

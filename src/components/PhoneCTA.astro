@@ -1,14 +1,14 @@
 ---
+import { siteConfig } from '../config';
+
 interface Props {
-  phone?: string;
   label?: string;
 }
 
-const { phone = "(859) 555-0100", label = "Call Now for a Free Estimate" } = Astro.props;
-const href = `tel:+18595550100`;
+const { label = "Call Now for a Free Estimate" } = Astro.props;
 ---
 <div class="my-4 text-center">
-  <a href={href} class="callrail-number btn-brand">
-    📞 {label}: {phone}
+  <a href={`tel:${siteConfig.phoneE164}`} class="btn-brand">
+    📞 {label}: {siteConfig.phone}
   </a>
 </div>

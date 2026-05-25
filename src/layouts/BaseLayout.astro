@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { siteConfig } from '../config';
 
 interface Props {
   title: string;
@@ -9,8 +10,42 @@ interface Props {
 }
 
 const { title, description, canonicalURL, schema } = Astro.props;
-const site = "https://nkywindowcleaningpros.com";
-const fullCanonical = canonicalURL || `${site}${Astro.url.pathname}`;
+const { businessName, phone, phoneE164, siteUrl, region, cities } = siteConfig;
+const fullCanonical = canonicalURL || `${siteUrl}${Astro.url.pathname}`;
+
+// LocalBusiness schema on every page
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": businessName,
+  "description": `Professional ${siteConfig.serviceKeywordPlural} in ${siteConfig.city}.`,
+  "url": siteUrl,
+  "telephone": phoneE164,
+  "priceRange": "$$",
+  "openingHours": siteConfig.openingHours,
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": siteConfig.geoLat,
+    "longitude": siteConfig.geoLng,
+  },
+  "image": `${siteUrl}/photos/hero.jpg`,
+  "areaServed": cities.map((c) => ({
+    "@type": "City",
+    "name": c.name,
+  })),
+  "serviceType": [
+    siteConfig.serviceKeyword.charAt(0).toUpperCase() + siteConfig.serviceKeyword.slice(1),
+    `Residential ${siteConfig.serviceKeyword}`,
+    `Commercial ${siteConfig.serviceKeyword}`,
+  ],
+};
+
+// Merge LocalBusiness + any page-specific schemas
+const allSchemas = schema
+  ? Array.isArray(schema)
+    ? [localBusinessSchema, ...schema]
+    : [localBusinessSchema, schema]
+  : [localBusinessSchema];
 ---
 <!doctype html>
 <html lang="en">
@@ -26,22 +61,12 @@ const fullCanonical = canonicalURL || `${site}${Astro.url.pathname}`;
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={fullCanonical} />
-  <meta property="og:site_name" content="NKY Window Cleaning Pros" />
+  <meta property="og:site_name" content={businessName} />
 
-  <!-- CallRail DNI -->
-  <script type="text/javascript">
-    // CallRail Dynamic Number Insertion - replace ACCOUNT_ID with actual ID
-    var js = document.createElement('script');
-    js.src = 'https://cdn.callrail.com/companies/ACCOUNT_ID/1234567890/swap.js';
-    document.head.appendChild(js);
-  </script>
-
-  {schema && Array.isArray(schema) && schema.map((s) => (
+  <!-- JSON-LD schemas -->
+  {allSchemas.map((s) => (
     <script type="application/ld+json" set:html={JSON.stringify(s)} />
   ))}
-  {schema && !Array.isArray(schema) && (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  )}
 </head>
 <body>
 
@@ -50,10 +75,10 @@ const fullCanonical = canonicalURL || `${site}${Astro.url.pathname}`;
   <div class="container">
     <div class="flex flex-col items-center gap-2 py-3 sm:flex-row sm:justify-between sm:items-center">
       <a href="/" class="text-lg font-bold text-white no-underline hover:no-underline tracking-tight">
-        NKY Window Cleaning Pros
+        {businessName}
       </a>
-      <a href="tel:+18595550100" class="callrail-number text-white font-semibold text-base no-underline hover:underline">
-        (859) 555-0100
+      <a href={`tel:${phoneE164}`} class="text-white font-semibold text-base no-underline hover:underline">
+        {phone}
       </a>
     </div>
   </div>
@@ -84,30 +109,30 @@ const fullCanonical = canonicalURL || `${site}${Astro.url.pathname}`;
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Column 1: Brand -->
       <div>
-        <p class="text-white font-bold text-base mb-2">NKY Window Cleaning Pros</p>
+        <p class="text-white font-bold text-base mb-2">{businessName}</p>
         <p class="text-sm text-gray-400 leading-relaxed">
-          Professional window cleaning services in Northern Kentucky. Locally owned and operated.
+          Professional {siteConfig.serviceKeywordPlural} in {siteConfig.city}. Locally owned and operated.
         </p>
       </div>
       <!-- Column 2: Contact -->
       <div>
         <p class="text-white font-semibold text-sm mb-2">Contact Us</p>
         <p class="text-sm text-gray-400 leading-relaxed">
-          📞 <a href="tel:+18595550100" class="callrail-number text-white no-underline">(859) 555-0100</a><br/>
-          Free estimates on all window cleaning services.
+          📞 <a href={`tel:${phoneE164}`} class="text-white no-underline">{phone}</a><br/>
+          Free estimates on all {siteConfig.serviceKeywordPlural}.
         </p>
       </div>
       <!-- Column 3: Service Areas -->
       <div>
         <p class="text-white font-semibold text-sm mb-2">Service Areas</p>
         <p class="text-sm text-gray-400 leading-relaxed">
-          Florence · Covington · Fort Mitchell · Erlanger · Newport · Independence · Edgewood · Fort Thomas · Bellevue · Cold Spring · Taylor Mill · Villa Hills · Crescent Springs · Lakeside Park · Park Hills
+          {cities.map((c) => c.name.replace(/, KY$/, '')).join(' · ')}
         </p>
       </div>
     </div>
     <div class="border-t border-gray-600 mt-6 pt-4">
       <p class="text-xs text-gray-500 text-center">
-        &copy; {new Date().getFullYear()} NKY Window Cleaning Pros. All rights reserved. | Window Cleaning Northern Kentucky | Residential &amp; Commercial Window Cleaning
+        &copy; {new Date().getFullYear()} {businessName}. All rights reserved. | {siteConfig.serviceKeyword.charAt(0).toUpperCase() + siteConfig.serviceKeyword.slice(1)} {siteConfig.city} | Residential &amp; Commercial {siteConfig.serviceKeyword}
       </p>
     </div>
   </div>

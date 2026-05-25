@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+
+const { businessName, phone, serviceKeyword, city } = siteConfig;
+---
+
+<BaseLayout
+  title={`Page Not Found | ${businessName}`}
+  description={`The page you're looking for doesn't exist. Contact ${businessName} for professional ${serviceKeyword} in ${city}.`}
+>
+
+<section class="hero-section">
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p class="hero-sub">Sorry, we couldn't find the page you're looking for.</p>
+  </div>
+</section>
+
+<div class="content-section text-center">
+  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Let Us Help You Find What You Need</h2>
+  <p>We provide professional {serviceKeyword} throughout {city}. Whether you need residential or commercial window cleaning, we've got you covered.</p>
+  <p class="mt-4">
+    <a href="/" class="btn-brand inline-block">Go to Homepage</a>
+  </p>
+  <p class="mt-4 text-lg font-semibold">
+    Or call us at <a href={`tel:${siteConfig.phoneE164}`}>{phone}</a> for a free estimate.
+  </p>
+</div>
+
+</BaseLayout>

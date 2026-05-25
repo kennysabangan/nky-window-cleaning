@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhoneCTA from '../components/PhoneCTA.astro';
 import FAQ from '../components/FAQ.astro';
+import QuoteForm from '../components/QuoteForm.astro';
 import { services, faqs } from '../data/services';
 import { cities } from '../data/cities';
 
@@ -101,6 +102,9 @@ const combinedSchema = [schema, faqSchema];
     ))}
   </div>
 </div>
+
+<!-- Quote Form -->
+<QuoteForm />
 
 <!-- Testimonials -->
 <div class="content-section">

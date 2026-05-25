@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PhoneCTA from '../../components/PhoneCTA.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
 import { cities } from '../../data/cities';
 import { services } from '../../data/services';
 
@@ -76,6 +77,9 @@ const schema = {
 
   <p>Our window cleaning service in {city.name} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. The purified water system we use leaves zero residue, so your windows in {city.name} stay cleaner longer.</p>
 </div>
+
+<!-- Quote Form -->
+<QuoteForm />
 
 <!-- CTA -->
 <section class="bg-gray-50 border-y-2 border-brand">

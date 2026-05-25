@@ -35,100 +35,105 @@ const schema = {
 
 <BaseLayout
   title={`Window Cleaning in ${city.name} | NKY Window Cleaning Pros`}
-  description={`Professional window cleaning services in ${city.name}. Streak-free results, reliable service, and free estimates. Call (859) 555-0100 today.`}
+  description={`Need window cleaning in ${city.name}? NKY Window Cleaning Pros provides residential and commercial window cleaning in ${city.name} and all across Northern Kentucky. Call (859) 555-0100 for a free estimate.`}
   canonicalURL={`https://nkywindowcleaningpros.com/window-cleaning/${city.slug}/`}
   schema={schema}
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-16 md:py-20">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-        Window Cleaning in {city.name}
-      </h1>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
-        Trusted by homeowners and businesses throughout {city.name}. Streak-free results, every visit.
-      </p>
+
+<!-- Big headline banner -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5; color:#fff; padding:25px 0;">
+  <tr>
+    <td align="center" style="padding:25px 15px;">
+      <h1 style="color:#fff; font-size:28px; margin:0 0 10px 0;">Window Cleaning in {city.name}</h1>
+      <p style="color:#cce4f7; font-size:16px; margin:0 0 15px 0;">Residential and commercial window cleaning in {city.name}, Kentucky. Streak-free results, every time.</p>
       <PhoneCTA />
-    </div>
-  </section>
+    </td>
+  </tr>
+</table>
 
-  <!-- City Intro -->
-  <section class="py-12 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <p class="text-gray-700 text-lg leading-relaxed">{city.intro}</p>
-    </div>
-  </section>
+<!-- Photo -->
+<div style="text-align:center; padding:10px;">
+  <img src="/photos/window-cleaning-1.jpg" alt={`Window cleaning in ${city.name}`} style="width:100%; max-width:600px; height:auto;" />
+</div>
 
-  <!-- Services in this city -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-[#1e3a5f] text-center mb-8">Window Cleaning Services We Offer in {city.name}</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {services.map(service => (
-          <div class="flex gap-4 items-start bg-white p-5 rounded-xl border border-gray-100">
-            <span class="text-3xl flex-shrink-0">{service.icon}</span>
-            <div>
-              <h3 class="font-bold text-[#1e3a5f] mb-1">{service.title}</h3>
-              <p class="text-gray-600 text-sm">{service.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+<!-- City intro content -->
+<div class="content-section">
+  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">Window Cleaning Services in {city.name}</h2>
 
-  <!-- Why locals choose us -->
-  <section class="py-12 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-[#1e3a5f] mb-6">Why {city.name} Residents Trust Us</h2>
-      <ul class="space-y-3 text-gray-700">
-        <li class="flex items-start gap-3">
-          <span class="text-[#1e3a5f] font-bold">✓</span>
-          <span>Licensed, insured, and background-checked technicians</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-[#1e3a5f] font-bold">✓</span>
-          <span>Flexible scheduling — we work around your availability</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-[#1e3a5f] font-bold">✓</span>
-          <span>Eco-friendly, professional-grade cleaning solutions</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-[#1e3a5f] font-bold">✓</span>
-          <span>100% satisfaction guarantee on every job</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-[#1e3a5f] font-bold">✓</span>
-          <span>Locally owned and operated — we're your neighbors</span>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <p>{city.intro}</p>
 
-  <!-- Service Area Radius -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold text-[#1e3a5f] mb-4">Serving {city.name} and Surrounding Areas</h2>
-      <p class="text-gray-600">
-        From {city.name}, we also serve nearby communities within a 15-mile radius. Whether you're in {city.name} proper or a neighboring town, we're just a phone call away.
-      </p>
-      <div class="mt-6 flex flex-wrap justify-center gap-2">
-        {cities.filter(c => c.slug !== city.slug).slice(0, 6).map(c => (
-          <a href={`/window-cleaning/${c.slug}/`} class="text-sm bg-white px-3 py-1.5 rounded-full border border-gray-200 text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-colors">
-            {c.name}
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+  <p>If you're looking for reliable window cleaning in {city.name}, look no further. NKY Window Cleaning Pros has been cleaning windows in {city.name} and the surrounding Northern Kentucky communities for years. We clean windows on homes, offices, storefronts, and commercial buildings throughout {city.name}. Whether you need residential window cleaning or commercial window cleaning, we've got you covered.</p>
 
-  <!-- CTA -->
-  <section class="py-16 bg-[#1e3a5f] text-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-      <p class="text-blue-200 text-lg mb-8">Call now for a free estimate on window cleaning in {city.name}.</p>
+  <img src="/photos/window-cleaning-2.jpg" alt={`Residential window cleaning ${city.name}`} style="width:100%; max-width:500px; height:auto; display:block; margin:15px auto;" />
+
+  <p>Our window cleaning service in {city.name} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. The purified water system we use leaves zero residue, so your windows in {city.name} stay cleaner longer.</p>
+</div>
+
+<!-- Phone CTA -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f5f5; border-top:2px solid #1a6bb5; border-bottom:2px solid #1a6bb5;">
+  <tr>
+    <td align="center" style="padding:20px 15px;">
+      <p style="font-size:16px; color:#333; margin:0 0 5px 0; font-weight:bold;">Need Window Cleaning in {city.name}?</p>
+      <p style="font-size:13px; color:#666; margin:0 0 10px 0;">Call now for a free estimate.</p>
+      <PhoneCTA />
+    </td>
+  </tr>
+</table>
+
+<!-- Services offered in this city -->
+<div class="content-section">
+  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">Window Cleaning Services We Offer in {city.name}</h2>
+
+  <p>We provide a full range of window cleaning services in {city.name} and throughout Northern Kentucky:</p>
+
+  <ul style="line-height:2; padding-left:20px;">
+    {services.map(service => (
+      <li><strong>{service.title}</strong> — {service.description.split('.').slice(0, 2).join('.')}.</li>
+    ))}
+  </ul>
+</div>
+
+<!-- Photo -->
+<div style="text-align:center; padding:10px;">
+  <img src="/photos/window-cleaning-3.jpg" alt={`Window cleaning team ${city.name}`} style="width:100%; max-width:600px; height:auto;" />
+</div>
+
+<!-- Why choose us — simple -->
+<div class="content-section">
+  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">Why {city.name} Residents Choose Us for Window Cleaning</h2>
+
+  <ul style="line-height:2; padding-left:20px;">
+    <li>Licensed and insured window cleaning company serving Northern Kentucky</li>
+    <li>Background-checked technicians who treat your {city.name} home with respect</li>
+    <li>Flexible scheduling — we work around your availability</li>
+    <li>Eco-friendly, professional-grade window cleaning solutions</li>
+    <li>100% satisfaction guarantee on every window cleaning job</li>
+    <li>Locally owned and operated — we're your Northern Kentucky neighbors</li>
+  </ul>
+</div>
+
+<!-- Nearby cities -->
+<div class="content-section">
+  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">We Also Serve These Nearby Northern Kentucky Cities</h2>
+
+  <p>In addition to window cleaning in {city.name}, we also provide window cleaning services in these nearby Northern Kentucky communities:</p>
+
+  <ul style="line-height:2; padding-left:20px;">
+    {cities.filter(c => c.slug !== city.slug).slice(0, 8).map(c => (
+      <li><a href={`/window-cleaning/${c.slug}/`} style="color:#1a6bb5; text-decoration:none;">Window Cleaning in {c.name}</a></li>
+    ))}
+  </ul>
+</div>
+
+<!-- Final CTA -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5;">
+  <tr>
+    <td align="center" style="padding:25px 15px;">
+      <h2 style="color:#fff; font-size:22px; margin:0 0 10px 0;">Get Your Windows Cleaned in {city.name} Today</h2>
+      <p style="color:#cce4f7; font-size:15px; margin:0 0 15px 0;">Call now for a free estimate on window cleaning in {city.name}, KY.</p>
       <PhoneCTA label="Call Now" />
-    </div>
-  </section>
+    </td>
+  </tr>
+</table>
+
 </BaseLayout>

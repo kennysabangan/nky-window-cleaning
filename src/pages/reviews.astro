@@ -4,40 +4,44 @@ import PhoneCTA from '../components/PhoneCTA.astro';
 
 const reviews = [
   {
-    name: "Sarah M.",
+    name: "Jennifer M.",
     location: "Florence, KY",
-    rating: 5,
-    text: "NKY Window Cleaning Pros did an amazing job on our home. Every single window was spotless, and they were so careful around our landscaping. Will definitely be using them again!"
+    text: "These guys cleaned every window in our house and they all look amazing. We have a two-story home in Florence and they got to every window, no problem. The team was friendly and worked fast. Best window cleaning service we've ever used in Northern Kentucky."
   },
   {
-    name: "Tom R.",
-    location: "Fort Mitchell, KY",
-    rating: 5,
-    text: "Finally found a window cleaning service that actually shows up on time. The team was professional, fast, and the results were perfect. My windows haven't looked this good since we moved in."
-  },
-  {
-    name: "Linda K.",
+    name: "Robert T.",
     location: "Covington, KY",
-    rating: 5,
-    text: "I was skeptical about the streak-free guarantee, but they delivered. Our older home has some tricky windows, and they handled every one of them with care. Highly recommend."
+    text: "We have an older home in Covington with some tricky windows. NKY Window Cleaning Pros handled every one of them. No streaks, no spots, just clean windows. They even cleaned our screens and tracks which other companies never do. Very happy with the service."
+  },
+  {
+    name: "Sarah K.",
+    location: "Fort Mitchell, KY",
+    text: "I've tried three different window cleaning companies in Northern Kentucky and these guys are by far the best. They showed up on time, worked quickly, and left every window spotless. Our house in Fort Mitchell looks so much better with clean windows."
   },
   {
     name: "Mike D.",
     location: "Erlanger, KY",
-    rating: 5,
-    text: "Great service from start to finish. Called for an estimate, got a fair price, and the work was done within the week. My storefront looks so much more inviting now."
+    text: "Hired them to clean the windows at our restaurant in Erlanger. They worked around our business hours so we didn't have to close. Great window cleaning service. Our customers have commented on how much better the place looks. Will be using them regularly."
   },
   {
     name: "Jennifer P.",
     location: "Independence, KY",
-    rating: 5,
-    text: "We have a lot of windows in our new home, and these guys tackled them all in one visit. The team was friendly, efficient, and left everything clean. Five stars, no question."
+    text: "We just moved into a new home in Independence and the windows were covered in construction dust and stickers. NKY Window Cleaning Pros came out and removed everything without scratching the glass. Our windows look brand new. Highly recommend their window cleaning service."
   },
   {
     name: "Dave S.",
     location: "Newport, KY",
-    rating: 5,
-    text: "Used them for a post-construction cleanup after our renovation. They removed paint spots, stickers, and debris from every window without a single scratch. Impressive work."
+    text: "Called for window cleaning on our home in Newport. They gave us a fair price over the phone and came out the same week. Every window was cleaned inside and out. They even cleaned the tracks which were really dirty. Great service, great price."
+  },
+  {
+    name: "Karen L.",
+    location: "Edgewood, KY",
+    text: "We get our windows cleaned twice a year with NKY Window Cleaning Pros. They always do a great job and our home in Edgewood looks wonderful every time. Reliable window cleaning company in Northern Kentucky that we trust completely."
+  },
+  {
+    name: "Tom W.",
+    location: "Fort Thomas, KY",
+    text: "Our Fort Thomas home has a lot of windows and these guys cleaned them all in about two hours. Every single window is streak-free and clear. They were careful with our landscaping and cleaned up after themselves. Best window cleaning in NKY."
   }
 ];
 
@@ -59,7 +63,7 @@ const schema = {
     "reviewBody": r.text,
     "reviewRating": {
       "@type": "Rating",
-      "ratingValue": r.rating.toString(),
+      "ratingValue": "5",
       "bestRating": "5"
     }
   }))
@@ -67,58 +71,46 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Customer Reviews | NKY Window Cleaning Pros"
-  description="See what Northern Kentucky homeowners and businesses are saying about NKY Window Cleaning Pros. 5-star rated, locally trusted window cleaning."
+  title="Window Cleaning Reviews | NKY Window Cleaning Pros"
+  description="Read reviews from Northern Kentucky homeowners and businesses about our window cleaning services. See why people in Florence, Covington, Fort Mitchell, and across NKY trust NKY Window Cleaning Pros."
   canonicalURL="https://nkywindowcleaningpros.com/reviews/"
   schema={schema}
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-16 md:py-20">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">What Our Customers Say</h1>
-      <div class="flex items-center justify-center gap-2 mb-4">
-        <span class="text-yellow-400 text-3xl">★★★★★</span>
-        <span class="text-lg text-blue-100">5.0 Average Rating</span>
-      </div>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto">
-        Don't take our word for it — hear from homeowners and businesses across Northern Kentucky.
-      </p>
-    </div>
-  </section>
 
-  <!-- Reviews Grid -->
-  <section class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {reviews.map(review => (
-          <article class="bg-gray-50 rounded-xl p-6 border border-gray-100">
-            <div class="flex items-center gap-1 mb-3">
-              {Array.from({ length: review.rating }).map(() => (
-                <span class="text-yellow-500">★</span>
-              ))}
-            </div>
-            <p class="text-gray-700 text-sm leading-relaxed mb-4">"{review.text}"</p>
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center text-sm font-bold">
-                {review.name.charAt(0)}
-              </div>
-              <div>
-                <p class="font-semibold text-sm text-[#1e3a5f]">{review.name}</p>
-                <p class="text-xs text-gray-500">{review.location}</p>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+<!-- Banner -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5; color:#fff; padding:25px 0;">
+  <tr>
+    <td align="center" style="padding:25px 15px;">
+      <h1 style="color:#fff; font-size:28px; margin:0 0 10px 0;">Window Cleaning Reviews — Northern Kentucky</h1>
+      <p style="color:#cce4f7; font-size:16px; margin:0 0 10px 0;">See what our customers are saying about our window cleaning services in NKY.</p>
+      <p style="color:#fff; font-size:14px; margin:0;">★★★★★ Average 5.0 Rating</p>
+    </td>
+  </tr>
+</table>
 
-  <!-- CTA -->
-  <section class="py-16 bg-[#1e3a5f] text-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-4">Ready to Join Our Happy Customers?</h2>
-      <p class="text-blue-200 text-lg mb-8">Call now for a free estimate and see why NKY trusts us with their windows.</p>
+<!-- Reviews -->
+<div class="content-section">
+  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">Customer Reviews for Window Cleaning in Northern Kentucky</h2>
+
+  <p>Here's what homeowners and business owners across Northern Kentucky are saying about NKY Window Cleaning Pros:</p>
+
+  {reviews.map(review => (
+    <div style="border:1px solid #ddd; padding:15px; margin-bottom:15px; background:#fafafa;">
+      <p style="font-style:italic; margin:0 0 8px 0; font-size:14px; line-height:1.6;">"{review.text}"</p>
+      <p style="font-weight:bold; margin:0; font-size:13px; color:#1a6bb5;">— {review.name}, {review.location}</p>
+    </div>
+  ))}
+</div>
+
+<!-- CTA -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5;">
+  <tr>
+    <td align="center" style="padding:25px 15px;">
+      <h2 style="color:#fff; font-size:22px; margin:0 0 10px 0;">Ready to See Why NKY Trusts Us?</h2>
+      <p style="color:#cce4f7; font-size:15px; margin:0 0 15px 0;">Call now for a free window cleaning estimate.</p>
       <PhoneCTA label="Call Now" />
-    </div>
-  </section>
+    </td>
+  </tr>
+</table>
+
 </BaseLayout>

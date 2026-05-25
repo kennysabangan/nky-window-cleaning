@@ -2,67 +2,79 @@ export interface Service {
   title: string;
   slug: string;
   description: string;
-  icon: string;
+  photo: string;
 }
 
 export const services: Service[] = [
   {
     title: "Residential Window Cleaning",
     slug: "residential",
-    description: "Interior and exterior window cleaning for homes of all sizes. We remove dirt, hard-water stains, and buildup to restore crystal-clear views.",
-    icon: "🏠"
+    description: "We clean windows on houses of all sizes across Northern Kentucky. Inside and out — we get rid of dirt, hard water spots, fingerprints, and buildup. Your home windows will look brand new after we're done. We clean windows in Florence, Covington, Fort Mitchell, and all across NKY.",
+    photo: "/photos/window-cleaning-1.jpg"
   },
   {
     title: "Commercial Window Cleaning",
     slug: "commercial",
-    description: "Professional window cleaning for storefronts, offices, and commercial buildings. Keep your business looking polished and inviting.",
-    icon: "🏢"
+    description: "Own a business in Northern Kentucky? We clean windows on storefronts, offices, restaurants, and commercial buildings. Clean windows make your business look professional and inviting. We work around your schedule so we don't interrupt your business day.",
+    photo: "/photos/window-cleaning-2.jpg"
   },
   {
     title: "Screen & Track Cleaning",
     slug: "screen-track",
-    description: "We don't just clean the glass — we thoroughly wash screens and vacuum tracks so every component of your windows is spotless.",
-    icon: "🪟"
+    description: "We don't just clean the glass. We also wash your window screens and vacuum out the tracks. Dirty screens and clogged tracks make your windows look bad even when the glass is clean. We take care of everything so your windows look their best.",
+    photo: "/photos/window-cleaning-3.jpg"
+  },
+  {
+    title: "Gutter Cleaning",
+    slug: "gutter-cleaning",
+    description: "Clogged gutters cause water damage to your roof and foundation. We clean out leaves, debris, and buildup from your gutters so rainwater flows properly. Most homes in NKY need gutter cleaning at least twice a year.",
+    photo: "/photos/window-cleaning-4.jpg"
+  },
+  {
+    title: "Pressure Washing",
+    slug: "pressure-washing",
+    description: "We pressure wash driveways, sidewalks, decks, siding, and more. Pressure washing removes years of dirt, mold, and grime from concrete, brick, and wood surfaces. Makes your property look fresh and clean.",
+    photo: "/photos/window-cleaning-5.jpg"
   },
   {
     title: "Post-Construction Cleanup",
     slug: "post-construction",
-    description: "New construction or renovation leaves windows covered in paint, stickers, and debris. We safely remove it all without scratching the glass.",
-    icon: "🔨"
+    description: "Just built a new home or finished a renovation? We remove paint, stickers, labels, drywall dust, and debris from your new windows. New construction leaves windows covered in stuff that needs professional removal. We do it without scratching the glass.",
+    photo: "/photos/window-cleaning-6.jpg"
   }
 ];
 
 export const faqs = [
   {
-    question: "How often should I have my windows cleaned?",
-    answer: "Most Northern Kentucky homeowners benefit from professional window cleaning twice a year — once in spring and once in fall. However, if your home is near trees, construction, or a busy road, quarterly cleanings may be ideal to keep your windows looking their best."
+    question: "How much does window cleaning cost in Northern Kentucky?",
+    answer: "It depends on how many windows you have and whether you want inside and outside cleaned. Most homes cost between $100 and $250. Give us a call at (859) 555-0100 and we'll give you a free estimate over the phone. No pressure, no obligation."
   },
   {
-    question: "Do you clean windows in winter?",
-    answer: "Yes, we clean windows year-round in Northern Kentucky. As long as temperatures are above freezing and conditions are safe, we can get the job done. Winter cleanings are actually a great way to maximize the limited natural light during shorter days."
+    question: "How often should I get my windows cleaned?",
+    answer: "Most homeowners in Northern Kentucky get their windows cleaned twice a year — once in spring and once in fall. If you live near trees or a busy road, you might want quarterly cleanings. We clean windows year-round."
   },
   {
-    question: "How long does a typical window cleaning take?",
-    answer: "For an average-sized home with 15 to 25 windows, our team typically completes the job in 1 to 2 hours. Larger homes or properties with hard-to-reach windows may take a bit longer. We always work efficiently without sacrificing quality."
+    question: "Do you clean windows in the winter?",
+    answer: "Yes! We clean windows all year long in Northern Kentucky. As long as it's above freezing and safe, we can get the job done. Winter window cleaning is actually great because it helps bring in more light during the shorter days."
   },
   {
-    question: "Do I need to be home during the cleaning?",
-    answer: "For exterior-only cleaning, you don't need to be home as long as we have access to the outside of all windows. For interior and exterior cleaning, we do ask that someone be available to let us inside. We'll work around your schedule to find a convenient time."
+    question: "How long does it take to clean my windows?",
+    answer: "For a typical home with 15 to 25 windows, we're usually done in 1 to 2 hours. Bigger homes with hard-to-reach windows might take a bit longer. We work fast but we never cut corners."
   },
   {
-    question: "What cleaning solutions do you use?",
-    answer: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family, pets, and landscaping. Our purified water system leaves zero residue on your glass, which means your windows stay cleaner longer compared to traditional soap-based methods."
+    question: "Do I need to be home for the cleaning?",
+    answer: "If you only want the outside of your windows cleaned, you don't need to be home as long as we can get to the windows from outside. For inside cleaning, someone needs to let us in. We'll work around your schedule."
   },
   {
-    question: "Do you offer any guarantees?",
-    answer: "Absolutely. We offer a 100% satisfaction guarantee on every job. If you're not completely happy with the results, we'll come back and re-clean any windows at no extra charge. Your satisfaction is our top priority."
+    question: "What do you use to clean windows?",
+    answer: "We use professional-grade cleaning solutions and a purified water system. The purified water leaves zero residue on your glass, which means your windows stay cleaner longer than with regular soap and water. Our solutions are safe for your family, pets, and plants."
   },
   {
-    question: "Can you clean windows on multi-story homes?",
-    answer: "Yes, our team is fully equipped and trained to clean windows on homes up to three stories. We use professional-grade extension poles, ladders, and safety equipment to access hard-to-reach windows safely and effectively."
+    question: "Can you clean windows on two-story homes?",
+    answer: "Yes! We clean windows on homes up to three stories high. We use extension poles, ladders, and professional safety equipment to reach any window safely."
   },
   {
-    question: "How do I get a price estimate?",
-    answer: "The easiest way to get an estimate is to call us at (859) 555-0100. We can often provide a quote over the phone based on the number and type of windows in your home. For larger or more complex properties, we're happy to schedule a free on-site estimate."
+    question: "How do I schedule an appointment?",
+    answer: "Just call us at (859) 555-0100. We answer the phone and can usually schedule your window cleaning within a few days. We serve Florence, Covington, Fort Mitchell, Erlanger, and all of Northern Kentucky."
   }
 ];

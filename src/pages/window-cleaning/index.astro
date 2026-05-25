@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PhoneCTA from '../../components/PhoneCTA.astro';
 import { services } from '../../data/services';
+import { cities } from '../../data/cities';
 
 const schema = {
   "@context": "https://schema.org",
@@ -21,92 +22,85 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Window Cleaning Services in Northern Kentucky | NKY Window Cleaning Pros"
-  description="Expert window cleaning for homes and businesses across Northern Kentucky. Interior, exterior, screens, tracks, and post-construction cleanup. Call (859) 555-0100."
+  title="Window Cleaning Services Northern Kentucky | NKY Window Cleaning Pros"
+  description="Window cleaning services in Northern Kentucky. We clean windows on homes, offices, and commercial buildings in Florence, Covington, Fort Mitchell, Erlanger, and all across NKY. Call (859) 555-0100 for a free estimate."
   canonicalURL="https://nkywindowcleaningpros.com/window-cleaning/"
   schema={schema}
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white py-16 md:py-20">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-        Professional Window Cleaning Services in Northern Kentucky
-      </h1>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
-        From single-story homes to commercial buildings, we deliver streak-free results that let the light in and keep the grime out.
-      </p>
+
+<!-- Banner -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5; color:#fff; padding:25px 0;">
+  <tr>
+    <td align="center" style="padding:25px 15px;">
+      <h1 style="color:#fff; font-size:28px; margin:0 0 10px 0;">Window Cleaning Services in Northern Kentucky</h1>
+      <p style="color:#cce4f7; font-size:16px; margin:0 0 15px 0;">Residential window cleaning, commercial window cleaning, and more. Serving all of NKY.</p>
       <PhoneCTA />
-    </div>
-  </section>
+    </td>
+  </tr>
+</table>
 
-  <!-- Services Grid -->
-  <section class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-10">What We Offer</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {services.map(service => (
-          <div class="flex gap-4 items-start bg-gray-50 p-6 rounded-xl border border-gray-100">
-            <span class="text-4xl flex-shrink-0">{service.icon}</span>
-            <div>
-              <h3 class="text-xl font-bold text-[#1e3a5f] mb-2">{service.title}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+<!-- Photo -->
+<div style="text-align:center; padding:10px;">
+  <img src="/photos/window-cleaning-1.jpg" alt="Window cleaning services in Northern Kentucky" style="width:100%; max-width:600px; height:auto;" />
+</div>
 
-  <!-- How It Works -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-[#1e3a5f] text-center mb-10">How It Works</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">1</div>
-          <h3 class="font-bold text-[#1e3a5f] mb-2">Call Us</h3>
-          <p class="text-gray-600 text-sm">Give us a call at (859) 555-0100 and tell us about your windows.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">2</div>
-          <h3 class="font-bold text-[#1e3a5f] mb-2">Get Your Estimate</h3>
-          <p class="text-gray-600 text-sm">We'll provide a clear, upfront price — no hidden fees, no surprises.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">3</div>
-          <h3 class="font-bold text-[#1e3a5f] mb-2">We Clean</h3>
-          <p class="text-gray-600 text-sm">Our team arrives on time, works efficiently, and treats your property with care.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-[#1e3a5f] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">4</div>
-          <h3 class="font-bold text-[#1e3a5f] mb-2">Enjoy the View</h3>
-          <p class="text-gray-600 text-sm">Crystal-clear windows, inside and out. Not happy? We'll re-clean for free.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Services content -->
+<div class="content-section">
+  <h2 style="color:#1a6bb5; font-size:22px; margin-top:0;">Our Window Cleaning Services</h2>
 
-  <!-- Pricing -->
-  <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-[#1e3a5f] mb-4">Transparent Pricing</h2>
-      <p class="text-gray-600 mb-8 max-w-xl mx-auto">
-        Every home is different. That's why we provide free, personalized estimates based on the number of windows, accessibility, and type of cleaning needed.
-      </p>
-      <div class="bg-gray-50 rounded-xl p-8 border border-gray-200 max-w-md mx-auto">
-        <h3 class="text-2xl font-bold text-[#1e3a5f] mb-2">Free Estimate</h3>
-        <p class="text-gray-600 text-sm mb-6">No obligation. No pressure. Just honest pricing.</p>
-        <PhoneCTA label="Call for Your Free Estimate" />
-      </div>
-    </div>
-  </section>
+  <p>NKY Window Cleaning Pros provides professional window cleaning services throughout Northern Kentucky. We clean windows on homes, offices, storefronts, restaurants, and commercial buildings. Here are the window cleaning services we offer:</p>
 
-  <!-- CTA -->
-  <section class="py-16 bg-[#1e3a5f] text-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-4">Let's Get Those Windows Clean</h2>
-      <p class="text-blue-200 text-lg mb-8">Call now and see why Northern Kentucky trusts NKY Window Cleaning Pros.</p>
+  {services.map(service => (
+    <div style="margin-bottom:20px; padding-bottom:15px; border-bottom:1px solid #eee;">
+      <img src={service.photo} alt={service.title} style="width:100%; max-width:400px; height:auto; display:block; margin-bottom:8px;" />
+      <h3 style="color:#1a6bb5; font-size:18px; margin:0 0 5px 0;">{service.title}</h3>
+      <p style="color:#444; font-size:14px; margin:0; line-height:1.6;">{service.description}</p>
+    </div>
+  ))}
+
+  <h2 style="color:#1a6bb5; font-size:22px;">How Our Window Cleaning Service Works</h2>
+
+  <p>Getting your windows cleaned by NKY Window Cleaning Pros is easy. Here's how it works:</p>
+
+  <p><strong>Step 1: Call Us.</strong> Give us a call at (859) 555-0100 and tell us about the windows you need cleaned. We'll ask how many windows you have and whether you want inside and outside cleaned.</p>
+
+  <p><strong>Step 2: Get Your Free Estimate.</strong> We'll give you a clear, upfront price for your window cleaning. No hidden fees, no surprises. Most homeowners are surprised at how affordable professional window cleaning can be.</p>
+
+  <p><strong>Step 3: We Clean Your Windows.</strong> Our team arrives on time with all the equipment and supplies needed to clean your windows. We work efficiently and treat your property with respect.</p>
+
+  <p><strong>Step 4: Enjoy the View.</strong> Your windows will be crystal clear, inside and out. Not happy with the results? We'll come back and re-clean any windows for free. That's our satisfaction guarantee.</p>
+
+  <h2 style="color:#1a6bb5; font-size:22px;">Window Cleaning Service Areas</h2>
+
+  <p>We provide window cleaning services across Northern Kentucky. We serve:</p>
+
+  <ul style="line-height:2; padding-left:20px;">
+    {cities.map(city => (
+      <li><a href={`/window-cleaning/${city.slug}/`} style="color:#1a6bb5; text-decoration:none;">Window Cleaning in {city.name}</a></li>
+    ))}
+  </ul>
+</div>
+
+<!-- Phone CTA -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f5f5; border-top:2px solid #1a6bb5; border-bottom:2px solid #1a6bb5;">
+  <tr>
+    <td align="center" style="padding:20px 15px;">
+      <p style="font-size:16px; color:#333; margin:0 0 5px 0; font-weight:bold;">Ready for Clean Windows?</p>
+      <p style="font-size:13px; color:#666; margin:0 0 10px 0;">Call now for a free window cleaning estimate in Northern Kentucky.</p>
+      <PhoneCTA />
+    </td>
+  </tr>
+</table>
+
+<!-- Final CTA -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a6bb5;">
+  <tr>
+    <td align="center" style="padding:25px 15px;">
+      <h2 style="color:#fff; font-size:22px; margin:0 0 10px 0;">Call Now for Window Cleaning in Northern Kentucky</h2>
+      <p style="color:#cce4f7; font-size:15px; margin:0 0 15px 0;">We clean windows in Florence, Covington, Fort Mitchell, Erlanger, and all across NKY.</p>
       <PhoneCTA label="Call Now" />
-    </div>
-  </section>
+    </td>
+  </tr>
+</table>
+
 </BaseLayout>

@@ -3,14 +3,14 @@ interface Props {
   service: {
     title: string;
     description: string;
-    icon: string;
+    photo?: string;
   };
 }
 
 const { service } = Astro.props;
 ---
-<article class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
-  <span class="text-3xl" role="img" aria-hidden="true">{service.icon}</span>
-  <h3 class="text-lg font-bold text-[#1e3a5f] mt-3 mb-2">{service.title}</h3>
-  <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
-</article>
+<div style="margin-bottom:25px; border-bottom:1px solid #eee; padding-bottom:20px;">
+  <img src={service.photo || "/photos/window-cleaning-1.jpg"} alt={service.title} style="width:100%; max-width:400px; height:auto; display:block; margin-bottom:10px;" />
+  <h3 style="font-size:18px; font-weight:bold; color:#1a6bb5; margin:0 0 6px 0;">{service.title}</h3>
+  <p style="font-size:14px; color:#444; margin:0; line-height:1.6;">{service.description}</p>
+</div>

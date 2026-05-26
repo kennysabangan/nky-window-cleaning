@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PhoneCTA from '../../components/PhoneCTA.astro';
-import QuoteForm from '../../components/QuoteForm.astro';
 import { siteConfig } from '../../config';
 import type { City } from '../../config';
 
@@ -13,21 +11,15 @@ export function getStaticPaths() {
 }
 
 const { city } = Astro.props as { city: City };
-const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, region, services, cities } = siteConfig;
+const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, region, services, cities, testimonials, faqs } = siteConfig;
 
-// City-specific Service schema (LocalBusiness is already provided by BaseLayout)
+// City-specific schema
 const cityServiceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1),
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": businessName,
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": city.name,
-  },
+  "provider": { "@type": "LocalBusiness", "name": businessName },
+  "areaServed": { "@type": "City", "name": city.name },
   "description": `Professional ${serviceKeywordPlural} in ${city.name}. Residential and commercial ${serviceKeyword} by ${businessName}.`,
 };
 
@@ -41,122 +33,491 @@ const breadcrumbSchema = {
   ],
 };
 
-const nearbyCities = cities.filter((c) => c.slug !== city.slug);
+const nearbyCities = cities.filter((c) => c.slug !== city.slug).slice(0, 12);
+const cityName = city.name.replace(/, KY$/, '').replace(/, OH$/, '');
+const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
 ---
 
 <BaseLayout
   title={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city.name} | ${businessName}`}
-  description={`Need ${serviceKeyword} in ${city.name}? ${businessName} provides residential and commercial ${serviceKeywordPlural} in ${city.name} and all across ${regionCity}. Call ${phone} for a free estimate.`}
+  description={`Need ${serviceKeyword} in ${city.name}? ${businessName} provides residential and commercial ${serviceKeywordPlural} in ${cityName} and all across ${regionCity}. Call ${phone} for a free estimate.`}
   canonicalURL={`${siteUrl}/window-cleaning/${city.slug}/`}
   schema={[breadcrumbSchema, cityServiceSchema]}
 >
 
-<!-- Hero -->
-<section class="hero-section">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', sans-serif; color: #333; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 769px) {
+    .container { padding: 0 2rem; }
+  }
+
+  /* Header — matches landing page */
+  .site-header {
+    background: #1a6bb5;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    gap: 1rem;
+  }
+  @media (min-width: 769px) {
+    .header-inner { padding: 0.85rem 2rem; }
+  }
+  .mobile-quote-text {
+    display: block;
+    color: #cce4f7;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .phone-btn {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  }
+  .nav-wrap { display: none; }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a { color: #fff; text-decoration: none; }
+  @media (min-width: 769px) {
+    .nav-wrap { display: block; }
+    .mobile-quote-text { display: none; }
+  }
+
+  /* Hero — matches landing page style */
+  .page-hero {
+    background: #1a6bb5;
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 1rem;
+  }
+  @media (min-width: 769px) {
+    .page-hero { padding: 3rem 1.5rem; }
+  }
+  .page-hero h1 {
+    color: #fff;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+  .page-hero .hero-sub {
+    color: #cce4f7;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    margin: 0 0 1.5rem 0;
+  }
+
+  /* Phone CTA button — matches landing page */
+  .call-now-btn {
+    display: inline-block;
+    background: #fff;
+    color: #1a6bb5;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  /* Section titles */
+  .section-title {
+    color: #1a6bb5;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem 0;
+    text-align: center;
+  }
+  .section-sub {
+    color: #666;
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    font-size: 1rem;
+  }
+
+  /* Content text */
+  .content-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+  .content-text:last-child { margin-bottom: 0; }
+
+  /* Section spacing */
+  .section { padding: 2rem 0; }
+  @media (min-width: 769px) {
+    .section { padding: 3rem 0; }
+    .section-title { font-size: 1.75rem; }
+  }
+
+  /* Photo */
+  .city-photo {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    display: block;
+    margin: 1.5rem auto;
+  }
+
+  /* Services grid — matches landing page */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 769px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  }
+  .service-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .service-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .service-card-body { padding: 1rem; }
+  .service-card-body h3 {
+    color: #1a6bb5;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem 0;
+  }
+  .service-card-body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+  }
+
+  /* Why choose us list */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 769px) {
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+  }
+  .benefit-item .check {
+    color: #1a6bb5;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* Nearby cities grid */
+  .cities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 769px) {
+    .cities-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .cities-grid a {
+    color: #1a6bb5;
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .cities-grid a:hover { text-decoration: underline; }
+
+  /* Form — matches landing page */
+  .form-banner {
+    background: linear-gradient(135deg, #1a6bb5, #2d8fd5);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    padding: 1.5rem 1rem;
+  }
+  .form-banner-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .form-banner-sub {
+    color: #cce4f7;
+    font-size: 0.95rem;
+    margin: 0.35rem 0 0 0;
+  }
+  .form-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .form-note {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0 0 0.75rem 0;
+  }
+  .form-group { margin-bottom: 0.85rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.25rem;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.6rem 0.7rem;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .name-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  @media (min-width: 769px) {
+    .name-row { flex-direction: row; gap: 0.75rem; }
+  }
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1a6bb5, #2d8fd5);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(26,107,181,0.25);
+    font-family: inherit;
+  }
+
+  /* CTA strip */
+  .final-cta {
+    background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%);
+    color: #fff;
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+  }
+  .final-cta h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+  .final-cta p {
+    color: #cce4f7;
+    font-size: 1rem;
+    margin: 0 0 1.5rem 0;
+  }
+  .final-cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #1a6bb5;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  /* Mid CTA */
+  .mid-cta {
+    text-align: center;
+    padding: 1.75rem 1rem;
+  }
+  .mid-cta-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+  }
+  .mid-cta-sub {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 1rem 0;
+  }
+</style>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={`tel:${phoneE164}`} class="phone-btn">📞 {phone}</a>
+    <span class="mobile-quote-text">Call us for a quote</span>
+    <nav class="nav-wrap">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/window-cleaning/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/reviews/">Reviews</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
   <div class="container">
     <h1>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city.name}</h1>
-    <p class="hero-sub">Residential and commercial {serviceKeyword} in {city.name}, Kentucky. Streak-free results, every time.</p>
-    <PhoneCTA />
+    <p class="hero-sub">Residential and commercial {serviceKeyword} in {cityName}, {stateAbbr}. Streak-free results, every time.</p>
+    <a href={`tel:${phoneE164}`} class="call-now-btn">CALL NOW — {phone}</a>
   </div>
 </section>
 
-<!-- Photo -->
-<div class="container py-6 text-center">
-  <img
-    src="/photos/hero.jpg"
-    alt={`Professional ${serviceKeyword} in ${city.name} — ${businessName}`}
-    class="site-photo mx-auto max-w-2xl"
-    loading="eager"
-  />
-</div>
+<div class="container">
 
-<!-- City intro -->
-<div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services in {city.name}</h2>
-
-  <p>{city.intro}</p>
-
-  <p>If you're looking for reliable {serviceKeyword} in {city.name}, look no further. {businessName} has been cleaning windows in {city.name} and the surrounding {regionCity} communities for years. We clean windows on homes, offices, storefronts, and commercial buildings throughout {city.name}. Whether you need residential {serviceKeyword} or commercial {serviceKeyword}, we've got you covered.</p>
-
-  <img
-    src="/photos/residential.jpg"
-    alt={`Residential ${serviceKeyword} ${city.name} by ${businessName}`}
-    class="site-photo mx-auto max-w-lg my-6"
-    loading="lazy"
-  />
-
-  <p>Our {serviceKeyword} service in {city.name} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. The purified water system we use leaves zero residue, so your windows in {city.name} stay cleaner longer.</p>
-</div>
-
-<!-- Quote Form -->
-<QuoteForm />
-
-<!-- CTA -->
-<section class="bg-gray-50 border-y-2 border-brand">
-  <div class="cta-strip container">
-    <p class="cta-heading">Need {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city.name}?</p>
-    <p class="cta-sub">Call now for a free estimate.</p>
-    <PhoneCTA />
+  <!-- Photo -->
+  <div class="section text-center">
+    <img
+      src="/photos/hero.jpg"
+      alt={`Professional ${serviceKeyword} in ${cityName} — ${businessName}`}
+      class="city-photo"
+      loading="eager"
+    />
   </div>
-</section>
 
-<!-- Services offered in this city -->
-<div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services We Offer in {city.name}</h2>
+  <!-- City intro -->
+  <section class="section">
+    <h2 class="section-title" style="text-align:left;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services in {cityName}</h2>
+    <p class="content-text">{city.intro}</p>
+    <p class="content-text">If you're looking for reliable {serviceKeyword} in {cityName}, look no further. {businessName} has been serving {cityName} and the surrounding communities for years. We clean windows on homes, offices, storefronts, and commercial buildings throughout {cityName}. Whether you need residential {serviceKeyword} or commercial {serviceKeyword}, we've got you covered.</p>
+    <p class="content-text">Our {serviceKeyword} service in {cityName} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. Our purified water system leaves zero residue, so your windows stay cleaner longer.</p>
+  </section>
 
-  <p>We provide a full range of {serviceKeywordPlural} in {city.name} and throughout {regionCity}:</p>
+  <!-- Mid CTA -->
+  <section class="mid-cta">
+    <p class="mid-cta-heading">Ready to get your windows cleaned in {cityName}?</p>
+    <p class="mid-cta-sub">Call now for a free estimate.</p>
+    <a href={`tel:${phoneE164}`} class="call-now-btn">CALL NOW — {phone}</a>
+  </section>
 
-  <ul>
-    {services.map((s) => (
-      <li><strong>{s.title}</strong> — {s.description.split('.').slice(0, 2).join('.')}.</li>
-    ))}
-  </ul>
-</div>
+  <!-- Quote Form — matches landing page -->
+  <div class="section" style="max-width:500px;margin:0 auto;">
+    <div class="form-banner">
+      <p class="form-banner-title">FREE INSTANT QUOTE</p>
+      <p class="form-banner-sub">ENTER YOUR INFO BELOW</p>
+    </div>
+    <form class="form-card" onsubmit="return false">
+      <p class="form-note">* Indicates required field</p>
+      <div class="form-group">
+        <label>Name *</label>
+        <div class="name-row">
+          <input type="text" name="firstName" required placeholder="First" />
+          <input type="text" name="lastName" required placeholder="Last" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" name="phone" required />
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label>Comment *</label>
+        <textarea name="comment" required rows="4"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
 
-<!-- Photo -->
-<div class="container py-6 text-center">
-  <img
-    src="/photos/commercial.jpg"
-    alt={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} team serving ${city.name} commercial properties`}
-    class="site-photo mx-auto max-w-2xl"
-    loading="lazy"
-  />
-</div>
+  <!-- Services offered -->
+  <section class="section">
+    <h2 class="section-title">Services We Offer in {cityName}</h2>
+    <p class="section-sub">Professional {serviceKeywordPlural} for homes and businesses in {cityName}</p>
+    <div class="services-grid">
+      {services.map((s) => (
+        <div class="service-card">
+          <img src={s.photo} alt={`${s.title} in ${cityName} — ${businessName}`} loading="lazy" />
+          <div class="service-card-body">
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
-<!-- Why choose us -->
-<div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">Why {city.name} Residents Choose Us for {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)}</h2>
+  <!-- Why choose us -->
+  <section class="section">
+    <h2 class="section-title">Why {cityName} Residents Choose Us</h2>
+    <p class="section-sub">What sets {businessName} apart in {cityName}</p>
+    <ul class="benefits-grid">
+      <li class="benefit-item"><span class="check">✓</span> Licensed and insured {serviceKeyword} company</li>
+      <li class="benefit-item"><span class="check">✓</span> Background-checked, professional technicians</li>
+      <li class="benefit-item"><span class="check">✓</span> Flexible scheduling — we work around you</li>
+      <li class="benefit-item"><span class="check">✓</span> Eco-friendly, professional-grade solutions</li>
+      <li class="benefit-item"><span class="check">✓</span> 100% satisfaction guarantee</li>
+      <li class="benefit-item"><span class="check">✓</span> Locally owned — we're your {regionCity} neighbors</li>
+    </ul>
+  </section>
 
-  <ul>
-    <li>Licensed and insured {serviceKeyword} company serving {regionCity}</li>
-    <li>Background-checked technicians who treat your {city.name.replace(/, KY$/, '')} home with respect</li>
-    <li>Flexible scheduling — we work around your availability</li>
-    <li>Eco-friendly, professional-grade {serviceKeyword} solutions</li>
-    <li>100% satisfaction guarantee on every {serviceKeyword} job</li>
-    <li>Locally owned and operated — we're your {regionCity} neighbors</li>
-  </ul>
-</div>
+  <!-- Nearby cities -->
+  <section class="section">
+    <h2 class="section-title">We Also Serve These Nearby Cities</h2>
+    <p class="section-sub">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} services across {regionCity}</p>
+    <ul class="cities-grid">
+      {nearbyCities.map((c) => (
+        <li><a href={`/window-cleaning/${c.slug}/`}>{c.name}</a></li>
+      ))}
+    </ul>
+  </section>
 
-<!-- Nearby cities -->
-<div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">We Also Serve These Nearby {regionCity} Cities</h2>
-
-  <p>In addition to {serviceKeyword} in {city.name}, we also provide {serviceKeywordPlural} in these nearby {regionCity} communities:</p>
-
-  <ul>
-    {nearbyCities.map((c) => (
-      <li><a href={`/window-cleaning/${c.slug}/`}>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {c.name}</a></li>
-    ))}
-  </ul>
 </div>
 
 <!-- Final CTA -->
-<section class="bg-brand-dark text-white">
-  <div class="cta-strip container">
-    <h2 class="text-white text-xl md:text-2xl font-bold mb-2">Get Your Windows Cleaned in {city.name} Today</h2>
-    <p class="text-white/90 text-base mb-4">Call now for a free {serviceKeyword} estimate in {city.name}, KY.</p>
-    <PhoneCTA label="Call Now" />
-  </div>
+<section class="final-cta">
+  <h2>Get Your Windows Cleaned in {cityName} Today</h2>
+  <p>Call now for a free {serviceKeyword} estimate in {cityName}.</p>
+  <a href={`tel:${phoneE164}`} class="final-cta-btn">Call {phone}</a>
 </section>
 
 </BaseLayout>

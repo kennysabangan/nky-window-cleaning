@@ -8,7 +8,21 @@ interface Props {
 const { label = "Call Now for a Free Estimate" } = Astro.props;
 ---
 <div class="my-4 text-center">
-  <a href={`tel:${siteConfig.phoneE164}`} class="btn-brand">
+  <a href={`tel:${siteConfig.phoneE164}`} class="btn-brand" data-gtm-event="phone_click" data-gtm-phone={siteConfig.phoneE164}>
     📞 {label}: {siteConfig.phone}
   </a>
 </div>
+
+<script>
+  // Push dataLayer event on phone click
+  document.querySelectorAll('[data-gtm-event="phone_click"]').forEach((el) => {
+    el.addEventListener('click', () => {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: 'phone_click',
+        phone_number: (el as HTMLElement).dataset.gtmPhone || '',
+        page_path: document.location.pathname,
+      });
+    });
+  });
+</script>

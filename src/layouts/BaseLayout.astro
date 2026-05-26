@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description, canonicalURL, schema } = Astro.props;
-const { businessName, phone, phoneE164, siteUrl, region, cities } = siteConfig;
+const { businessName, phone, phoneE164, siteUrl, region, cities, ga4MeasurementId, gtmContainerId, hasGA4, hasGTM } = siteConfig;
 const fullCanonical = canonicalURL || `${siteUrl}${Astro.url.pathname}`;
 
 // LocalBusiness schema on every page
@@ -66,12 +66,42 @@ const allSchemas = schema
   <meta property="og:url" content={fullCanonical} />
   <meta property="og:site_name" content={businessName} />
 
+  <!-- Google Analytics 4 -->
+  {hasGA4 && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}></script>
+      <script set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${ga4MeasurementId}');
+      `}></script>
+    </>
+  )}
+
+  <!-- Google Tag Manager (head) -->
+  {hasGTM && (
+    <script set:html={`
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${gtmContainerId}');
+    `}></script>
+  )}
+
   <!-- JSON-LD schemas -->
   {allSchemas.map((s) => (
     <script type="application/ld+json" set:html={JSON.stringify(s)} />
   ))}
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+{hasGTM && (
+  <noscript set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmContainerId}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>`}></noscript>
+)}
 
 <main>
   <slot />

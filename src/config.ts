@@ -39,6 +39,20 @@ export const siteConfig = {
   domain: "nkywindowcleaningpros.com",
   siteUrl: "https://nkywindowcleaningpros.com",
 
+  // ── Analytics ───────────────────────────────────────────────────────
+  // Set these to your real GA4 / GTM IDs to enable tracking.
+  // Leave as placeholders (or empty) to disable — the site still works.
+  ga4MeasurementId: "G-XXXXXXXXXX",   // Google Analytics 4
+  gtmContainerId: "GTM-XXXXXXX",      // Google Tag Manager
+
+  // helper: truthy only when the value looks like a real ID
+  get hasGA4() {
+    return this.ga4MeasurementId && !this.ga4MeasurementId.startsWith('G-XX');
+  },
+  get hasGTM() {
+    return this.gtmContainerId && !this.gtmContainerId.startsWith('GTM-XX');
+  },
+
   // ── Location ───────────────────────────────────────────────────────
   city: "Northern Kentucky",
   state: "KY",

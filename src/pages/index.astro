@@ -26,7 +26,10 @@ const faqSchema = {
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; font-family: 'Inter', sans-serif; color: #333; }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 769px) {
+    .container { padding: 0 2rem; }
+  }
 
   /* Header */
   .site-header {
@@ -338,7 +341,6 @@ const faqSchema = {
 
   /* ===== DESKTOP (769px+) ===== */
   @media (min-width: 769px) {
-    .container { padding: 0 2rem; }
     .nav-wrap { display: block; }
     .mobile-quote-text { display: none; }
     .biz-name { font-size: 2.25rem; padding: 1rem 0 0.25rem 0; }

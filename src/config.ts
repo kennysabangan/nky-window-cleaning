@@ -42,7 +42,7 @@ export const siteConfig = {
   // ── Analytics ───────────────────────────────────────────────────────
   // Set these to your real GA4 / GTM IDs to enable tracking.
   // Leave as placeholders (or empty) to disable — the site still works.
-  ga4MeasurementId: "G-XXXXXXXXXX",   // Google Analytics 4
+  ga4MeasurementId: "G-PV0W7K0SXB",   // Google Analytics 4
   gtmContainerId: "GTM-XXXXXXX",      // Google Tag Manager
 
   // helper: truthy only when the value looks like a real ID

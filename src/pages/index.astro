@@ -57,6 +57,17 @@ const faqSchema = {
     .areas-grid {
       columns: 2 !important;
     }
+    .name-row {
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+    }
+    .form-card {
+      padding: 1.25rem !important;
+    }
+    .form-card input,
+    .form-card textarea {
+      font-size: 16px !important;
+    }
   }
 </style>
 
@@ -99,7 +110,7 @@ const faqSchema = {
         <!-- Name -->
         <div style="margin-bottom:1rem;">
           <label style="display:block;font-size:0.95rem;font-weight:600;color:#444;margin-bottom:0.3rem;">Name *</label>
-          <div style="display:flex;gap:0.75rem;">
+          <div class="name-row" style="display:flex;gap:0.75rem;">
             <input type="text" name="firstName" required placeholder="First" style="flex:1;border:1px solid #ccc;border-radius:8px;padding:0.6rem 0.75rem;font-size:1rem;box-sizing:border-box;transition:border-color 0.2s,box-shadow 0.2s;" />
             <input type="text" name="lastName" required placeholder="Last" style="flex:1;border:1px solid #ccc;border-radius:8px;padding:0.6rem 0.75rem;font-size:1rem;box-sizing:border-box;transition:border-color 0.2s,box-shadow 0.2s;" />
           </div>

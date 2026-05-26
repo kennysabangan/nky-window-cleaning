@@ -26,7 +26,7 @@ const faqSchema = {
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; font-family: 'Inter', sans-serif; color: #333; }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.75rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
   /* Header */
   .site-header {
@@ -40,7 +40,8 @@ const faqSchema = {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 0;
+    padding: 0.85rem 0;
+    gap: 1rem;
   }
   .mobile-quote-text {
     display: block;
@@ -55,8 +56,9 @@ const faqSchema = {
     text-decoration: none;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   }
+  .nav-wrap { display: none; }
   .nav-links {
-    display: none; /* hidden on mobile */
+    display: flex;
     gap: 1.5rem;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -337,7 +339,7 @@ const faqSchema = {
   /* ===== DESKTOP (769px+) ===== */
   @media (min-width: 769px) {
     .container { padding: 0 2rem; }
-    .nav-links { display: flex; }
+    .nav-wrap { display: block; }
     .mobile-quote-text { display: none; }
     .biz-name { font-size: 2.25rem; padding: 1rem 0 0.25rem 0; }
 
@@ -367,7 +369,7 @@ const faqSchema = {
   <div class="container header-inner">
     <a href={`tel:${phoneE164}`} class="phone-btn">📞 {phone}</a>
     <span class="mobile-quote-text">Call us for a quote</span>
-    <nav>
+    <nav class="nav-wrap">
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/window-cleaning/">Services</a></li>

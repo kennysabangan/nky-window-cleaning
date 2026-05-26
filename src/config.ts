@@ -258,6 +258,111 @@ export const siteConfig = {
       intro:
         "Park Hills' hilltop location offers some of the best views in Northern Kentucky — but it also means your windows face the full force of the elements. NKY Window Cleaning Pros provides Park Hills homeowners with expert window cleaning that keeps those views crystal clear. We're experienced with the steep terrain, multi-story homes, and unique architectural features that Park Hills properties are known for. Our team uses safety equipment and proven techniques to access even the most challenging windows, delivering the same streak-free results whether your home overlooks Devou Park or the Cincinnati skyline beyond.",
     },
+    // ── Cincinnati-area cities ────────────────────────────────────────
+    {
+      name: "Walnut Hills, OH",
+      slug: "walnut-hills-oh",
+      lat: "39.1212",
+      lng: "-84.4872",
+      intro:
+        "Walnut Hills is one of Cincinnati's most historic and diverse neighborhoods, and it's just minutes from Northern Kentucky across the river. NKY Window Cleaning Pros is proud to extend our window cleaning services to Walnut Hills homeowners and businesses. From the stately homes along Gilbert Avenue to the revitalized commercial district near Peeble's Corner, we bring the same professional-grade window cleaning that NKY residents trust. Walnut Hills' mix of historic Victorian homes, modern apartments, and commercial properties means we see every type of window — and we know how to clean each one to perfection.",
+    },
+    {
+      name: "Hyde Park, OH",
+      slug: "hyde-park-oh",
+      lat: "39.1373",
+      lng: "-84.4463",
+      intro:
+        "Hyde Park is one of Cincinnati's most desirable neighborhoods, known for its beautiful homes, tree-lined streets, and vibrant town square. NKY Window Cleaning Pros brings our professional window cleaning expertise right across the river to serve Hyde Park residents. Whether you own a historic craftsman near the square or a stately home in the surrounding hills, we understand the high standards Hyde Park homeowners expect. Our team delivers streak-free, spotless windows every time — because a neighborhood this nice deserves windows to match.",
+    },
+    {
+      name: "Norwood, OH",
+      slug: "norwood-oh",
+      lat: "39.1556",
+      lng: "-84.4597",
+      intro:
+        "Norwood is a thriving independent city surrounded by Cincinnati, just a short drive from Northern Kentucky. NKY Window Cleaning Pros is happy to serve Norwood's dense residential neighborhoods and growing commercial district with reliable, affordable window cleaning. Norwood's mix of older homes, duplexes, and storefronts means windows here face everything from decades of paint buildup to hard-water stains from aging plumbing. Our team handles it all with professional equipment and techniques, leaving every window in Norwood crystal clear.",
+    },
+    {
+      name: "Montgomery, OH",
+      slug: "montgomery-oh",
+      lat: "39.2289",
+      lng: "-84.3541",
+      intro:
+        "Montgomery's tree-canopied streets and stately homes make it one of the Cincinnati area's premier residential communities. NKY Window Cleaning Pros extends our premium window cleaning services to Montgomery homeowners who expect nothing but the best. The large lots, mature landscaping, and multi-story homes throughout Montgomery require a careful, experienced approach — and our team delivers exactly that. From historic properties near the downtown village center to sprawling estates on the outskirts, we bring the same meticulous attention to detail that has made us Northern Kentucky's most trusted window cleaning service.",
+    },
+    {
+      name: "Deer Park, OH",
+      slug: "deer-park-oh",
+      lat: "39.2053",
+      lng: "-84.3922",
+      intro:
+        "Deer Park is a welcoming, family-friendly community just north of Cincinnati, and NKY Window Cleaning Pros is proud to bring our window cleaning services to this great neighborhood. From the well-kept ranch homes along Blue Ash Road to the two-story colonials in the residential side streets, Deer Park homes deserve windows that let in maximum natural light. We offer flexible scheduling, fair pricing, and the kind of dependable service that Deer Park homeowners appreciate. Clean windows make a real difference in how your home looks and feels — and we deliver every time.",
+    },
+    {
+      name: "Amberly, OH",
+      slug: "amberly-oh",
+      lat: "39.1987",
+      lng: "-84.4281",
+      intro:
+        "Amberley Village is one of the Cincinnati area's most exclusive residential communities, with large estates and beautifully maintained properties. NKY Window Cleaning Pros provides the premium window cleaning service that Amberley homes demand. The spacious lots, mature trees, and high-end finishes throughout this community require a professional touch — and our fully insured, background-checked technicians deliver exactly that. We protect your property, respect your privacy, and leave every window spotless. Amberley homeowners choose us because we treat every home like it's our own.",
+    },
+    {
+      name: "Westwood, OH",
+      slug: "westwood-oh",
+      lat: "39.1531",
+      lng: "-84.6164",
+      intro:
+        "Westwood is one of Cincinnati's largest and most established neighborhoods, with a strong sense of community and a wide range of homes and businesses. NKY Window Cleaning Pros is excited to serve Westwood with the same reliable window cleaning that Northern Kentucky residents have come to trust. From the charming Victorians along Harrison Avenue to the mid-century homes throughout the neighborhood, we've cleaned every type of window Westwood has to offer. Our team works efficiently, respects your property, and always delivers streak-free results.",
+    },
+    {
+      name: "Fort Heights, OH",
+      slug: "fort-heights-oh",
+      lat: "39.0947",
+      lng: "-84.5256",
+      intro:
+        "Fort Wright and the Fort Mitchell Heights area sit just across the river from Northern Kentucky, making them a natural extension of our service area. NKY Window Cleaning Pros brings our professional window cleaning expertise to Fort Heights homeowners who want the same quality service their NKY neighbors enjoy. The elevated terrain here means stunning views — but it also means your windows face wind, rain, and the elements head-on. Our deep-cleaning process removes all buildup and leaves your windows so clear you'll feel like the glass isn't there.",
+    },
+    {
+      name: "Mt. Adams, OH",
+      slug: "mt-adams-oh",
+      lat: "39.1089",
+      lng: "-84.4981",
+      intro:
+        "Mt. Adams is one of Cincinnati's most iconic hilltop neighborhoods, with stunning skyline views, steep streets, and a mix of historic and modern properties. NKY Window Cleaning Pros brings expert window cleaning to Mt. Adams homeowners and businesses who want to keep those incredible views crystal clear. The hillside homes and unique architecture in Mt. Adams require careful access and professional techniques — our team has the ladders, poles, and safety equipment to reach any window safely. Whether you're in a renovated Victorian or a modern condo, we'll make your windows shine.",
+    },
+    {
+      name: "Mt. Lookout, OH",
+      slug: "mt-lookout-oh",
+      lat: "39.1283",
+      lng: "-84.4317",
+      intro:
+        "Mt. Lookout is a charming, walkable neighborhood on Cincinnati's east side, just across the river from Northern Kentucky. NKY Window Cleaning Pros serves Mt. Lookout homeowners with professional window cleaning that keeps homes looking their best. The neighborhood's mix of older bungalows, updated colonials, and new construction means we've seen every window type Mt. Lookout has to offer. We use purified water systems that leave zero residue, so your windows stay cleaner longer — perfect for homes along the tree-lined streets of this beloved Cincinnati neighborhood.",
+    },
+    {
+      name: "Oakley, OH",
+      slug: "oakley-oh",
+      lat: "39.1536",
+      lng: "-84.4228",
+      intro:
+        "Oakley is one of Cincinnati's fastest-growing neighborhoods, with a thriving business district, new developments, and a strong sense of community. NKY Window Cleaning Pros is proud to serve Oakley's homes and businesses with professional window cleaning that matches the neighborhood's upward trajectory. From the homes around Oakley Square to the new builds throughout the area, we provide window cleaning that's thorough, affordable, and reliable. Whether you're a homeowner wanting curb appeal or a business owner keeping your storefront inviting, we've got you covered.",
+    },
+    {
+      name: "Columbia-Tusculum, OH",
+      slug: "columbia-tusculum-oh",
+      lat: "39.1128",
+      lng: "-84.4136",
+      intro:
+        "Columbia-Tusculum is Cincinnati's oldest neighborhood, nestled along the Ohio River on the city's east side. NKY Window Cleaning Pros brings our professional window cleaning services to this historic riverfront community, where homes range from restored 19th-century cottages to modern river-view condos. The Ohio River proximity means windows here face humidity, mineral deposits, and river residue — our specialized cleaning process tackles all of it. Whether your home overlooks the river or sits tucked into the hillside, we'll make every window spotless.",
+    },
+    {
+      name: "Pleasant Ridge, OH",
+      slug: "pleasant-ridge-oh",
+      lat: "39.1842",
+      lng: "-84.4403",
+      intro:
+        "Pleasant Ridge is a vibrant, family-friendly neighborhood on Cincinnati's north side, known for its well-kept homes and strong community spirit. NKY Window Cleaning Pros is happy to extend our window cleaning services to Pleasant Ridge residents who want clean, streak-free windows without the hassle. The neighborhood's diverse housing stock — from classic foursquares to updated ranches — means we adapt our approach to each property. Our team is fast, friendly, and thorough, leaving your home looking its best every single time.",
+    },
   ] as City[],
 
   // ── Testimonials ──────────────────────────────────────────────────

@@ -43,8 +43,11 @@ const faqSchema = {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.85rem 0;
+    padding: 0.85rem 1rem;
     gap: 1rem;
+  }
+  @media (min-width: 769px) {
+    .header-inner { padding: 0.85rem 2rem; }
   }
   .mobile-quote-text {
     display: block;

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { siteConfig } from '../config';
+import { Analytics } from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -163,6 +164,8 @@ const allSchemas = schema
     </div>
   </div>
 </footer>
+
+<Analytics />
 
 </body>
 </html>

@@ -371,15 +371,12 @@ const faqSchema = {
 <!-- CONTENT -->
 <div class="container">
 
-  <!-- Business name + tagline -->
-  <div style="padding:1.5rem 0 0.5rem 0;">
-    <h1 class="biz-name">{businessName}</h1>
-    <p style="font-size:1.1rem;color:#555;margin:0.5rem 0 0 0;line-height:1.5;">Professional window cleaning for homes and businesses in {city}. Streak-free results, every time. Call us for a free estimate.</p>
-  </div>
-
   <!-- Hero + Form -->
   <div class="hero-form-row">
     <div class="hero-col">
+      <!-- Business name + tagline in left column -->
+      <h1 class="biz-name">{businessName}</h1>
+      <p style="font-size:1.1rem;color:#555;margin:0 0 1rem 0;line-height:1.5;">Professional window cleaning for homes and businesses in {city}. Streak-free results, every time. Call us for a free estimate.</p>
       <img src="/photos/hero.jpg" alt="Professional window cleaning technician at work" loading="eager" />
       <a href={`tel:${phoneE164}`} class="call-now-btn">CALL NOW</a>
     </div>

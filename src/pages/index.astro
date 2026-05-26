@@ -21,142 +21,131 @@ const faqSchema = {
   schema={faqSchema}
 >
 
-<!-- Business name headline — like reference -->
-<section class="bg-white py-8 text-center">
-  <div class="container px-4">
-    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-      {businessName}
-    </h1>
-    <p class="text-gray-500 text-base mt-1">{siteUrl}</p>
-  </div>
-</section>
+<!-- Business name + URL -->
+<div style="background:#fff;padding:2rem 1rem;text-align:center;">
+  <h1 style="font-size:2rem;font-weight:700;color:#111;margin:0 0 0.25rem 0;line-height:1.2;">{businessName}</h1>
+  <p style="color:#666;font-size:0.95rem;margin:0;">{siteUrl}</p>
+</div>
 
 <!-- Hero image -->
-<section>
+<div>
   <img
     src="/photos/hero.jpg"
     alt={`Professional ${serviceKeyword} technician at work in ${city}`}
-    class="w-full h-[50vh] sm:h-[60vh] object-cover"
+    style="width:100%;height:auto;display:block;"
     loading="eager"
   />
-</section>
+</div>
 
-<!-- Call Now button — right below the image, just like reference -->
-<section class="bg-white py-6 text-center">
-  <a href={`tel:${phoneE164}`} class="inline-block bg-brand text-white font-bold text-xl px-10 py-4 rounded-md no-underline hover:bg-brand-dark">
+<!-- Call Now button -->
+<div style="background:#fff;padding:1.5rem 1rem;text-align:center;">
+  <a href={`tel:${phoneE164}`} style="display:inline-block;background:#1a6bb5;color:#fff;font-weight:700;font-size:1.25rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;">
     Call Now
   </a>
-</section>
+</div>
 
-<!-- Free Instant Quote banner + form — matches reference -->
-<section class="bg-white pb-12">
-  <div class="max-w-[500px] mx-auto px-4">
-    <!-- Green banner -->
-    <div class="bg-brand text-white text-center rounded-t-lg py-5 px-4">
-      <p class="text-2xl md:text-3xl font-bold tracking-wide">Free Instant Quote</p>
-      <p class="text-brand-light text-sm mt-1">Enter Your Info Below</p>
+<!-- Free Instant Quote -->
+<div style="background:#fff;padding:0 1rem 3rem 1rem;">
+  <div style="max-width:500px;margin:0 auto;">
+    <!-- Banner -->
+    <div style="background:#1a6bb5;color:#fff;text-align:center;border-radius:8px 8px 0 0;padding:1.25rem 1rem;">
+      <p style="font-size:1.5rem;font-weight:700;margin:0;letter-spacing:0.5px;">Free Instant Quote</p>
+      <p style="color:#cce4f7;font-size:0.85rem;margin:0.25rem 0 0 0;">Enter Your Info Below</p>
     </div>
-
     <!-- Form -->
-    <form class="bg-gray-50 border border-t-0 border-gray-200 rounded-b-lg p-6 space-y-4" onsubmit="return false">
-      <div>
-        <label for="quote-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-        <input type="text" id="quote-name" name="name" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand" />
+    <form style="background:#f9fafb;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;padding:1.5rem;" onsubmit="return false">
+      <div style="margin-bottom:1rem;">
+        <label for="name" style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:0.25rem;">Name</label>
+        <input type="text" id="name" name="name" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:0.5rem 0.75rem;font-size:0.875rem;box-sizing:border-box;" />
       </div>
-      <div>
-        <label for="quote-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-        <input type="email" id="quote-email" name="email" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand" />
+      <div style="margin-bottom:1rem;">
+        <label for="email" style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:0.25rem;">Email</label>
+        <input type="email" id="email" name="email" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:0.5rem 0.75rem;font-size:0.875rem;box-sizing:border-box;" />
       </div>
-      <div>
-        <label for="quote-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-        <input type="tel" id="quote-phone" name="phone" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand" />
+      <div style="margin-bottom:1rem;">
+        <label for="phone" style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:0.25rem;">Phone Number</label>
+        <input type="tel" id="phone" name="phone" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:0.5rem 0.75rem;font-size:0.875rem;box-sizing:border-box;" />
       </div>
-      <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded text-base">
+      <button type="submit" style="width:100%;background:#1a6bb5;color:#fff;font-weight:700;font-size:1rem;padding:0.75rem;border:none;border-radius:4px;cursor:pointer;">
         Submit
       </button>
     </form>
   </div>
-</section>
-
-<!-- Main content -->
-<div class="content-section">
-  <h2 class="text-brand-dark text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-
-  <p>If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}. Residential and commercial {serviceKeyword} is what we do, and we do it right.</p>
-
-  <p>{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it. Our {serviceKeyword} service is reliable, affordable, and always streak-free.</p>
-
-  <p>We use professional-grade {serviceKeyword} equipment and eco-friendly cleaning solutions. Our purified water {serviceKeyword} system leaves zero residue on your glass. That means your windows stay cleaner longer after we clean them.</p>
 </div>
 
-<!-- Service photos — like reference, photos between sections -->
-<div class="content-section" style="padding-top: 0;">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <img src="/photos/residential.jpg" alt={`Residential ${serviceKeyword} in ${city}`} class="w-full rounded-md shadow-sm" loading="lazy" />
-    <img src="/photos/commercial.jpg" alt={`Commercial ${serviceKeyword} in ${city}`} class="w-full rounded-md shadow-sm" loading="lazy" />
+<!-- Main content -->
+<div style="max-width:800px;margin:0 auto;padding:2.5rem 1rem;">
+  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1rem 0;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
+
+  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}. Residential and commercial {serviceKeyword} is what we do, and we do it right.</p>
+
+  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it. Our {serviceKeyword} service is reliable, affordable, and always streak-free.</p>
+
+  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">We use professional-grade {serviceKeyword} equipment and eco-friendly cleaning solutions. Our purified water {serviceKeyword} system leaves zero residue on your glass. That means your windows stay cleaner longer after we clean them.</p>
+</div>
+
+<!-- Service photos -->
+<div style="max-width:800px;margin:0 auto;padding:0 1rem 2rem 1rem;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+    <img src="/photos/residential.jpg" alt={`Residential ${serviceKeyword} in ${city}`} style="width:100%;border-radius:6px;" loading="lazy" />
+    <img src="/photos/commercial.jpg" alt={`Commercial ${serviceKeyword} in ${city}`} style="width:100%;border-radius:6px;" loading="lazy" />
   </div>
 </div>
 
 <!-- Services -->
-<div class="content-section">
-  <h2 class="text-brand-dark text-xl md:text-2xl font-bold mb-6">Our Services</h2>
+<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
+  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1.5rem 0;">Our Services</h2>
 
-  <div class="space-y-6">
-    {services.map((service) => (
-      <div>
-        <img src={service.photo} alt={`${service.title} — ${businessName}`} class="w-full rounded-md shadow-sm mb-3" loading="lazy" />
-        <h3 class="text-brand-dark text-lg font-bold mb-2">{service.title}</h3>
-        <p class="text-base leading-relaxed text-gray-700">{service.description}</p>
-      </div>
-    ))}
-  </div>
+  {services.map((service) => (
+    <div style="margin-bottom:2rem;">
+      <img src={service.photo} alt={`${service.title} — ${businessName}`} style="width:100%;border-radius:6px;margin-bottom:0.75rem;" loading="lazy" />
+      <h3 style="color:#1a6bb5;font-size:1.15rem;font-weight:700;margin:0 0 0.5rem 0;">{service.title}</h3>
+      <p style="font-size:1rem;line-height:1.8;color:#444;margin:0;">{service.description}</p>
+    </div>
+  ))}
 </div>
 
 <!-- Testimonials -->
-<div class="content-section">
-  <h2 class="text-brand-dark text-xl md:text-2xl font-bold mb-6">What Our Customers Say</h2>
+<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
+  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1.5rem 0;">What Our Customers Say</h2>
 
   {testimonials.map((t) => (
-    <div class="border-l-4 border-brand bg-gray-50 p-4 mb-4 rounded-r-md">
-      <p class="italic text-gray-700 mb-2">"{t.quote}"</p>
-      <p class="font-semibold text-brand-dark text-sm">— {t.name}, {t.city}</p>
+    <div style="border-left:4px solid #1a6bb5;background:#f8f9fa;padding:1rem;margin-bottom:1rem;border-radius:0 6px 6px 0;">
+      <p style="font-style:italic;color:#444;margin:0 0 0.5rem 0;line-height:1.7;">"{t.quote}"</p>
+      <p style="font-weight:600;color:#1a6bb5;font-size:0.85rem;margin:0;">— {t.name}, {t.city}</p>
     </div>
   ))}
 </div>
 
 <!-- Service Areas -->
-<div class="content-section">
-  <h2 class="text-brand-dark text-xl md:text-2xl font-bold mb-4">Service Areas</h2>
-
-  <p class="mb-4">We serve all of {city}. If you don't see your city, call us at {phone}.</p>
-
-  <ul class="list-disc pl-5 space-y-1">
+<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
+  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1rem 0;">Service Areas</h2>
+  <p style="font-size:1rem;color:#444;margin-bottom:1rem;">We serve all of {city}. If you don't see your city, call us at {phone}.</p>
+  <ul style="line-height:2;padding-left:1.25rem;color:#444;">
     {cities.map((c) => (
-      <li><a href={`/window-cleaning/${c.slug}/`}>{c.name}</a></li>
+      <li><a href={`/window-cleaning/${c.slug}/`} style="color:#1a6bb5;">{c.name}</a></li>
     ))}
   </ul>
 </div>
 
 <!-- FAQ -->
-<div class="content-section">
-  <h2 class="text-brand-dark text-xl md:text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
+  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1.5rem 0;">Frequently Asked Questions</h2>
 
   {faqs.map((faq) => (
-    <div class="mb-4 pb-4 border-b border-gray-200 last:border-b-0">
-      <p class="font-semibold text-brand-dark mb-1">{faq.question}</p>
-      <p class="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #e5e7eb;">
+      <p style="font-weight:600;color:#1a6bb5;margin:0 0 0.5rem 0;">{faq.question}</p>
+      <p style="color:#555;font-size:0.95rem;line-height:1.7;margin:0;">{faq.answer}</p>
     </div>
   ))}
 </div>
 
 <!-- Final CTA -->
-<section class="bg-brand text-white py-10 text-center">
-  <div class="container px-4">
-    <h2 class="text-white text-xl md:text-2xl font-bold mb-4">Ready to Get Your Windows Cleaned?</h2>
-    <a href={`tel:${phoneE164}`} class="inline-block bg-white text-brand-dark font-bold text-lg px-10 py-4 rounded-md no-underline hover:bg-gray-100">
-      Call {phone}
-    </a>
-  </div>
-</section>
+<div style="background:#1a6bb5;color:#fff;padding:2.5rem 1rem;text-align:center;">
+  <h2 style="color:#fff;font-size:1.5rem;font-weight:700;margin:0 0 1rem 0;">Ready to Get Your Windows Cleaned?</h2>
+  <a href={`tel:${phoneE164}`} style="display:inline-block;background:#fff;color:#1a6bb5;font-weight:700;font-size:1.15rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;">
+    Call {phone}
+  </a>
+</div>
 
 </BaseLayout>

@@ -70,18 +70,6 @@ const allSchemas = schema
 </head>
 <body>
 
-<!-- Header — white bar with phone number, matching reference -->
-<header class="bg-white border-b border-gray-200 shadow-sm">
-  <div class="container">
-    <div class="flex items-center justify-between py-3">
-      <a href={`tel:${phoneE164}`} class="text-gray-900 font-bold text-lg no-underline hover:no-underline">
-        {phone}
-      </a>
-      <span class="text-gray-500 text-sm">{siteUrl}</span>
-    </div>
-  </div>
-</header>
-
 <main>
   <slot />
 </main>

@@ -26,7 +26,7 @@ const faqSchema = {
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; font-family: 'Inter', sans-serif; color: #333; }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
   /* Header */
   .site-header {
@@ -41,6 +41,12 @@ const faqSchema = {
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem 0;
+  }
+  .mobile-quote-text {
+    display: block;
+    color: #cce4f7;
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
   }
   .phone-btn {
     color: #fff;
@@ -81,7 +87,7 @@ const faqSchema = {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding-top: 0.5rem;
+    padding-top: 1.5rem;
     padding-bottom: 1rem;
   }
   .hero-col { width: 100%; }
@@ -332,6 +338,7 @@ const faqSchema = {
   @media (min-width: 769px) {
     .container { padding: 0 2rem; }
     .nav-links { display: flex; }
+    .mobile-quote-text { display: none; }
     .biz-name { font-size: 2.25rem; padding: 1rem 0 0.25rem 0; }
 
     .hero-form-row {
@@ -358,7 +365,10 @@ const faqSchema = {
 <!-- HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href={`tel:${phoneE164}`} class="phone-btn">📞 {phone}</a>
+    <a href={`tel:${phoneE164}`} class="phone-btn">
+      📞 {phone}
+      <span class="mobile-quote-text">Call us for a quote</span>
+    </a>
     <nav>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>

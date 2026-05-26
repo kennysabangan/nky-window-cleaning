@@ -13,139 +13,218 @@ const faqSchema = {
     "acceptedAnswer": { "@type": "Answer", "text": f.answer },
   })),
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }
+  ]
+};
 ---
 
 <BaseLayout
   title={`${businessName} | ${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city}`}
   description={`Need ${serviceKeyword} in ${city}? ${businessName} provides residential and commercial ${serviceKeywordPlural} in Florence, Covington, Fort Mitchell, and all across ${region}. Call ${phone} for a free estimate.`}
-  schema={faqSchema}
+  schema={[faqSchema, breadcrumbSchema]}
 >
 
-<!-- Business name + URL -->
-<div style="background:#fff;padding:2rem 1rem;text-align:center;">
-  <h1 style="font-size:2rem;font-weight:700;color:#111;margin:0 0 0.25rem 0;line-height:1.2;">{businessName}</h1>
-  <p style="color:#666;font-size:0.95rem;margin:0;">{siteUrl}</p>
-</div>
+<!-- ───────────────────────────── HEADER ───────────────────────────── -->
+<header style="background:#fff;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100;">
+  <div style="font-size:1.35rem;font-weight:700;color:#1a6bb5;letter-spacing:-0.5px;">
+    <a href="/" style="color:#1a6bb5;text-decoration:none;">NKY Window Cleaning Pros</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <a href={`tel:${phoneE164}`} style="background:#1a6bb5;color:#fff;font-weight:600;font-size:0.95rem;padding:0.6rem 1.25rem;border-radius:6px;text-decoration:none;white-space:nowrap;">
+      📞 {phone}
+    </a>
+  </div>
+</header>
 
-<!-- Hero image -->
-<div>
+<!-- ───────────────────────────── HERO ───────────────────────────── -->
+<section style="width:100%;">
   <img
     src="/photos/hero.jpg"
-    alt={`Professional ${serviceKeyword} technician at work in ${city}`}
-    style="width:100%;height:auto;display:block;"
+    alt={`Professional window cleaning technician at work in Northern Kentucky`}
+    style="width:100%;height:420px;object-fit:cover;display:block;"
     loading="eager"
   />
-</div>
+</section>
 
-<!-- Call Now button -->
-<div style="background:#fff;padding:1.5rem 1rem;text-align:center;">
-  <a href={`tel:${phoneE164}`} style="display:inline-block;background:#1a6bb5;color:#fff;font-weight:700;font-size:1.25rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;">
-    Call Now
+<!-- ───────────────────── HEADLINE + CTA ───────────────────── -->
+<section style="background:#fff;padding:3rem 2rem;text-align:center;">
+  <h1 style="font-size:2.5rem;font-weight:800;color:#111;margin:0 0 0.75rem 0;line-height:1.15;letter-spacing:-0.5px;">{businessName}</h1>
+  <p style="font-size:1.2rem;color:#555;margin:0 0 2rem 0;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;">
+    Professional window cleaning services for homes and businesses across Northern Kentucky. Streak-free results, every time.
+  </p>
+  <a href="#quote" style="display:inline-block;background:#1a6bb5;color:#fff;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:8px;text-decoration:none;box-shadow:0 4px 14px rgba(26,107,181,0.3);transition:box-shadow 0.2s;">
+    Get a Free Quote
   </a>
-</div>
+</section>
 
-<!-- Free Instant Quote -->
-<div style="background:#fff;padding:0 1rem 3rem 1rem;">
-  <div style="max-width:500px;margin:0 auto;">
-    <!-- Banner -->
-    <div style="background:#1a6bb5;color:#fff;text-align:center;border-radius:8px 8px 0 0;padding:1.25rem 1rem;">
-      <p style="font-size:1.5rem;font-weight:700;margin:0;letter-spacing:0.5px;">Free Instant Quote</p>
-      <p style="color:#cce4f7;font-size:0.85rem;margin:0.25rem 0 0 0;">Enter Your Info Below</p>
+<!-- ───────────────────────── QUOTE FORM ───────────────────────── -->
+<section id="quote" style="background:#f0f7ff;padding:3.5rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;display:flex;gap:2.5rem;align-items:stretch;flex-wrap:wrap;">
+    <!-- Left: Photo -->
+    <div style="flex:1 1 380px;min-width:300px;">
+      <img
+        src="/photos/residential.jpg"
+        alt={`Residential window cleaning in Northern Kentucky`}
+        style="width:100%;height:100%;object-fit:cover;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.12);min-height:400px;"
+        loading="lazy"
+      />
     </div>
-    <!-- Form -->
-    <form style="background:#f9fafb;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;padding:1.5rem;" onsubmit="return false">
-      <div style="margin-bottom:1rem;">
-        <label for="name" style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:0.25rem;">Name</label>
-        <input type="text" id="name" name="name" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:0.5rem 0.75rem;font-size:0.875rem;box-sizing:border-box;" />
+    <!-- Right: Form -->
+    <div style="flex:1 1 380px;min-width:300px;">
+      <!-- Banner -->
+      <div style="background:linear-gradient(135deg,#1a6bb5 0%,#2d8fd5 100%);color:#fff;text-align:center;border-radius:12px 12px 0 0;padding:1.5rem 1.25rem;">
+        <p style="font-size:1.6rem;font-weight:700;margin:0;letter-spacing:0.5px;">Free Instant Quote</p>
+        <p style="color:#cce4f7;font-size:0.9rem;margin:0.35rem 0 0 0;">Fill out the form and we'll get back to you fast</p>
       </div>
-      <div style="margin-bottom:1rem;">
-        <label for="email" style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:0.25rem;">Email</label>
-        <input type="email" id="email" name="email" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:0.5rem 0.75rem;font-size:0.875rem;box-sizing:border-box;" />
-      </div>
-      <div style="margin-bottom:1rem;">
-        <label for="phone" style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:0.25rem;">Phone Number</label>
-        <input type="tel" id="phone" name="phone" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:0.5rem 0.75rem;font-size:0.875rem;box-sizing:border-box;" />
-      </div>
-      <button type="submit" style="width:100%;background:#1a6bb5;color:#fff;font-weight:700;font-size:1rem;padding:0.75rem;border:none;border-radius:4px;cursor:pointer;">
-        Submit
-      </button>
-    </form>
+      <!-- Form body -->
+      <form style="background:#fff;border:1px solid #dce8f3;border-top:none;border-radius:0 0 12px 12px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,0.06);" onsubmit="return false">
+        <!-- First + Last name row -->
+        <div style="display:flex;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+          <div style="flex:1 1 140px;">
+            <label for="firstName" style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required placeholder="John" style="width:100%;border:1.5px solid #d1d5db;border-radius:8px;padding:0.7rem 1rem;font-size:0.95rem;box-sizing:border-box;background:#f9fafb;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a6bb5';this.style.background='#fff'" onblur="this.style.borderColor='#d1d5db';this.style.background='#f9fafb'" />
+          </div>
+          <div style="flex:1 1 140px;">
+            <label for="lastName" style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" required placeholder="Smith" style="width:100%;border:1.5px solid #d1d5db;border-radius:8px;padding:0.7rem 1rem;font-size:0.95rem;box-sizing:border-box;background:#f9fafb;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a6bb5';this.style.background='#fff'" onblur="this.style.borderColor='#d1d5db';this.style.background='#f9fafb'" />
+          </div>
+        </div>
+        <!-- Phone -->
+        <div style="margin-bottom:1.25rem;">
+          <label for="phone" style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="(859) 555-0000" style="width:100%;border:1.5px solid #d1d5db;border-radius:8px;padding:0.7rem 1rem;font-size:0.95rem;box-sizing:border-box;background:#f9fafb;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a6bb5';this.style.background='#fff'" onblur="this.style.borderColor='#d1d5db';this.style.background='#f9fafb'" />
+        </div>
+        <!-- Email -->
+        <div style="margin-bottom:1.25rem;">
+          <label for="email" style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="john@example.com" style="width:100%;border:1.5px solid #d1d5db;border-radius:8px;padding:0.7rem 1rem;font-size:0.95rem;box-sizing:border-box;background:#f9fafb;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a6bb5';this.style.background='#fff'" onblur="this.style.borderColor='#d1d5db';this.style.background='#f9fafb'" />
+        </div>
+        <!-- Comment -->
+        <div style="margin-bottom:1.5rem;">
+          <label for="comment" style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;">Comment *</label>
+          <textarea id="comment" name="comment" required rows="4" placeholder="Tell us about your windows — how many, inside/outside, any special concerns..." style="width:100%;border:1.5px solid #d1d5db;border-radius:8px;padding:0.7rem 1rem;font-size:0.95rem;box-sizing:border-box;background:#f9fafb;resize:vertical;font-family:inherit;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1a6bb5';this.style.background='#fff'" onblur="this.style.borderColor='#d1d5db';this.style.background='#f9fafb'"></textarea>
+        </div>
+        <!-- Submit -->
+        <button type="submit" style="width:100%;background:linear-gradient(135deg,#1a6bb5 0%,#2d8fd5 100%);color:#fff;font-weight:700;font-size:1.05rem;padding:0.85rem;border:none;border-radius:8px;cursor:pointer;box-shadow:0 4px 14px rgba(26,107,181,0.25);transition:box-shadow 0.2s,transform 0.15s;">
+          Get My Free Quote →
+        </button>
+        <p style="text-align:center;color:#888;font-size:0.8rem;margin:0.75rem 0 0 0;">We respond within 1 business day. No spam, ever.</p>
+      </form>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- Main content -->
-<div style="max-width:800px;margin:0 auto;padding:2.5rem 1rem;">
-  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1rem 0;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-
-  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}. Residential and commercial {serviceKeyword} is what we do, and we do it right.</p>
-
-  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it. Our {serviceKeyword} service is reliable, affordable, and always streak-free.</p>
-
-  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">We use professional-grade {serviceKeyword} equipment and eco-friendly cleaning solutions. Our purified water {serviceKeyword} system leaves zero residue on your glass. That means your windows stay cleaner longer after we clean them.</p>
-</div>
-
-<!-- Service photos -->
-<div style="max-width:800px;margin:0 auto;padding:0 1rem 2rem 1rem;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-    <img src="/photos/residential.jpg" alt={`Residential ${serviceKeyword} in ${city}`} style="width:100%;border-radius:6px;" loading="lazy" />
-    <img src="/photos/commercial.jpg" alt={`Commercial ${serviceKeyword} in ${city}`} style="width:100%;border-radius:6px;" loading="lazy" />
+<!-- ─────────────────────────── SERVICES ─────────────────────────── -->
+<section style="background:#fff;padding:4rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <h2 style="color:#1a6bb5;font-size:1.75rem;font-weight:700;margin:0 0 0.5rem 0;text-align:center;">Our Services</h2>
+    <p style="color:#666;text-align:center;margin:0 0 2.5rem 0;font-size:1rem;">Everything your windows need to look their best</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
+      {services.map((service) => (
+        <div style="background:#fff;border:1px solid #e8edf2;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:box-shadow 0.2s;">
+          <img src={service.photo} alt={`${service.title} — ${businessName}`} style="width:100%;height:200px;object-fit:cover;border-radius:12px 12px 0 0;" loading="lazy" />
+          <div style="padding:1.5rem;">
+            <h3 style="color:#1a6bb5;font-size:1.15rem;font-weight:700;margin:0 0 0.5rem 0;">{service.title}</h3>
+            <p style="font-size:0.95rem;line-height:1.7;color:#555;margin:0;">{service.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
-</div>
+</section>
 
-<!-- Services -->
-<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
-  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1.5rem 0;">Our Services</h2>
-
-  {services.map((service) => (
-    <div style="margin-bottom:2rem;">
-      <img src={service.photo} alt={`${service.title} — ${businessName}`} style="width:100%;border-radius:6px;margin-bottom:0.75rem;" loading="lazy" />
-      <h3 style="color:#1a6bb5;font-size:1.15rem;font-weight:700;margin:0 0 0.5rem 0;">{service.title}</h3>
-      <p style="font-size:1rem;line-height:1.8;color:#444;margin:0;">{service.description}</p>
+<!-- ────────────────────────── WHY CHOOSE US ────────────────────────── -->
+<section style="background:#f8fafb;padding:4rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <h2 style="color:#1a6bb5;font-size:1.75rem;font-weight:700;margin:0 0 0.5rem 0;text-align:center;">Why Choose {businessName}?</h2>
+    <p style="color:#666;text-align:center;margin:0 0 2.5rem 0;font-size:1rem;">We set the standard for window cleaning in Northern Kentucky</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;">
+      <div>
+        <div style="background:#e8f2fc;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem auto;font-size:1.5rem;">⚡</div>
+        <h3 style="color:#111;font-size:1.1rem;font-weight:700;margin:0 0 0.5rem 0;">Fast & Reliable</h3>
+        <p style="color:#666;font-size:0.9rem;line-height:1.6;margin:0;">We show up on time and get the job done quickly without cutting corners.</p>
+      </div>
+      <div>
+        <div style="background:#e8f2fc;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem auto;font-size:1.5rem;">✨</div>
+        <h3 style="color:#111;font-size:1.1rem;font-weight:700;margin:0 0 0.5rem 0;">Streak-Free Guarantee</h3>
+        <p style="color:#666;font-size:0.9rem;line-height:1.6;margin:0;">Our purified water system leaves zero residue — your windows stay cleaner longer.</p>
+      </div>
+      <div>
+        <div style="background:#e8f2fc;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem auto;font-size:1.5rem;">🛡️</div>
+        <h3 style="color:#111;font-size:1.1rem;font-weight:700;margin:0 0 0.5rem 0;">Fully Insured</h3>
+        <p style="color:#666;font-size:0.9rem;line-height:1.6;margin:0;">Background-checked technicians. Fully insured. We treat your home like our own.</p>
+      </div>
     </div>
-  ))}
-</div>
+  </div>
+</section>
 
-<!-- Testimonials -->
-<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
-  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1.5rem 0;">What Our Customers Say</h2>
-
-  {testimonials.map((t) => (
-    <div style="border-left:4px solid #1a6bb5;background:#f8f9fa;padding:1rem;margin-bottom:1rem;border-radius:0 6px 6px 0;">
-      <p style="font-style:italic;color:#444;margin:0 0 0.5rem 0;line-height:1.7;">"{t.quote}"</p>
-      <p style="font-weight:600;color:#1a6bb5;font-size:0.85rem;margin:0;">— {t.name}, {t.city}</p>
+<!-- ──────────────────────── TESTIMONIALS ──────────────────────── -->
+<section style="background:#fff;padding:4rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <h2 style="color:#1a6bb5;font-size:1.75rem;font-weight:700;margin:0 0 0.5rem 0;text-align:center;">What Our Customers Say</h2>
+    <p style="color:#666;text-align:center;margin:0 0 2.5rem 0;font-size:1rem;">Real reviews from homeowners and businesses across Northern Kentucky</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+      {testimonials.map((t) => (
+        <div style="border-left:4px solid #1a6bb5;background:#f8fafb;padding:1.5rem;border-radius:0 10px 10px 0;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <p style="font-style:italic;color:#444;margin:0 0 1rem 0;line-height:1.7;font-size:0.95rem;">"{t.quote}"</p>
+          <p style="font-weight:600;color:#1a6bb5;font-size:0.85rem;margin:0;">— {t.name}, {t.city}</p>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
+  </div>
+</section>
 
-<!-- Service Areas -->
-<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
-  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1rem 0;">Service Areas</h2>
-  <p style="font-size:1rem;color:#444;margin-bottom:1rem;">We serve all of {city}. If you don't see your city, call us at {phone}.</p>
-  <ul style="line-height:2;padding-left:1.25rem;color:#444;">
-    {cities.map((c) => (
-      <li><a href={`/window-cleaning/${c.slug}/`} style="color:#1a6bb5;">{c.name}</a></li>
+<!-- ──────────────────────── SERVICE AREAS ──────────────────────── -->
+<section style="background:#f8fafb;padding:4rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <h2 style="color:#1a6bb5;font-size:1.75rem;font-weight:700;margin:0 0 0.5rem 0;text-align:center;">Service Areas</h2>
+    <p style="color:#666;text-align:center;margin:0 0 2rem 0;font-size:1rem;">We serve all of Northern Kentucky. Don't see your city? Call us at {phone}.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem 1.5rem;max-width:700px;margin:0 auto;">
+      {cities.map((c) => (
+        <div style="padding:0.35rem 0;">
+          <a href={`/window-cleaning/${c.slug}/`} style="color:#1a6bb5;font-size:0.95rem;text-decoration:none;font-weight:500;border-bottom:1px solid transparent;transition:border-color 0.2s;">
+            {c.name}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────── FAQ ──────────────────────────── -->
+<section style="background:#fff;padding:4rem 2rem;">
+  <div style="max-width:720px;margin:0 auto;">
+    <h2 style="color:#1a6bb5;font-size:1.75rem;font-weight:700;margin:0 0 0.5rem 0;text-align:center;">Frequently Asked Questions</h2>
+    <p style="color:#666;text-align:center;margin:0 0 2.5rem 0;font-size:1rem;">Common questions about our window cleaning services</p>
+
+    {faqs.map((faq, i) => (
+      <div style={`padding:1.5rem 0;${i < faqs.length - 1 ? 'border-bottom:1px solid #e8edf2;' : ''}`}>
+        <p style="font-weight:700;color:#1a6bb5;margin:0 0 0.6rem 0;font-size:1rem;line-height:1.4;">{faq.question}</p>
+        <p style="color:#555;font-size:0.95rem;line-height:1.75;margin:0;">{faq.answer}</p>
+      </div>
     ))}
-  </ul>
-</div>
+  </div>
+</section>
 
-<!-- FAQ -->
-<div style="max-width:800px;margin:0 auto;padding:0 1rem 2.5rem 1rem;">
-  <h2 style="color:#1a6bb5;font-size:1.5rem;font-weight:700;margin:0 0 1.5rem 0;">Frequently Asked Questions</h2>
-
-  {faqs.map((faq) => (
-    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #e5e7eb;">
-      <p style="font-weight:600;color:#1a6bb5;margin:0 0 0.5rem 0;">{faq.question}</p>
-      <p style="color:#555;font-size:0.95rem;line-height:1.7;margin:0;">{faq.answer}</p>
+<!-- ──────────────────────────── FINAL CTA ──────────────────────────── -->
+<section style="background:linear-gradient(135deg,#1a6bb5 0%,#155a96 100%);color:#fff;padding:4rem 2rem;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="color:#fff;font-size:1.75rem;font-weight:700;margin:0 0 0.75rem 0;">Ready for Spotless Windows?</h2>
+    <p style="color:#cce4f7;font-size:1.1rem;margin:0 0 2rem 0;line-height:1.6;">Call us today for a free estimate. We serve all of Northern Kentucky and can usually schedule your cleaning within a few days.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href={`tel:${phoneE164}`} style="display:inline-block;background:#fff;color:#1a6bb5;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:8px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+        📞 Call {phone}
+      </a>
+      <a href="#quote" style="display:inline-block;background:transparent;color:#fff;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:8px;text-decoration:none;border:2px solid rgba(255,255,255,0.5);">
+        Get a Free Quote
+      </a>
     </div>
-  ))}
-</div>
-
-<!-- Final CTA -->
-<div style="background:#1a6bb5;color:#fff;padding:2.5rem 1rem;text-align:center;">
-  <h2 style="color:#fff;font-size:1.5rem;font-weight:700;margin:0 0 1rem 0;">Ready to Get Your Windows Cleaned?</h2>
-  <a href={`tel:${phoneE164}`} style="display:inline-block;background:#fff;color:#1a6bb5;font-weight:700;font-size:1.15rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;">
-    Call {phone}
-  </a>
-</div>
+  </div>
+</section>
 
 </BaseLayout>

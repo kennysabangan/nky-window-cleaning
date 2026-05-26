@@ -1,11 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PhoneCTA from '../components/PhoneCTA.astro';
-import FAQ from '../components/FAQ.astro';
-import QuoteForm from '../components/QuoteForm.astro';
 import { siteConfig } from '../config';
 
-const { businessName, phone, siteUrl, serviceKeyword, serviceKeywordPlural, city, region, faqs, services, cities, testimonials } = siteConfig;
+const { businessName, phone, phoneE164, serviceKeyword, serviceKeywordPlural, city, region, siteUrl, faqs, services, cities, testimonials } = siteConfig;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -29,106 +26,125 @@ const faqSchema = {
   <img
     src="/photos/hero.jpg"
     alt={`Professional ${serviceKeyword} technician at work in ${city}`}
-    class="w-full h-[40vh] sm:h-[50vh] object-cover"
+    class="w-full h-[50vh] sm:h-[60vh] object-cover"
     loading="eager"
   />
 </section>
 
-<!-- Headline + CTA -->
-<section class="bg-white py-10">
-  <div class="container text-center px-4">
-    <h1 class="text-3xl md:text-5xl font-bold text-brand mb-4">Professional {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h1>
-    <p class="text-lg md:text-xl text-gray-700 mb-6 max-w-2xl mx-auto">Streak-free windows for homes and businesses in Florence, Covington, Fort Mitchell, Erlanger, and all across {region}.</p>
-    <a href={`tel:${siteConfig.phoneE164}`} class="inline-flex items-center gap-2 bg-white text-brand-dark font-bold text-lg px-8 py-4 rounded-md no-underline hover:bg-gray-100">
-      Call {phone}
-    </a>
-  </div>
+<!-- Call Now button — right below the image, just like reference -->
+<section class="bg-white py-6 text-center">
+  <a href={`tel:${phoneE164}`} class="inline-block bg-green-600 text-white font-bold text-xl px-10 py-4 rounded-md no-underline hover:bg-green-700">
+    Call Now
+  </a>
 </section>
 
-<!-- CTA banner -->
-<section class="bg-brand-dark text-white">
-  <div class="cta-strip container text-center">
-    <p class="text-lg md:text-xl font-semibold mb-1">Get a Free Estimate — Call Today</p>
-    <p class="text-white/90 text-sm mb-3">We serve all of {city}. Fast, reliable, streak-free.</p>
-    <a href={`tel:${siteConfig.phoneE164}`} class="inline-block bg-white text-brand-dark font-bold text-base px-8 py-3 rounded-md no-underline hover:bg-gray-100 min-h-[48px] flex items-center justify-center">
-      Call {phone}
-    </a>
+<!-- Free Instant Quote banner + form — matches reference -->
+<section class="bg-white pb-12">
+  <div class="max-w-[500px] mx-auto px-4">
+    <!-- Green banner -->
+    <div class="bg-green-600 text-white text-center rounded-t-lg py-5 px-4">
+      <p class="text-2xl md:text-3xl font-bold tracking-wide">Free Instant Quote</p>
+      <p class="text-green-100 text-sm mt-1">Enter Your Info Below</p>
+    </div>
+
+    <!-- Form -->
+    <form class="bg-gray-50 border border-t-0 border-gray-200 rounded-b-lg p-6 space-y-4" onsubmit="return false">
+      <div>
+        <label for="quote-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+        <input type="text" id="quote-name" name="name" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-600" />
+      </div>
+      <div>
+        <label for="quote-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input type="email" id="quote-email" name="email" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-600" />
+      </div>
+      <div>
+        <label for="quote-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+        <input type="tel" id="quote-phone" name="phone" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-600" />
+      </div>
+      <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded text-base">
+        Submit
+      </button>
+    </form>
   </div>
 </section>
 
 <!-- Main content -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
+  <h2 class="text-green-700 text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
 
-  <p>If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}. Residential {serviceKeyword} and commercial {serviceKeyword} is what we do, and we do it right.</p>
+  <p>If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}. Residential and commercial {serviceKeyword} is what we do, and we do it right.</p>
 
   <p>{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it. Our {serviceKeyword} service is reliable, affordable, and always streak-free.</p>
 
-  <p>We use professional-grade {serviceKeyword} equipment and eco-friendly cleaning solutions. Our purified water {serviceKeyword} system leaves zero residue on your glass. That means your windows stay cleaner longer after we clean them. Regular {serviceKeyword} with a professional service is the best way to keep your {city} home or business looking great.</p>
+  <p>We use professional-grade {serviceKeyword} equipment and eco-friendly cleaning solutions. Our purified water {serviceKeyword} system leaves zero residue on your glass. That means your windows stay cleaner longer after we clean them.</p>
+</div>
+
+<!-- Service photos — like reference, photos between sections -->
+<div class="content-section" style="padding-top: 0;">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <img src="/photos/residential.jpg" alt={`Residential ${serviceKeyword} in ${city}`} class="w-full rounded-md shadow-sm" loading="lazy" />
+    <img src="/photos/commercial.jpg" alt={`Commercial ${serviceKeyword} in ${city}`} class="w-full rounded-md shadow-sm" loading="lazy" />
+  </div>
 </div>
 
 <!-- Services -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-6">Our {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1).replace(/s$/, '')} Services</h2>
-  <p class="mb-6">We offer {serviceKeywordPlural} for homes and businesses throughout {city}:</p>
+  <h2 class="text-green-700 text-xl md:text-2xl font-bold mb-6">Our Services</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+  <div class="space-y-6">
     {services.map((service) => (
-      <div class="service-card">
-        <img src={service.photo} alt={`${service.title} in ${city} — ${businessName}`} loading="lazy" />
-        <div class="card-body">
-          <h3>{service.title}</h3>
-          <p>{service.description}</p>
-        </div>
+      <div>
+        <img src={service.photo} alt={`${service.title} — ${businessName}`} class="w-full rounded-md shadow-sm mb-3" loading="lazy" />
+        <h3 class="text-green-700 text-lg font-bold mb-2">{service.title}</h3>
+        <p class="text-base leading-relaxed text-gray-700">{service.description}</p>
       </div>
     ))}
   </div>
 </div>
 
-<!-- Quote Form -->
-<QuoteForm />
-
 <!-- Testimonials -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-6">What Our Customers Say About Our {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)}</h2>
+  <h2 class="text-green-700 text-xl md:text-2xl font-bold mb-6">What Our Customers Say</h2>
 
   {testimonials.map((t) => (
-    <div class="review-card">
-      <p class="quote">"{t.quote}"</p>
-      <p class="attribution">— {t.name}, {t.city}</p>
+    <div class="border-l-4 border-green-600 bg-gray-50 p-4 mb-4 rounded-r-md">
+      <p class="italic text-gray-700 mb-2">"{t.quote}"</p>
+      <p class="font-semibold text-green-700 text-sm">— {t.name}, {t.city}</p>
     </div>
   ))}
 </div>
 
 <!-- Service Areas -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-4">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Service Areas in {city}</h2>
+  <h2 class="text-green-700 text-xl md:text-2xl font-bold mb-4">Service Areas</h2>
 
-  <p>We provide {serviceKeywordPlural} across {city}. If you don't see your city listed, just call us at {phone} — we probably serve your area too.</p>
+  <p class="mb-4">We serve all of {city}. If you don't see your city, call us at {phone}.</p>
 
-  <ul>
+  <ul class="list-disc pl-5 space-y-1">
     {cities.map((c) => (
-      <li><a href={`/window-cleaning/${c.slug}/`}>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {c.name}</a></li>
+      <li><a href={`/window-cleaning/${c.slug}/`}>{c.name}</a></li>
     ))}
   </ul>
 </div>
 
 <!-- FAQ -->
 <div class="content-section">
-  <h2 class="text-brand text-xl md:text-2xl font-bold mb-6">Frequently Asked Questions About {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)}</h2>
+  <h2 class="text-green-700 text-xl md:text-2xl font-bold mb-6">Frequently Asked Questions</h2>
 
   {faqs.map((faq) => (
-    <FAQ question={faq.question} answer={faq.answer} />
+    <div class="mb-4 pb-4 border-b border-gray-200 last:border-b-0">
+      <p class="font-semibold text-green-700 mb-1">{faq.question}</p>
+      <p class="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+    </div>
   ))}
 </div>
 
 <!-- Final CTA -->
-<section class="bg-brand-dark text-white">
-  <div class="cta-strip container text-center">
-    <h2 class="text-white text-xl md:text-2xl font-bold mb-2">Ready to Get Your Windows Cleaned?</h2>
-    <p class="text-white/90 text-base mb-4">Call now for a free {serviceKeyword} estimate in {city}.</p>
-    <a href={`tel:${siteConfig.phoneE164}`} class="inline-block bg-white text-brand-dark font-bold text-base px-8 py-3 rounded-md no-underline hover:bg-gray-100 min-h-[48px] flex items-center justify-center">
-      Call Now — {phone}
+<section class="bg-green-600 text-white py-10 text-center">
+  <div class="container px-4">
+    <h2 class="text-white text-xl md:text-2xl font-bold mb-4">Ready to Get Your Windows Cleaned?</h2>
+    <a href={`tel:${phoneE164}`} class="inline-block bg-white text-green-700 font-bold text-lg px-10 py-4 rounded-md no-underline hover:bg-gray-100">
+      Call {phone}
     </a>
   </div>
 </section>

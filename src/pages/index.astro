@@ -22,10 +22,10 @@ const faqSchema = {
 >
 
 <!-- HEADER -->
-<header style="background:#fff;padding:0.75rem 2rem;border-bottom:1px solid #e5e7eb;">
-  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+<header style="background:#fff;padding:0.75rem 3rem;border-bottom:1px solid #e5e7eb;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
     <a href={`tel:${phoneE164}`} style="color:#555;font-size:0.9rem;text-decoration:none;font-weight:500;">{phone}</a>
-    <nav style="display:flex;gap:1.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">
+    <nav style="display:flex;gap:2rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">
       <a href="/" style="color:#333;text-decoration:none;">Home</a>
       <a href="/window-cleaning/" style="color:#333;text-decoration:none;">Services</a>
       <a href="/about/" style="color:#333;text-decoration:none;">About</a>
@@ -35,12 +35,12 @@ const faqSchema = {
 </header>
 
 <!-- BUSINESS NAME -->
-<div style="max-width:960px;margin:0 auto;padding:2rem 2rem 0.5rem 2rem;">
+<div style="max-width:1100px;margin:0 auto;padding:2rem 3rem 0.5rem 3rem;">
   <h1 style="font-size:2rem;font-weight:800;color:#111;margin:0;line-height:1.15;font-family:Georgia,'Times New Roman',serif;">{businessName}</h1>
 </div>
 
 <!-- HERO + FORM side by side -->
-<section style="max-width:960px;margin:0 auto;padding:1rem 2rem 2.5rem 2rem;display:flex;gap:2rem;align-items:flex-start;">
+<section style="max-width:1100px;margin:0 auto;padding:1rem 3rem 3rem 3rem;display:flex;gap:3rem;align-items:flex-start;">
   <!-- LEFT: Hero image -->
   <div style="flex:1;min-width:0;">
     <img src="/photos/hero.jpg" alt="Professional window cleaning technician at work" style="width:100%;height:300px;object-fit:cover;display:block;" loading="eager" />
@@ -85,16 +85,16 @@ const faqSchema = {
 </section>
 
 <!-- SERVICES -->
-<section style="max-width:960px;margin:0 auto;padding:0 2rem 3rem 2rem;">
+<section style="max-width:1100px;margin:0 auto;padding:0 3rem 4rem 3rem;">
   <h2 style="color:#1a6bb5;font-size:1.4rem;font-weight:700;margin:0 0 0.4rem 0;text-align:center;">Our Services</h2>
   <p style="color:#666;text-align:center;margin:0 0 2rem 0;font-size:0.95rem;">Professional window cleaning for homes and businesses in {city}</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
     {services.map((service) => (
       <div style="border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;">
         <img src={service.photo} alt={`${service.title} — ${businessName}`} style="width:100%;height:160px;object-fit:cover;" loading="lazy" />
         <div style="padding:1rem;">
           <h3 style="color:#1a6bb5;font-size:1rem;font-weight:700;margin:0 0 0.4rem 0;">{service.title}</h3>
-          <p style="font-size:0.9rem;line-height:1.7;color:#555;margin:0;">{service.description}</p>
+          <p style="font-size:0.95rem;line-height:1.7;color:#555;margin:0;">{service.description}</p>
         </div>
       </div>
     ))}
@@ -102,18 +102,18 @@ const faqSchema = {
 </section>
 
 <!-- CONTENT -->
-<section style="max-width:960px;margin:0 auto;padding:0 2rem 3rem 2rem;">
+<section style="max-width:1100px;margin:0 auto;padding:0 3rem 4rem 3rem;">
   <h2 style="color:#1a6bb5;font-size:1.4rem;font-weight:700;margin:0 0 1rem 0;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-  <p style="font-size:0.95rem;line-height:1.8;color:#444;margin-bottom:1rem;">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}.</p>
-  <p style="font-size:0.95rem;line-height:1.8;color:#444;margin-bottom:1rem;">{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it.</p>
-  <p style="font-size:0.95rem;line-height:1.8;color:#444;margin:0;">We use professional-grade equipment and eco-friendly cleaning solutions. Our purified water system leaves zero residue on your glass, so your windows stay cleaner longer.</p>
+  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}.</p>
+  <p style="font-size:1rem;line-height:1.8;color:#444;margin-bottom:1rem;">{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it.</p>
+  <p style="font-size:1rem;line-height:1.8;color:#444;margin:0;">We use professional-grade equipment and eco-friendly cleaning solutions. Our purified water system leaves zero residue on your glass, so your windows stay cleaner longer.</p>
 </section>
 
 <!-- TESTIMONIALS -->
-<section style="max-width:960px;margin:0 auto;padding:0 2rem 3rem 2rem;">
+<section style="max-width:1100px;margin:0 auto;padding:0 3rem 4rem 3rem;">
   <h2 style="color:#1a6bb5;font-size:1.4rem;font-weight:700;margin:0 0 0.4rem 0;text-align:center;">What Our Customers Say</h2>
   <p style="color:#666;text-align:center;margin:0 0 2rem 0;font-size:0.95rem;">Reviews from homeowners and businesses across {city}</p>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
     {testimonials.map((t) => (
       <div style="border-left:4px solid #1a6bb5;background:#f8f9fa;padding:1rem 1.25rem;border-radius:0 6px 6px 0;">
         <p style="font-style:italic;color:#444;margin:0 0 0.5rem 0;line-height:1.7;font-size:0.9rem;">"{t.quote}"</p>
@@ -124,7 +124,7 @@ const faqSchema = {
 </section>
 
 <!-- SERVICE AREAS -->
-<section style="max-width:960px;margin:0 auto;padding:0 2rem 3rem 2rem;">
+<section style="max-width:1100px;margin:0 auto;padding:0 3rem 4rem 3rem;">
   <h2 style="color:#1a6bb5;font-size:1.4rem;font-weight:700;margin:0 0 0.4rem 0;text-align:center;">Service Areas</h2>
   <p style="color:#666;text-align:center;margin:0 0 1.5rem 0;font-size:0.95rem;">We serve all of {city}. Don't see your city? Call us at {phone}.</p>
   <ul style="columns:3;list-style:disc;padding-left:1.25rem;line-height:2;color:#444;font-size:0.9rem;">
@@ -135,19 +135,19 @@ const faqSchema = {
 </section>
 
 <!-- FAQ -->
-<section style="max-width:960px;margin:0 auto;padding:0 2rem 3rem 2rem;">
+<section style="max-width:1100px;margin:0 auto;padding:0 3rem 4rem 3rem;">
   <h2 style="color:#1a6bb5;font-size:1.4rem;font-weight:700;margin:0 0 0.4rem 0;text-align:center;">Frequently Asked Questions</h2>
   <p style="color:#666;text-align:center;margin:0 0 2rem 0;font-size:0.95rem;">Common questions about our window cleaning services</p>
   {faqs.map((faq, i) => (
     <div style={`padding:1rem 0;${i < faqs.length - 1 ? 'border-bottom:1px solid #e5e7eb;' : ''}`}>
       <p style="font-weight:700;color:#1a6bb5;margin:0 0 0.4rem 0;font-size:0.95rem;">{faq.question}</p>
-      <p style="color:#555;font-size:0.9rem;line-height:1.75;margin:0;">{faq.answer}</p>
+      <p style="color:#555;font-size:0.95rem;line-height:1.75;margin:0;">{faq.answer}</p>
     </div>
   ))}
 </section>
 
 <!-- FINAL CTA -->
-<section style="background:#1a6bb5;color:#fff;padding:2.5rem 2rem;text-align:center;">
+<section style="background:#1a6bb5;color:#fff;padding:3rem 3rem;text-align:center;">
   <h2 style="color:#fff;font-size:1.4rem;font-weight:700;margin:0 0 0.5rem 0;">Ready to Get Your Windows Cleaned?</h2>
   <p style="color:#cce4f7;font-size:0.95rem;margin:0 0 1.5rem 0;">Call now for a free estimate on window cleaning in {city}.</p>
   <a href={`tel:${phoneE164}`} style="display:inline-block;background:#fff;color:#1a6bb5;font-weight:700;font-size:1rem;padding:0.85rem 2.5rem;border-radius:6px;text-decoration:none;">Call {phone}</a>

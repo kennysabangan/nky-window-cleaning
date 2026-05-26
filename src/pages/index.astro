@@ -26,7 +26,7 @@ const faqSchema = {
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; font-family: 'Inter', sans-serif; color: #333; }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.75rem; }
 
   /* Header */
   .site-header {
@@ -45,8 +45,8 @@ const faqSchema = {
   .mobile-quote-text {
     display: block;
     color: #cce4f7;
-    font-size: 0.75rem;
-    margin-top: 0.15rem;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
   .phone-btn {
     color: #fff;
@@ -365,10 +365,8 @@ const faqSchema = {
 <!-- HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href={`tel:${phoneE164}`} class="phone-btn">
-      📞 {phone}
-      <span class="mobile-quote-text">Call us for a quote</span>
-    </a>
+    <a href={`tel:${phoneE164}`} class="phone-btn">📞 {phone}</a>
+    <span class="mobile-quote-text">Call us for a quote</span>
     <nav>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>

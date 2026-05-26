@@ -39,6 +39,10 @@ export const siteConfig = {
   domain: "nkywindowcleaningpros.com",
   siteUrl: "https://nkywindowcleaningpros.com",
 
+  // ── Form Webhook ───────────────────────────────────────────────
+  // Google Sheets web app URL (set after deploying google-sheets-webhook.gs)
+  formWebhookUrl: "",
+
   // ── Analytics ───────────────────────────────────────────────────────
   // Set these to your real GA4 / GTM IDs to enable tracking.
   // Leave as placeholders (or empty) to disable — the site still works.

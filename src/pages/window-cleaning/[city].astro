@@ -11,7 +11,7 @@ export function getStaticPaths() {
 }
 
 const { city } = Astro.props as { city: City };
-const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, region, services, cities, testimonials, faqs } = siteConfig;
+const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, region, services, cities, testimonials, faqs, formWebhookUrl } = siteConfig;
 
 // City-specific schema
 const cityServiceSchema = {
@@ -444,7 +444,7 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
       <p class="form-banner-title">FREE INSTANT QUOTE</p>
       <p class="form-banner-sub">ENTER YOUR INFO BELOW</p>
     </div>
-    <form class="form-card" onsubmit="return false">
+    <form class="form-card" id="quote-form">
       <p class="form-note">* Indicates required field</p>
       <div class="form-group">
         <label>Name *</label>
@@ -465,7 +465,7 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
         <label>Comment *</label>
         <textarea name="comment" required rows="4"></textarea>
       </div>
-      <button type="submit" class="submit-btn">Submit</button>
+      <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
     </form>
   </div>
 
@@ -519,5 +519,48 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
   <p>Call now for a free {serviceKeyword} estimate in {cityName}.</p>
   <a href={`tel:${phoneE164}`} class="final-cta-btn">Call {phone}</a>
 </section>
+
+{formWebhookUrl && (
+  <script define:vars={{ formWebhookUrl, businessName }}>
+    document.getElementById('quote-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const data = {
+        site_name: businessName,
+        first_name: form.firstName.value,
+        last_name: form.lastName.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        comment: form.comment.value,
+        page_path: window.location.pathname,
+      };
+
+      try {
+        await fetch(formWebhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        btn.textContent = 'Submitted!';
+        btn.style.background = '#22c55e';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = 'Submit';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      } catch (err) {
+        btn.textContent = 'Error — Try Again';
+        btn.disabled = false;
+        setTimeout(() => { btn.textContent = 'Submit'; }, 3000);
+      }
+    });
+  </script>
+)}
 
 </BaseLayout>

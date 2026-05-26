@@ -51,6 +51,19 @@ export const siteConfig = {
   serviceKeywordPlural: "window cleaning services",
   brandColor: "#1a6bb5",
 
+  // ── Hero content ─────────────────────────────────────────────────
+  heroTagline: "Northern Kentucky's Trusted Window Cleaning Service",
+  heroSubtext: "Streak-free results for homes and businesses. Call us for a free estimate.",
+  heroAlt: "Professional window cleaning technician at work",
+
+  // ── Computed city lists ──────────────────────────────────────────
+  get cityListShort() {
+    return this.cities.slice(0, 4).map(c => c.name.replace(/, KY$/, '')).join(', ');
+  },
+  get cityListLong() {
+    return this.cities.slice(0, 8).map(c => c.name.replace(/, KY$/, '')).join(', ');
+  },
+
   // ── Opening hours ─────────────────────────────────────────────────
   openingHours: "Mo-Sa 08:00-18:00",
 

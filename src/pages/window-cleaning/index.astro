@@ -30,7 +30,7 @@ const breadcrumbSchema = {
 
 <BaseLayout
   title={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services ${city} | ${businessName}`}
-  description={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} services in ${city}. We clean windows on homes, offices, and commercial buildings in Florence, Covington, Fort Mitchell, Erlanger, and all across ${region}. Call ${phone} for a free estimate.`}
+  description={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} services in ${city}. We provide ${serviceKeywordPlural} on homes, offices, and commercial buildings across ${region}. Call ${phone} for a free estimate.`}
   canonicalURL={`${siteUrl}/window-cleaning/`}
   schema={[breadcrumbSchema, serviceSchema]}
 >
@@ -108,7 +108,7 @@ const breadcrumbSchema = {
 <section class="bg-brand-dark text-white">
   <div class="cta-strip container">
     <h2 class="text-white text-xl md:text-2xl font-bold mb-2">Call Now for {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-    <p class="text-white/90 text-base mb-4">We clean windows in Florence, Covington, Fort Mitchell, Erlanger, and all across {region}.</p>
+    <p class="text-white/90 text-base mb-4">We provide ${serviceKeywordPlural} across {region}.</p>
     <PhoneCTA label="Call Now" />
   </div>
 </section>

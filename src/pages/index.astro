@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config';
 
-const { businessName, phone, phoneE164, serviceKeyword, serviceKeywordPlural, city, region, faqs, services, cities, testimonials } = siteConfig;
+const { businessName, phone, phoneE164, serviceKeyword, serviceKeywordPlural, city, region, faqs, services, cities, testimonials, heroTagline, heroSubtext, heroAlt } = siteConfig;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -387,9 +387,9 @@ const faqSchema = {
   <div class="hero-form-row">
     <div class="hero-col">
       <!-- Business name + tagline in left column -->
-      <h1 class="biz-name">Northern Kentucky's Trusted Window Cleaning Service</h1>
-      <p style="font-size:1.1rem;color:#555;margin:0 0 1rem 0;line-height:1.5;">Streak-free results for homes and businesses. Call us for a free estimate.</p>
-      <img src="/photos/hero.jpg" alt="Professional window cleaning technician at work" loading="eager" />
+      <h1 class="biz-name">{heroTagline}</h1>
+      <p style="font-size:1.1rem;color:#555;margin:0 0 1rem 0;line-height:1.5;">{heroSubtext}</p>
+      <img src="/photos/hero.jpg" alt="{heroAlt}" loading="eager" />
       <a href={`tel:${phoneE164}`} class="call-now-btn">CALL NOW — {phone}</a>
     </div>
     <div class="form-col">
@@ -426,7 +426,7 @@ const faqSchema = {
   <!-- Services -->
   <section class="section">
     <h2 class="section-title">Our Services</h2>
-    <p class="section-sub">Professional window cleaning for homes and businesses in {city}</p>
+    <p class="section-sub">Professional {serviceKeywordPlural} for homes and businesses in {city}</p>
     <div class="services-grid">
       {services.map((service) => (
         <div class="service-card">
@@ -443,7 +443,7 @@ const faqSchema = {
   <!-- Content -->
   <section class="section">
     <h2 class="section-title" style="text-align:left;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-    <p class="content-text">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} in Florence, Covington, Fort Mitchell, Erlanger, Newport, Independence, Edgewood, Fort Thomas, and all across {region}.</p>
+    <p class="content-text">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} across {region}.</p>
     <p class="content-text">{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it.</p>
     <p class="content-text">We use professional-grade equipment and eco-friendly cleaning solutions. Our purified water system leaves zero residue on your glass, so your windows stay cleaner longer.</p>
   </section>
@@ -476,7 +476,7 @@ const faqSchema = {
   <!-- FAQ -->
   <section class="section">
     <h2 class="section-title">Frequently Asked Questions</h2>
-    <p class="section-sub">Common questions about our window cleaning services</p>
+    <p class="section-sub">Common questions about our {serviceKeywordPlural}</p>
     {faqs.map((faq, i) => (
       <div class="faq-item">
         <p class="faq-q">{faq.question}</p>
@@ -490,7 +490,7 @@ const faqSchema = {
 <!-- Final CTA -->
 <section class="final-cta">
   <h2>Ready to Get Your Windows Cleaned?</h2>
-  <p>Call now for a free estimate on window cleaning in {city}.</p>
+  <p>Call now for a free {serviceKeyword} estimate in {city}.</p>
   <a href={`tel:${phoneE164}`} class="final-cta-btn">Call {phone}</a>
 </section>
 

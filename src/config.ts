@@ -34,8 +34,8 @@ export interface Testimonial {
 export const siteConfig = {
   // ── Business identity ──────────────────────────────────────────────
   businessName: "NKY Window Cleaning Pros",
-  phone: "(859) 555-0100",
-  phoneE164: "+18595550100",
+  phone: "(859) 900-8044",
+  phoneE164: "+18599008044",
   domain: "nkywindowcleaningpros.com",
   siteUrl: "https://nkywindowcleaningpros.com",
 
@@ -115,7 +115,7 @@ export const siteConfig = {
     {
       question: "How much does window cleaning cost in Northern Kentucky?",
       answer:
-        "It depends on how many windows you have and whether you want inside and outside cleaned. Most homes cost between $100 and $250. Give us a call at (859) 555-0100 and we'll give you a free estimate over the phone. No pressure, no obligation.",
+        "It depends on how many windows you have and whether you want inside and outside cleaned. Most homes cost between $100 and $250. Give us a call at (859) 900-8044 and we'll give you a free estimate over the phone. No pressure, no obligation.",
     },
     {
       question: "How often should I get my windows cleaned?",
@@ -150,7 +150,7 @@ export const siteConfig = {
     {
       question: "How do I schedule an appointment?",
       answer:
-        "Just call us at (859) 555-0100. We answer the phone and can usually schedule your window cleaning within a few days. We serve Florence, Covington, Fort Mitchell, Erlanger, and all of Northern Kentucky.",
+        "Just call us at (859) 900-8044. We answer the phone and can usually schedule your window cleaning within a few days. We serve Florence, Covington, Fort Mitchell, Erlanger, and all of Northern Kentucky.",
     },
   ] as FAQ[],
 

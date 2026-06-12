@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import QuestionHeading from '../../components/QuestionHeading.astro';
+import ArticleSection from '../../components/ArticleSection.astro';
+import EnhancedFAQ from '../../components/EnhancedFAQ.astro';
+import { siteConfig } from '../../config';
+
+const { businessName, phone, phoneE164, city } = siteConfig;
+
+const title = `Hard Water Stain Removal on Kentucky Home Windows | ${businessName}`;
+const description = "A Covington homeowner battled white mineral deposits on every window for years. Here's how we removed hard water stains from 14 windows in one afternoon without replacing a single pane.";
+
+const caseStudyFAQs = [
+  {
+    question: "What causes hard water stains on windows?",
+    answer: "Hard water stains form when mineral-rich water evaporates on glass, leaving behind calcium, magnesium, and lime deposits. In Northern Kentucky, our water comes from limestone aquifers with high mineral content. Sprinkler systems that hit windows are the most common cause, but rain, irrigation runoff, and even well water can leave deposits. Over time, these minerals bond to the glass surface and become increasingly difficult to remove."
+  },
+  {
+    question: "Can hard water stains be permanently removed from glass?",
+    answer: "Yes — in most cases. Fresh deposits (less than 6 months old) come off with professional cleaning solutions and polishing. Older, etched stains may require acid-based treatments or mechanical polishing. In severe cases where minerals have actually etched into the glass surface, the damage is permanent, but the stains can be significantly reduced. We assess each window and recommend the most cost-effective approach."
+  },
+  {
+    question: "How much does hard water stain removal cost in Northern Kentucky?",
+    answer: "Professional hard water stain removal in NKY typically costs $8-15 per window for standard double-hung windows, or $15-25 per window for severely stained glass. For this Covington project with 14 heavily stained windows, we charged $225 total. Compare that to replacing 14 windows at $300-800 each — that's $4,200-11,200. Stain removal saved this homeowner 95% or more."
+  },
+  {
+    question: "Will hard water stains come back after removal?",
+    answer: "If you don't address the source, yes. If sprinklers are hitting your windows, adjust the spray pattern or install drip edges. If your water is extremely hard, consider a whole-house water softener ($1,500-3,000). After we remove stains, we recommend applying a hydrophobic coating that repels water and makes future deposits easier to clean."
+  },
+  {
+    question: "How do professionals remove hard water stains from windows?",
+    answer: "We use a multi-step process: first, an acid-based solution (muriatic or phosphoric acid blend) dissolves the mineral deposits. Then we use fine steel wool (0000 grade) or a specialized polishing compound to remove remaining residue. Finally, we clean and buff the glass to restore clarity. For severe cases, we may use a glass restorer machine with cerium oxide polish. The process takes 5-15 minutes per window depending on severity."
+  },
+  {
+    question: "Should I replace windows with hard water stains instead of cleaning them?",
+    answer: "Almost never. Window replacement costs $300-800 per window installed, so even 5 windows could run $1,500-4,000. Professional stain removal costs $8-25 per window. Unless the glass is physically etched beyond repair (rare), cleaning is always the more economical choice. Plus, you avoid the disruption and potential installation issues that come with window replacement."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+
+<style>
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 769px) { .container { padding: 0 2rem; } }
+  .case-study-header { background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%); color: #fff; padding: 3rem 1rem; text-align: center; }
+  .case-study-header h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 1rem 0; line-height: 1.2; }
+  .case-study-header p { font-size: 1.1rem; color: #cce4f7; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  @media (min-width: 769px) { .case-study-header h1 { font-size: 2.25rem; } }
+  .case-study-meta { background: #f8f9fa; border-left: 4px solid #1a6bb5; padding: 1rem 1.25rem; margin: 2rem 0; font-size: 0.9rem; color: #555; }
+  .case-study-meta strong { color: #1a6bb5; font-weight: 600; }
+  .content-block { margin: 2rem 0; }
+  .content-block p { font-size: 1.05rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
+  .content-block ul { font-size: 1.05rem; line-height: 1.8; color: #444; margin: 1rem 0 1rem 1.5rem; }
+  .content-block li { margin-bottom: 0.75rem; }
+  .callout-box { background: #e8f4f8; border: 2px solid #1a6bb5; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .callout-box h3 { color: #1a6bb5; font-size: 1.25rem; margin: 0 0 0.75rem 0; }
+  .callout-box p { font-size: 1rem; line-height: 1.7; color: #444; margin: 0; }
+  .cta-section { background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%); color: #fff; padding: 2.5rem 1.25rem; text-align: center; margin: 3rem 0 0 0; border-radius: 12px; }
+  .cta-section h2 { color: #fff; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.75rem 0; }
+  .cta-section p { color: #cce4f7; font-size: 1rem; margin: 0 0 1.5rem 0; }
+  .cta-btn { display: inline-block; background: #fff; color: #1a6bb5; font-weight: 700; font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+</style>
+
+<header class="case-study-header">
+  <div class="container">
+    <h1>How We Removed Hard Water Stains From 14 Windows in One Afternoon</h1>
+    <p>A Covington homeowner lived with white mineral deposits on every window for three years. Here's how we restored full clarity without replacing a single pane.</p>
+  </div>
+</header>
+
+<div class="container">
+  
+  <div class="case-study-meta">
+    <strong>Location:</strong> Covington, KY<br/>
+    <strong>Problem:</strong> Heavy hard water stains on 14 windows from sprinkler overspray<br/>
+    <strong>Time to complete:</strong> 4 hours<br/>
+    <strong>Cost to remove stains:</strong> $225<br/>
+    <strong>Cost to replace windows:</strong> $4,200-11,200
+  </div>
+  
+  <ArticleSection tag="article">
+    <QuestionHeading question="What Was Wrong With These Covington Windows?" />
+    
+    <p>The homeowner bought the house three years ago and noticed the white, chalky deposits on the south-facing windows immediately. The previous owner had a sprinkler system that aimed directly at the windows for years. By the time the homeowner adjusted the sprinkler heads, the damage was done — mineral deposits so thick you could barely see through them.</p>
+    
+    <p>Every window on the south and west sides was affected. Some had light haze, others had thick white crusts that felt rough to the touch. The homeowner got quotes from two window companies: $4,800 for vinyl replacement and $7,200 for wood-frame replacements. Both seemed excessive for what looked like a cleaning problem.</p>
+    
+    <p>That's when they found NKY Window Cleaning Pros.</p>
+  </ArticleSection>
+  
+  <BeforeAfter
+    beforeImage="/photos/case-study-hardwater-before.jpg"
+    afterImage="/photos/case-study-hardwater-after.jpg"
+    beforeAlt="Residential windows covered in white hard water mineral deposits"
+    afterAlt="Same windows after professional hard water stain removal, completely clear"
+    beforeCaption="These Covington windows had three years of calcium and lime buildup from sprinkler overspray. The mineral deposits were so thick that the homeowner could barely see through the south-facing windows. Normal window cleaning products had zero effect — these deposits require professional-grade acid solutions and specialized polishing."
+    afterCaption="After four hours of careful treatment with acid solutions, fine steel wool, and cerium oxide polish, all 14 windows are completely clear. The glass is smooth to the touch with no haze or residue. The homeowner saved over $4,000 compared to window replacement quotes."
+  />
+  
+  <ArticleSection>
+    <QuestionHeading question="How Did We Remove the Mineral Deposits?" />
+    
+    <p>Hard water stains require a different approach than regular window cleaning. Here's our process for this Covington project:</p>
+    
+    <ul>
+      <li><strong>Assessment and testing.</strong> We examined every window to determine stain severity. Some windows had light haze (easy removal), while others had thick mineral crusts (required acid treatment). We tested a small area on the worst window to confirm our approach would work without damaging the glass.</li>
+      
+      <li><strong>Acid-based pre-treatment.</strong> We applied a professional-grade phosphoric acid solution to dissolve the mineral deposits. The solution needs 5-10 minutes to break the bond between the minerals and the glass. We worked on one window at a time, keeping the solution wet and contained.</li>
+      
+      <li><strong>Scrubbing with fine steel wool.</strong> After the acid softened the deposits, we used 0000-grade steel wool (the finest available) to scrub the glass. This removes the dissolved minerals without scratching. We kept the surface wet throughout the process.</li>
+      
+      <li><strong>Cerium oxide polishing.</strong> For the worst windows, we used a cerium oxide polishing compound with a buffing pad. This micro-polish removes any remaining haze and restores the glass to like-new clarity. It's the same compound used to restore headlight lenses.</li>
+      
+      <li><strong>Final clean and inspection.</strong> We cleaned every window with purified water and inspected each pane in direct sunlight. All 14 windows were crystal clear with no remaining deposits or haze.</li>
+    </ul>
+  </ArticleSection>
+  
+  <div class="callout-box">
+    <h3>💡 Why Store-Bought Products Don't Work</h3>
+    <p>Most hard water stain removers you buy at the hardware store contain weak acids that can't break down established mineral deposits. They might remove fresh stains, but deposits older than a few months require professional-strength solutions. Plus, aggressive scrubbing with abrasive pads or razor blades can scratch glass. Professional stain removal uses the right chemistry and technique to dissolve minerals without damaging the glass underneath.</p>
+  </div>
+  
+  <ArticleSection>
+    <QuestionHeading question="How Much Did This Save Compared to Window Replacement?" />
+    
+    <p>The numbers tell the story:</p>
+    
+    <ul>
+      <li><strong>Vinyl replacement quote:</strong> $4,800 for 14 windows</li>
+      <li><strong>Wood-frame replacement quote:</strong> $7,200 for 14 windows</li>
+      <li><strong>Our stain removal:</strong> $225 total</li>
+    </ul>
+    
+    <p>The homeowner saved at least $4,575 — and that's the cheapest replacement option. Beyond the cost savings, stain removal took one afternoon instead of the 2-3 weeks needed to order, manufacture, and install new windows. No construction mess, no holes in the walls, no new trim to paint.</p>
+    
+    <p>We also applied a hydrophobic coating to all 14 windows that repels water and makes future mineral deposits easier to clean. If the sprinklers ever hit the windows again, a simple wipe-down will prevent the stains from building up.</p>
+  </ArticleSection>
+  
+  <EnhancedFAQ 
+    faqs={caseStudyFAQs}
+    title="Common Questions About Hard Water Stain Removal"
+    subtitle="What Covington homeowners ask us about mineral deposits on glass"
+  />
+  
+  <div class="cta-section">
+    <h2>Hard Water Stains on Your Windows?</h2>
+    <p>We remove mineral deposits from windows across {city} without replacing glass. Call for a free assessment.</p>
+    <a href={`tel:${phoneE164}`} class="cta-btn">Call {phone}</a>
+  </div>
+
+</div>
+
+</BaseLayout>

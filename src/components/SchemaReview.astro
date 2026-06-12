@@ -1,0 +1,43 @@
+---
+/**
+ * SchemaReview.astro — Review structured data component
+ * 
+ * Generates schema.org/Review markup for testimonials/reviews.
+ * Pass to BaseLayout via schema prop.
+ */
+
+interface Props {
+  reviewBody: string;
+  author: string;
+  datePublished?: string; // ISO 8601 date
+  ratingValue?: number; // 1-5
+  itemReviewed: {
+    name: string;
+    type?: string; // defaults to "LocalBusiness"
+  };
+}
+
+const { reviewBody, author, datePublished, ratingValue = 5, itemReviewed } = Astro.props;
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "reviewBody": reviewBody,
+  "author": {
+    "@type": "Person",
+    "name": author,
+  },
+  ...(datePublished && { "datePublished": datePublished }),
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": ratingValue,
+    "bestRating": 5,
+  },
+  "itemReviewed": {
+    "@type": itemReviewed.type || "LocalBusiness",
+    "name": itemReviewed.name,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />

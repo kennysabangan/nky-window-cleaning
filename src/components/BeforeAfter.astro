@@ -1,0 +1,91 @@
+---
+/**
+ * BeforeAfter.astro — Before/after image component with detailed captions
+ * 
+ * AI-friendly component for case studies that need visual proof.
+ * Captions should be 40-60 words per Google's AI optimization guide.
+ */
+
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt: string;
+  afterAlt: string;
+  beforeCaption: string; // 40-60 words recommended
+  afterCaption: string;  // 40-60 words recommended
+  className?: string;
+}
+
+const { 
+  beforeImage, 
+  afterImage, 
+  beforeAlt, 
+  afterAlt, 
+  beforeCaption, 
+  afterCaption,
+  className = ""
+} = Astro.props;
+---
+
+<style>
+  .before-after-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  @media (min-width: 769px) {
+    .before-after-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+  
+  .before-after-item {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  
+  .before-after-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .before-after-label {
+    background: #1a6bb5;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .before-after-caption {
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #444;
+    background: #f8f9fa;
+  }
+</style>
+
+<div class={`before-after-container ${className}`}>
+  <div class="before-after-item">
+    <div class="before-after-label">Before</div>
+    <img src={beforeImage} alt={beforeAlt} loading="lazy" />
+    <p class="before-after-caption">{beforeCaption}</p>
+  </div>
+  
+  <div class="before-after-item">
+    <div class="before-after-label">After</div>
+    <img src={afterImage} alt={afterAlt} loading="lazy" />
+    <p class="before-after-caption">{afterCaption}</p>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+---
+/**
+ * SchemaHowTo.astro — HowTo structured data component
+ * 
+ * Generates schema.org/HowTo markup for process guides.
+ * Pass to BaseLayout via schema prop.
+ */
+
+interface Step {
+  name: string;
+  text: string;
+  image?: string;
+}
+
+interface Props {
+  name: string;
+  description: string;
+  totalTime?: string; // ISO 8601 duration, e.g., "PT30M"
+  estimatedCost?: {
+    currency: string;
+    value: string;
+  };
+  steps: Step[];
+}
+
+const { name, description, totalTime, estimatedCost, steps } = Astro.props;
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": name,
+  "description": description,
+  ...(totalTime && { "totalTime": totalTime }),
+  ...(estimatedCost && { "estimatedCost": { "@type": "MonetaryAmount", ...estimatedCost } }),
+  "step": steps.map((step, index) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "name": step.name,
+    "text": step.text,
+    ...(step.image && { "image": step.image }),
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />

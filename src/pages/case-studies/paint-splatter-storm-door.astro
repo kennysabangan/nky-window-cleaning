@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import QuestionHeading from '../../components/QuestionHeading.astro';
+import ArticleSection from '../../components/ArticleSection.astro';
+import EnhancedFAQ from '../../components/EnhancedFAQ.astro';
+import { siteConfig } from '../../config';
+
+const { businessName, phone, phoneE164, city } = siteConfig;
+
+const title = `How We Saved a $3,000 Storm Door by Cleaning Paint Splatter | ${businessName}`;
+const description = "A Florence homeowner almost replaced their custom storm door after painters left dried latex paint across the glass. Here's how we removed every spot without scratching and saved them thousands.";
+
+const caseStudyFAQs = [
+  {
+    question: "Can you remove dried paint from windows without scratching them?",
+    answer: "Yes! We use professional-grade razor scrapers held at the correct angle (about 30 degrees) along with specialized solvents for stubborn paint. The key is keeping the glass wet while scraping and using fresh, sharp blades. We've successfully removed latex paint, oil-based paint, and even spray paint from hundreds of windows across Northern Kentucky without a single scratch."
+  },
+  {
+    question: "How long does paint removal from windows usually take?",
+    answer: "It depends on how much paint and how long it's been there. Fresh latex paint (a few days old) might come off in 15-30 minutes per window. Paint that's been baking in the sun for weeks or months takes longer — sometimes an hour or more per window. For this Florence storm door, we spent about 90 minutes carefully removing every speck of dried latex."
+  },
+  {
+    question: "Will my homeowner's insurance cover paint damage to windows?",
+    answer: "Usually not, unless the painting contractor's liability insurance accepts responsibility. Most painters exclude 'incidental overspray' in their contracts. That's why we recommend getting window protection in writing before any painting work starts. If you're already dealing with paint on your windows, professional removal is almost always cheaper than replacement — especially for custom glass like storm doors and decorative windows."
+  },
+  {
+    question: "What's the best way to protect windows during exterior painting?",
+    answer: "Professional painters should tape off trim and mask windows with plastic sheeting or paper. For DIY projects, blue painter's tape and drop cloths work well — just make sure they're secured tightly so wind doesn't blow them loose. If paint does get on your glass, wipe it immediately while it's still wet. Dried paint is ten times harder to remove than fresh paint."
+  },
+  {
+    question: "How much does window paint removal cost compared to window replacement?",
+    answer: "Professional paint removal typically costs $50-150 per window depending on severity. Custom storm doors like the one in this Florence case run $2,000-4,000 to replace. Standard double-hung windows cost $300-800 each installed. So paint removal almost always saves money — plus you keep your original windows and avoid the hassle of ordering, waiting, and installing replacements."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  @media (min-width: 769px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+  
+  .case-study-header {
+    background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%);
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .case-study-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+  
+  .case-study-header p {
+    font-size: 1.1rem;
+    color: #cce4f7;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 769px) {
+    .case-study-header h1 {
+      font-size: 2.25rem;
+    }
+  }
+  
+  .case-study-meta {
+    background: #f8f9fa;
+    border-left: 4px solid #1a6bb5;
+    padding: 1rem 1.25rem;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .case-study-meta strong {
+    color: #1a6bb5;
+    font-weight: 600;
+  }
+  
+  .content-block {
+    margin: 2rem 0;
+  }
+  
+  .content-block p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+  
+  .content-block ul {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin: 1rem 0 1rem 1.5rem;
+  }
+  
+  .content-block li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .callout-box {
+    background: #e8f4f8;
+    border: 2px solid #1a6bb5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .callout-box h3 {
+    color: #1a6bb5;
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .callout-box p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
+  }
+  
+  .cta-section {
+    background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%);
+    color: #fff;
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+    margin: 3rem 0 0 0;
+    border-radius: 12px;
+  }
+  
+  .cta-section h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .cta-section p {
+    color: #cce4f7;
+    font-size: 1rem;
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #1a6bb5;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+</style>
+
+<header class="case-study-header">
+  <div class="container">
+    <h1>How We Saved a $3,000 Storm Door by Cleaning Paint Splatter</h1>
+    <p>A Florence homeowner almost replaced their custom storm door after painters left dried latex paint across the glass. Here's exactly how we removed every spot without scratching and saved them thousands.</p>
+  </div>
+</header>
+
+<div class="container">
+  
+  <div class="case-study-meta">
+    <strong>Location:</strong> Florence, KY<br/>
+    <strong>Problem:</strong> Dried latex paint splatter on custom storm door glass<br/>
+    <strong>Time to complete:</strong> 90 minutes<br/>
+    <strong>Cost to remove paint:</strong> $150<br/>
+    <strong>Cost to replace door:</strong> $3,000+
+  </div>
+  
+  <ArticleSection tag="article">
+    <QuestionHeading question="What Happened to This Florence Storm Door?" />
+    
+    <p>The homeowner called us three weeks after exterior painters finished their house in Florence. The painters had been careful — mostly. But during trim touch-ups, latex paint ended up all over the custom storm door glass. Dozens of dried drips and splatters, some the size of quarters, covered the decorative glass panels.</p>
+    
+    <p>The painting contractor offered to "try scraping it," but the homeowner declined after seeing the contractor pull out a rusty putty knife. One wrong move would scratch the custom etched glass permanently. The door manufacturer quoted $2,800 for replacement glass panels, plus $400 for installation. Nearly $3,200 to fix a problem that shouldn't have happened.</p>
+    
+    <p>That's when they called NKY Window Cleaning Pros.</p>
+  </ArticleSection>
+  
+  <BeforeAfter
+    beforeImage="/photos/case-study-paint-before.jpg"
+    afterImage="/photos/case-study-paint-after.jpg"
+    beforeAlt="Custom storm door covered in dried white latex paint splatters"
+    afterAlt="Same storm door after professional paint removal — completely clear"
+    beforeCaption="This Florence homeowner's custom storm door had dozens of dried latex paint spots ranging from pinhead-sized dots to quarter-sized splotches. The paint had been drying for three weeks in summer heat, making it harder and more stubborn than fresh paint. The decorative etched glass made this job particularly delicate — one scratch would ruin the door permanently."
+    afterCaption="After 90 minutes of careful work using professional razor scrapers, paint solvents, and specialized techniques, every single paint spot was gone. The glass is completely clear with zero scratches or damage to the etched pattern. The homeowner saved over $3,000 by choosing professional paint removal instead of replacing the entire door."
+  />
+  
+  <ArticleSection>
+    <QuestionHeading question="How Did We Remove the Paint Without Scratching?" />
+    
+    <p>Dried latex paint removal from glass requires the right tools, the right technique, and patience. Here's exactly what we did:</p>
+    
+    <ul>
+      <li><strong>Assessment first.</strong> We inspected the paint type (latex), how long it had been drying (3 weeks), and the glass surface (custom etched pattern). Etched glass is more delicate than smooth glass, so extra care was required.</li>
+      
+      <li><strong>Pre-treatment with solvent.</strong> We applied a professional-grade paint solvent to soften the dried latex. This step is critical — it makes the paint more pliable and reduces the risk of scratching during scraping. We let the solvent sit for 10 minutes.</li>
+      
+      <li><strong>Razor scraping at the correct angle.</strong> We used fresh, sharp single-edge razor blades held at approximately 30 degrees to the glass. The glass stayed wet the entire time with a mixture of water and solvent. We worked slowly, removing paint in thin layers rather than trying to pry entire chunks off at once.</li>
+      
+      <li><strong>Final polish.</strong> After all paint was removed, we cleaned the door with our purified water system and buffed the glass to a streak-free shine. The etched pattern remained perfect — not a single scratch.</li>
+    </ul>
+    
+    <p>The homeowner inspected the door from every angle in direct sunlight. No scratches. No haze. No paint. The door looked exactly like it did before the painters showed up.</p>
+  </ArticleSection>
+  
+  <div class="callout-box">
+    <h3>💡 Why This Approach Works</h3>
+    <p>Most people try to remove dried paint from windows by scraping with whatever's handy — putty knives, old razor blades, even metal scrapers. That's how windows get scratched. Professional paint removal uses sharp, fresh blades held at the correct angle, combined with solvents that soften the paint first. The glass must stay wet during the entire process. This technique has worked on hundreds of Northern Kentucky windows without a single scratch.</p>
+  </div>
+  
+  <ArticleSection>
+    <QuestionHeading question="Why Didn't the Painting Contractor Just Clean It Themselves?" />
+    
+    <p>Many painting contractors don't have the tools or training for safe paint removal from glass. Their insurance might not cover glass damage, so they're hesitant to even try. Some painters will attempt cleanup with hardware store razor scrapers — which often leads to scratched glass and an even bigger problem.</p>
+    
+    <p>Professional window cleaning companies have the right tools, the right training, and insurance that covers glass work. We remove paint from windows almost every week across Northern Kentucky. It's a routine part of post-construction and post-painting cleanup.</p>
+  </ArticleSection>
+  
+  <ArticleSection>
+    <QuestionHeading question="What Should You Do If Painters Get Paint on Your Windows?" />
+    
+    <p>If you catch it while the paint is still wet, wipe it immediately with a damp cloth. Wet paint comes off glass easily. Once it dries, your options are:</p>
+    
+    <ul>
+      <li><strong>Call a professional window cleaner</strong> experienced in paint removal. This is the safest option and costs $50-150 per window depending on how bad it is.</li>
+      
+      <li><strong>Try it yourself</strong> using single-edge razor blades (buy fresh ones), a spray bottle of soapy water, and patience. Keep the glass wet. Work slowly. If you feel resistance or hear scraping sounds, stop — you're about to scratch the glass.</li>
+      
+      <li><strong>Replace the glass.</strong> This is the most expensive option and should be a last resort. Custom glass, storm doors, and large picture windows can cost thousands to replace.</li>
+    </ul>
+  </ArticleSection>
+  
+  <ArticleSection>
+    <QuestionHeading question="How Much Does Professional Paint Removal Cost in Northern Kentucky?" />
+    
+    <p>For this Florence storm door, we charged $150 for 90 minutes of careful work. That included:</p>
+    
+    <ul>
+      <li>Assessment and consultation</li>
+      <li>Professional-grade solvents and tools</li>
+      <li>Complete paint removal (every spot)</li>
+      <li>Final cleaning and inspection</li>
+      <li>Guarantee against scratching</li>
+    </ul>
+    
+    <p>Compared to the $3,200 replacement quote, paint removal saved this homeowner 95% and got the job done the same day. No ordering custom glass. No waiting weeks for installation. No construction mess. Just clean windows and a happy homeowner.</p>
+  </ArticleSection>
+  
+  <EnhancedFAQ 
+    faqs={caseStudyFAQs}
+    title="Common Questions About Paint Removal From Windows"
+    subtitle="What Florence homeowners ask us about cleaning paint off glass"
+  />
+  
+  <div class="cta-section">
+    <h2>Got Paint on Your Windows?</h2>
+    <p>We remove dried paint from windows across {city} without scratching. Call now for a free estimate.</p>
+    <a href={`tel:${phoneE164}`} class="cta-btn">Call {phone}</a>
+  </div>
+
+</div>
+
+</BaseLayout>

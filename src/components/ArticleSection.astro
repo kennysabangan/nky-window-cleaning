@@ -1,0 +1,50 @@
+---
+/**
+ * ArticleSection.astro — Semantic article section with proper hierarchy
+ * 
+ * Wraps content in semantic HTML5 <article> or <section> tags
+ * with proper heading hierarchy for AI parsing.
+ */
+
+interface Props {
+  tag?: 'article' | 'section';
+  className?: string;
+}
+
+const { tag = 'section', className = '' } = Astro.props;
+const Tag = tag;
+---
+
+<style>
+  .article-section {
+    margin: 2rem 0;
+  }
+  
+  .article-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1rem;
+    max-width: 70ch; /* Optimal reading width */
+  }
+  
+  .article-section p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .article-section ul,
+  .article-section ol {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin: 1rem 0 1rem 1.5rem;
+  }
+  
+  .article-section li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+<Tag class={`article-section ${className}`}>
+  <slot />
+</Tag>

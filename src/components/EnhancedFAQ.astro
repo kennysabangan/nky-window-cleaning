@@ -1,0 +1,117 @@
+---
+/**
+ * EnhancedFAQ.astro — FAQ component with rich schema and semantic HTML
+ * 
+ * Generates both visual FAQ and FAQPage schema.
+ * Each FAQ should target a specific question users ask.
+ */
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+  title?: string;
+  subtitle?: string;
+}
+
+const { faqs, title = "Frequently Asked Questions", subtitle } = Astro.props;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer,
+    },
+  })),
+};
+---
+
+<style>
+  .faq-section {
+    margin: 3rem 0;
+  }
+  
+  .faq-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .faq-title {
+    color: #1a6bb5;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .faq-subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  
+  .faq-question {
+    font-weight: 700;
+    color: #1a6bb5;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  
+  .faq-answer {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+  
+  @media (min-width: 769px) {
+    .faq-title {
+      font-size: 2rem;
+    }
+    
+    .faq-question {
+      font-size: 1.15rem;
+    }
+  }
+</style>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section class="faq-section">
+  <div class="faq-header">
+    <h2 class="faq-title">{title}</h2>
+    {subtitle && <p class="faq-subtitle">{subtitle}</p>}
+  </div>
+  
+  <div class="faq-list">
+    {faqs.map((faq) => (
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-question" itemprop="name">{faq.question}</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-answer" itemprop="text">{faq.answer}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import QuestionHeading from '../../components/QuestionHeading.astro';
+import ArticleSection from '../../components/ArticleSection.astro';
+import EnhancedFAQ from '../../components/EnhancedFAQ.astro';
+import { siteConfig } from '../../config';
+
+const { businessName, phone, phoneE164, city } = siteConfig;
+
+const title = `Post-Construction Window Cleanup for Florence New Build | ${businessName}`;
+const description = "A Florence family's new construction home had windows covered in stucco dust, paint overspray, and adhesive residue. Here's how we restored every window to move-in ready condition.";
+
+const caseStudyFAQs = [
+  {
+    question: "Should windows be cleaned after construction or before closing?",
+    answer: "After construction is complete but before final walkthrough if possible. Construction debris like stucco dust, paint overspray, and adhesive residue bond more strongly to glass over time. Fresh deposits are much easier to remove. We recommend scheduling post-construction window cleaning as one of the last steps before move-in, after all trades have finished and dust has settled."
+  },
+  {
+    question: "What's included in post-construction window cleaning?",
+    answer: "Full post-construction cleaning includes: removal of stucco, concrete, and paint residue from glass; scraping of adhesive labels and protective film residue; cleaning of frames, tracks, and sills; removal of sticker and tape residue; final polishing for streak-free clarity. We also inspect for construction damage (scratches, chips) that should be documented before the builder's warranty period expires."
+  },
+  {
+    question: "How much does post-construction window cleaning cost in NKY?",
+    answer: "Post-construction window cleaning in Northern Kentucky typically costs $8-12 per window for basic cleaning, or $15-25 per window when heavy construction residue is present. New construction homes with 20-30 windows usually run $200-600 depending on severity. The cost is significantly higher than regular cleaning because construction materials require special solvents and more labor-intensive removal techniques."
+  },
+  {
+    question: "Can construction dust damage windows permanently?",
+    answer: "Some construction materials can etch glass if left too long. Stucco and concrete dust are alkaline and can chemically bond to glass over time. Paint overspray becomes increasingly difficult to remove as it cures. Adhesive residues from protective films can leave stains if not removed promptly. We recommend post-construction cleaning within 2-4 weeks of construction completion for best results."
+  },
+  {
+    question: "Do builders include window cleaning in their contracts?",
+    answer: "Some builders include a basic window cleaning, but it's often just a quick wash that doesn't address construction residue. Most builder cleanings miss paint overspray, stucco dust in corners, adhesive residue, and debris in tracks and frames. We recommend a professional post-construction cleaning even if the builder did a basic cleanup — the difference is dramatic."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+
+<style>
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 769px) { .container { padding: 0 2rem; } }
+  .case-study-header { background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%); color: #fff; padding: 3rem 1rem; text-align: center; }
+  .case-study-header h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 1rem 0; line-height: 1.2; }
+  .case-study-header p { font-size: 1.1rem; color: #cce4f7; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  @media (min-width: 769px) { .case-study-header h1 { font-size: 2.25rem; } }
+  .case-study-meta { background: #f8f9fa; border-left: 4px solid #1a6bb5; padding: 1rem 1.25rem; margin: 2rem 0; font-size: 0.9rem; color: #555; }
+  .case-study-meta strong { color: #1a6bb5; font-weight: 600; }
+  .content-block { margin: 2rem 0; }
+  .content-block p { font-size: 1.05rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
+  .content-block ul { font-size: 1.05rem; line-height: 1.8; color: #444; margin: 1rem 0 1rem 1.5rem; }
+  .content-block li { margin-bottom: 0.75rem; }
+  .callout-box { background: #e8f4f8; border: 2px solid #1a6bb5; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .callout-box h3 { color: #1a6bb5; font-size: 1.25rem; margin: 0 0 0.75rem 0; }
+  .callout-box p { font-size: 1rem; line-height: 1.7; color: #444; margin: 0; }
+  .cta-section { background: linear-gradient(135deg, #1a6bb5 0%, #155a96 100%); color: #fff; padding: 2.5rem 1.25rem; text-align: center; margin: 3rem 0 0 0; border-radius: 12px; }
+  .cta-section h2 { color: #fff; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.75rem 0; }
+  .cta-section p { color: #cce4f7; font-size: 1rem; margin: 0 0 1.5rem 0; }
+  .cta-btn { display: inline-block; background: #fff; color: #1a6bb5; font-weight: 700; font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+</style>
+
+<header class="case-study-header">
+  <div class="container">
+    <h1>Post-Construction Window Cleanup for Florence New Build</h1>
+    <p>A Florence family's dream home had windows covered in construction residue. Here's how we restored every pane to move-in ready condition.</p>
+  </div>
+</header>
+
+<div class="container">
+  
+  <div class="case-study-meta">
+    <strong>Location:</strong> Florence, KY<br/>
+    <strong>Problem:</strong> Construction residue on 26 windows (stucco, paint, adhesive)<br/>
+    <strong>Time to complete:</strong> 6 hours<br/>
+    <strong>Cost:</strong> $390<br/>
+    <strong>Builder's cleaning included:</strong> Yes, but insufficient
+  </div>
+  
+  <ArticleSection tag="article">
+    <QuestionHeading question="What Happened to This Florence New Build?" />
+    
+    <p>The family closed on their new construction home in Florence and immediately noticed the windows were cloudy. The builder's "final clean" had been done two weeks earlier, but it was clearly a surface-level job. Every window had visible construction residue: white stucco dust baked into corners, paint overspray specks on the lower panes, and clear adhesive film residue along the edges where protective coverings had been peeled off.</p>
+    
+    <p>The builder offered to "send someone back" but the family had already waited three weeks past the original closing date. They wanted the windows done right, done fast, and done before their furniture arrived. NKY Window Cleaning Pros was out the next day.</p>
+  </ArticleSection>
+  
+  <BeforeAfter
+    beforeImage="/photos/case-study-construction-before.jpg"
+    afterImage="/photos/case-study-construction-after.jpg"
+    beforeAlt="New construction windows covered in stucco dust and paint overspray residue"
+    afterAlt="Same windows after professional post-construction cleanup, crystal clear"
+    beforeCaption="These 26 windows on a Florence new build had multiple types of construction residue: stucco dust baked into corners, paint overspray specks on the glass, adhesive film residue along edges, and general construction grime. The builder's cleaning had missed all of these, leaving the family unable to enjoy their new home's views."
+    afterCaption="After six hours of meticulous work with specialized solvents and tools, all 26 windows are spotless. Stucco dust removed from corners, paint specks dissolved, adhesive residue eliminated, and every pane polished to streak-free clarity. The family could finally see their new backyard through clean glass."
+  />
+  
+  <ArticleSection>
+    <QuestionHeading question="How Did We Handle Each Type of Construction Residue?" />
+    
+    <p>Post-construction cleaning requires different techniques for different materials. Here's how we tackled each problem:</p>
+    
+    <ul>
+      <li><strong>Stucco and concrete dust.</strong> This alkaline material bonds to glass and can't be removed with regular cleaning. We used a mild acid solution to neutralize and dissolve the deposits, then scrubbed with non-abrasive pads. Extra attention to corners and edges where dust accumulates.</li>
+      
+      <li><strong>Paint overspray.</strong> Small paint specks came off with a razor scraper. Larger spots required paint-specific solvent. We checked every pane carefully — paint overspray is often invisible until the sun hits the glass at certain angles.</li>
+      
+      <li><strong>Adhesive residue.</strong> Protective film and tape leave sticky residue that collects dust and grime. We used an adhesive remover specifically designed for glass, then polished the surface smooth.</li>
+      
+      <li><strong>Frame and track cleanup.</strong> Construction dust fills window tracks and frame channels. We vacuumed all tracks, wiped down frames, and cleaned weep holes to ensure proper drainage.</li>
+    </ul>
+  </ArticleSection>
+  
+  <div class="callout-box">
+    <h3>💡 Why Builder Cleanings Fall Short</h3>
+    <p>Most builder cleanings are done by general cleaning crews, not window specialists. They wash the visible glass surface but miss construction residue in corners, edges, and tracks. They don't have the solvents or tools for stucco, paint, or adhesive removal. And they're usually working on a tight schedule with dozens of other homes to clean. Professional post-construction window cleaning takes 3-4x longer than a basic wash because of the specialized materials and attention to detail required.</p>
+  </div>
+  
+  <ArticleSection>
+    <QuestionHeading question="What Should New Homeowners Know About Window Care?" />
+    
+    <p>After construction cleanup, we recommend:</p>
+    
+    <ul>
+      <li><strong>Document window condition.</strong> Take photos after cleaning to establish a baseline. If construction damage (scratches, chips) is found later, you'll have proof it wasn't there after cleaning.</li>
+      
+      <li><strong>Schedule regular cleaning.</strong> New construction homes often settle for the first year. Dust from the construction site can continue appearing for months. Quarterly cleaning during the first year keeps windows in top condition.</li>
+      
+      <li><strong>Check your warranty.</strong> Many builders offer a 1-year warranty on windows. If you notice seal failure (fog between panes) or hardware issues, report them before the warranty expires.</li>
+    </ul>
+  </ArticleSection>
+  
+  <EnhancedFAQ 
+    faqs={caseStudyFAQs}
+    title="Common Questions About Post-Construction Window Cleaning"
+    subtitle="What Florence homeowners ask us about cleaning new construction windows"
+  />
+  
+  <div class="cta-section">
+    <h2>New Construction? Let Us Clean Your Windows Right</h2>
+    <p>Professional post-construction window cleaning across {city}. Same-week appointments available.</p>
+    <a href={`tel:${phoneE164}`} class="cta-btn">Call {phone}</a>
+  </div>
+
+</div>
+
+</BaseLayout>

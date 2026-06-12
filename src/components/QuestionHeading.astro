@@ -1,0 +1,54 @@
+---
+/**
+ * QuestionHeading.astro — Question-based heading component
+ * 
+ * AI optimization: Google's guide emphasizes question-based headings
+ * for better AI extraction and featured snippet eligibility.
+ */
+
+interface Props {
+  level?: 'h2' | 'h3' | 'h4';
+  question: string;
+  className?: string;
+}
+
+const { level = 'h2', question, className = '' } = Astro.props;
+const Tag = level;
+---
+
+<style>
+  .question-heading {
+    color: #1a6bb5;
+    font-weight: 700;
+    margin: 1.5rem 0 0.75rem 0;
+    line-height: 1.3;
+  }
+  
+  .question-heading.h2 {
+    font-size: 1.5rem;
+  }
+  
+  .question-heading.h3 {
+    font-size: 1.25rem;
+  }
+  
+  .question-heading.h4 {
+    font-size: 1.1rem;
+  }
+  
+  @media (min-width: 769px) {
+    .question-heading.h2 {
+      font-size: 1.75rem;
+    }
+    
+    .question-heading.h3 {
+      font-size: 1.4rem;
+    }
+    
+    .question-heading.h4 {
+      font-size: 1.15rem;
+    }
+  }
+</style>
+
+<Tag class={`question-heading ${level} ${className}`}>{question}</Tag>

@@ -202,7 +202,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await resend.emails.send({
-      from: 'NKY Window Cleaning Alerts <alerts@mursenmaintenance.com>',
+      from: 'NKY Window Cleaning Alerts <lead@scalesolving.com>',
       to: ['hello@scalesolving.com'],
       subject: '🪟 New Lead: ' + fullName + (page_path && page_path !== '/' ? ' — ' + page_path : ''),
       html,

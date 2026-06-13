@@ -21,13 +21,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     timeStyle: 'short',
   });
 
-  // Email to business owner (hello@scalesolving.com)
   try {
     await resend.emails.send({
-      from: `${site_name} Alerts <lead@scalesolving.com>`,
+      from: `NKY Window Cleaning Pros <lead@scalesolving.com>`,
       to: ['hello@scalesolving.com'],
-      subject: `New Lead: ${fullName}` + (page_path && page_path !== '/' ? ` — ${page_path}` : ''),
-      html: `<h2>New Lead from ${site_name}</h2>
+      subject: `New Lead: ${fullName}` + (page_path && page_path !== '/' ? ` — ${page_path}` : '\),
+      html: `<h2>New Lead from NKY Window Cleaning Pros</h2>
 <p><strong>Name:</strong> ${fullName}</p>
 <p><strong>Email:</strong> ${email}</p>
 <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
@@ -39,16 +38,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.error('Resend error (owner):', error);
   }
 
-  // Confirmation email to customer
   try {
     await resend.emails.send({
-      from: `${site_name} <lead@scalesolving.com>`,
+      from: `NKY Window Cleaning Pros <lead@scalesolving.com>`,
       to: [email],
       subject: `Thanks ${first_name}! We received your quote request`,
       html: `<h2>Thanks for reaching out, ${first_name}!</h2>
-<p>We received your quote request for <strong>${site_name}</strong> and will get back to you shortly.</p>
-<p>If you need immediate assistance, call us at <strong>(859) 900-8044</strong>.</p>
-<p>— The ${site_name} Team</p>`,
+<p>We received your quote request for <strong>NKY Window Cleaning Pros</strong> and will get back to you shortly.</p>
+<p>If you need immediate assistance, call us at <strong>(859) 900-8065</strong>.</p>
+<p>— The NKY Window Cleaning Pros Team</p>`,
     });
   } catch (error: any) {
     console.error('Resend error (customer):', error);

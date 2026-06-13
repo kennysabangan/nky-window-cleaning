@@ -48,7 +48,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       subject: `Thanks ${first_name}! We received your quote request`,
       html: `<h2>Thanks for reaching out, ${first_name}!</h2>
 <p>We received your quote request for <strong>NKY Window Cleaning Pros</strong> and will get back to you shortly.</p>
-<p>If you need immediate assistance, call us at <strong>(859) 900-8065</strong>.</p>
+<p>If you need immediate assistance, call us at <strong>(859) 900-8044</strong>.</p>
 <p>— The NKY Window Cleaning Pros Team</p>`,
     });
   } catch (error: any) {

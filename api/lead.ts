@@ -21,6 +21,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     timeStyle: 'short',
   });
 
+  const errors: string[] = [];
+
   try {
     await resend.emails.send({
       from: `NKY Window Cleaning Pros <lead@scalesolving.com>`,
@@ -35,7 +37,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 <p><strong>Time:</strong> ${timestamp}</p>`,
     });
   } catch (error: any) {
-    console.error('Resend error (owner):', error);
+    console.error('Resend error (owner):', JSON.stringify(error));
+    errors.push(`Owner: ${error.message}`);
   }
 
   try {
@@ -49,7 +52,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 <p>— The NKY Window Cleaning Pros Team</p>`,
     });
   } catch (error: any) {
-    console.error('Resend error (customer):', error);
+    console.error('Resend error (customer):', JSON.stringify(error));
+    errors.push(`Customer: ${error.message}`);
+  }
+
+  if (errors.length > 0) {
+    return res.status(500).json({ ok: false, errors });
   }
 
   return res.status(200).json({ ok: true });

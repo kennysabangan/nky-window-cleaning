@@ -70,8 +70,9 @@ export const siteConfig = {
   brandColor: "#1a6bb5",
 
   // ── Hero content ─────────────────────────────────────────────────
-  heroTagline: "Northern Kentucky's Trusted Window Cleaning Service",
-  heroSubtext: "Streak-free results for homes and businesses. Call us for a free estimate.",
+  heroTagline: "Northern Kentucky's #1 Rated Window Cleaning Service",
+  heroSubtext: "Book Today — Free Estimates | Streak-Free Results Guaranteed.",
+  heroReviewUrl: "https://www.google.com/maps/place/NKY+Window+Cleaning+Pros",
   heroAlt: "Professional window cleaning technician at work",
 
   // ── Computed city lists ──────────────────────────────────────────

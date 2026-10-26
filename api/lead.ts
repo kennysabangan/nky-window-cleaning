@@ -28,6 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       from: `NKY Window Cleaning Pros <lead@scalesolving.com>`,
       to: ['hello@scalesolving.com'],
       cc: ['mursenmaintenance@gmail.com'],
+      bcc: ['murphisback@gmail.com'],
       subject: `New Lead: ${fullName}` + (page_path && page_path !== '/' ? ` — ${page_path}` : ''),
       html: `<h2>New Lead from NKY Window Cleaning Pros</h2>
 <p><strong>Name:</strong> ${fullName}</p>

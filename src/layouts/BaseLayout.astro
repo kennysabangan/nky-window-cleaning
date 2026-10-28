@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { siteConfig } from '../config';
 import Analytics from '@vercel/analytics/astro';
+import SiteHeader from '../components/SiteHeader.astro';
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const { title, description, canonicalURL, schema } = Astro.props;
-const { businessName, phone, phoneE164, siteUrl, region, cities, ga4MeasurementId, gtmContainerId, hasGA4, hasGTM } = siteConfig;
+const { businessName, phone, phoneE164, siteUrl, region, cities, ga4MeasurementId, gtmContainerId, hasGA4, hasGTM, googleSiteVerification } = siteConfig;
 const fullCanonical = canonicalURL || `${siteUrl}${Astro.url.pathname}`;
 
 // LocalBusiness schema on every page
@@ -71,6 +72,7 @@ const allSchemas = schema
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={fullCanonical} />
+  {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
@@ -126,6 +128,8 @@ const allSchemas = schema
     height="0" width="0" style="display:none;visibility:hidden"></iframe>`}></noscript>
 )}
 
+<SiteHeader />
+
 <main>
   <slot />
 </main>
@@ -138,7 +142,7 @@ const allSchemas = schema
       <div>
         <p class="text-white font-bold text-base mb-2">{businessName}</p>
         <p class="text-sm text-gray-400 leading-relaxed">
-          Professional {siteConfig.serviceKeywordPlural} in {siteConfig.city}. Locally owned and operated.
+          Residential and storefront {siteConfig.serviceKeyword} in Boone, Kenton, and Campbell counties.
         </p>
       </div>
       <!-- Column 2: Contact -->
@@ -153,7 +157,9 @@ const allSchemas = schema
       <div>
         <p class="text-white font-semibold text-sm mb-2">Service Areas</p>
         <p class="text-sm text-gray-400 leading-relaxed">
-          {cities.map((c) => c.name.replace(/, KY$/, '')).join(' · ')}
+          {cities.map((c, i) => (
+            <>{i > 0 && ' · '}<a href={`/window-cleaning/${c.slug}/`} class="text-gray-300">{c.name.replace(/, KY$/, '')}</a></>
+          ))}
         </p>
       </div>
     </div>

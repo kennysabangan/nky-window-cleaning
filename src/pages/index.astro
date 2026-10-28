@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config';
 
-const { businessName, phone, phoneE164, serviceKeyword, serviceKeywordPlural, city, region, faqs, services, cities, testimonials, heroTagline, heroSubtext, heroAlt } = siteConfig;
+const { businessName, phone, phoneE164, serviceKeyword, serviceKeywordPlural, city, region, faqs, services, cities, guides, heroTagline, heroSubtext, heroAlt } = siteConfig;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -17,7 +17,7 @@ const faqSchema = {
 
 <BaseLayout
   title={`${businessName} | ${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city}`}
-  description={`Need ${serviceKeyword} in ${city}? ${businessName} provides residential and commercial ${serviceKeywordPlural} in Florence, Covington, Fort Mitchell, and all across ${region}. Call ${phone} for a free estimate.`}
+  description={`Window cleaning for homes and storefronts in Florence, Covington, Fort Thomas, Newport, and across Northern Kentucky. Inside and out, screens and tracks included. Free estimates: ${phone}.`}
   schema={faqSchema}
 >
 
@@ -29,54 +29,6 @@ const faqSchema = {
   .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
   @media (min-width: 769px) {
     .container { padding: 0 2rem; }
-  }
-
-  /* Header */
-  .site-header {
-    background: #1a6bb5;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.85rem 1rem;
-    gap: 1rem;
-  }
-  @media (min-width: 769px) {
-    .header-inner { padding: 0.85rem 2rem; }
-  }
-  .mobile-quote-text {
-    display: block;
-    color: #cce4f7;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  .phone-btn {
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-decoration: none;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  }
-  .nav-wrap { display: none; }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
   }
 
   /* Business name */
@@ -215,44 +167,6 @@ const faqSchema = {
     border-color: #1a6bb5;
   }
 
-  /* Hero social proof */
-  .hero-social-proof {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0.75rem 0;
-    flex-wrap: wrap;
-  }
-  .stars {
-    color: #fbbf24;
-    font-size: 1.25rem;
-    letter-spacing: 2px;
-  }
-  .review-count {
-    font-size: 0.85rem;
-    color: #555;
-    font-weight: 600;
-  }
-  .google-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #333;
-    text-decoration: none;
-    transition: box-shadow 0.15s ease;
-  }
-  .google-badge:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-decoration: none;
-  }
-  .google-badge svg { width: 16px; height: 16px; }
-
   /* Pulse animation for CTA */
   @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 4px 16px rgba(26,107,181,0.3); }
@@ -362,31 +276,23 @@ const faqSchema = {
   }
   .content-text:last-child { margin-bottom: 0; }
 
-  /* Testimonials */
-  .testimonials-grid {
+  /* Guides */
+  .guides-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
   }
-  .testimonial-card {
-    border-left: 4px solid #1a6bb5;
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 0 8px 8px 0;
+  .guide-card {
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
   }
-  .testimonial-card .quote {
-    font-style: italic;
-    color: #444;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.7;
-    font-size: 0.95rem;
-  }
-  .testimonial-card .attribution {
-    font-weight: 600;
-    color: #1a6bb5;
-    font-size: 0.8rem;
-    margin: 0;
-  }
+  .guide-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); text-decoration: none; }
+  .guide-card h3 { color: #1a6bb5; font-size: 1.05rem; margin: 0 0 0.35rem 0; }
+  .guide-card p { color: #555; font-size: 0.95rem; line-height: 1.6; margin: 0; }
 
   /* Service areas */
   .areas-list {
@@ -456,8 +362,6 @@ const faqSchema = {
 
   /* ===== DESKTOP (769px+) ===== */
   @media (min-width: 769px) {
-    .nav-wrap { display: block; }
-    .mobile-quote-text { display: none; }
     .biz-name { font-size: 2.25rem; padding: 1rem 0 0.25rem 0; }
 
     .hero-form-row {
@@ -473,29 +377,13 @@ const faqSchema = {
     .services-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .service-card img { height: 180px; }
 
-    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .guides-grid { grid-template-columns: repeat(2, 1fr); }
     .areas-list { columns: 3; }
 
     .section { padding: 3rem 0; }
     .section-title { font-size: 1.75rem; }
   }
 </style>
-
-<!-- HEADER -->
-<header class="site-header">
-  <div class="container header-inner">
-    <a href={`tel:${phoneE164}`} class="phone-btn">📞 {phone}</a>
-    <span class="mobile-quote-text">Call us for a quote</span>
-    <nav class="nav-wrap">
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/window-cleaning/">Services</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/reviews/">Reviews</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
 <!-- CONTENT -->
 <div class="container">
@@ -505,16 +393,8 @@ const faqSchema = {
     <div class="hero-col">
       <!-- Business name + tagline in left column -->
       <h1 class="biz-name">{heroTagline}</h1>
-      <div class="hero-social-proof">
-        <span class="stars">★★★★★</span>
-        <span class="review-count">5.0 · 50+ Reviews</span>
-        <a href="https://www.google.com/maps/place/NKY+Window+Cleaning+Pros" target="_blank" rel="noopener" class="google-badge">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          Google Reviews
-        </a>
-      </div>
       <p style="font-size:1.1rem;color:#555;margin:0 0 1rem 0;line-height:1.5;">{heroSubtext}</p>
-      <img src="/photos/hero.jpg" alt="{heroAlt}" loading="eager" />
+      <img src="/photos/hero.jpg" alt={heroAlt} loading="eager" />
       <a href={`tel:${phoneE164}`} class="call-now-btn">📞 CALL NOW — {phone}</a>
     </div>
     <div class="form-col">
@@ -584,22 +464,22 @@ const faqSchema = {
 
   <!-- Content -->
   <section class="section">
-    <h2 class="section-title" style="text-align:left;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-    <p class="content-text">If you need your windows cleaned in {city}, we are the team to call. We provide {serviceKeywordPlural} across {region}.</p>
-    <p class="content-text">{businessName} has been providing {serviceKeywordPlural} across {city} for years. We clean windows on homes, offices, storefronts, and commercial buildings. Whether you need the inside of your windows cleaned, the outside cleaned, or both — we can handle it.</p>
-    <p class="content-text">We use professional-grade equipment and eco-friendly cleaning solutions. Our purified water system leaves zero residue on your glass, so your windows stay cleaner longer.</p>
+    <h2 class="section-title" style="text-align:left;">What's Included in a Window Cleaning</h2>
+    <p class="content-text">A full cleaning covers the inside and outside of every pane, the frames and sills, and the screens and tracks. Screens get brushed and rinsed, tracks get vacuumed and wiped — skip those and the first rain washes screen dirt right back onto clean glass.</p>
+    <p class="content-text">Reachable glass is scrubbed and squeegeed by hand. Second- and third-story exterior glass is usually cleaned from the ground with a water-fed pole and purified water, which dries without spots and avoids setting tall ladders against your siding. Hard-water spotting from sprinklers, paint specks, and leftover construction stickers are handled during the same visit when you ask for them.</p>
+    <p class="content-text">Pricing is based on pane count, inside vs. outside, and access. Most Northern Kentucky homes fall between $150 and $350 for a full inside-and-outside cleaning — see the <a href="/guides/window-cleaning-cost/">window cleaning cost guide</a> for what moves the price up or down.</p>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Guides -->
   <section class="section">
-    <h2 class="section-title">What Our Customers Say</h2>
-    <p class="section-sub">Reviews from homeowners and businesses across {city}</p>
-    <div class="testimonials-grid">
-      {testimonials.map((t) => (
-        <div class="testimonial-card">
-          <p class="quote">&#9733;&#9733;&#9733;&#9733;&#9733; "{t.quote}"</p>
-          <p class="attribution">— {t.name}, {t.city}</p>
-        </div>
+    <h2 class="section-title">Window Cleaning Guides</h2>
+    <p class="section-sub">Straight answers to the questions Northern Kentucky homeowners ask most</p>
+    <div class="guides-grid">
+      {guides.map((g) => (
+        <a class="guide-card" href={`/guides/${g.slug}/`}>
+          <h3>{g.title}</h3>
+          <p>{g.summary}</p>
+        </a>
       ))}
     </div>
   </section>
@@ -607,10 +487,10 @@ const faqSchema = {
   <!-- Service Areas -->
   <section class="section">
     <h2 class="section-title">Service Areas</h2>
-    <p class="section-sub">We serve all of {city}. Don't see your city? Call us at {phone}.</p>
+    <p class="section-sub">Our main service areas in Boone, Kenton, and Campbell counties. Nearby but not listed? Call {phone}.</p>
     <ul class="areas-list">
       {cities.map((c) => (
-        <li><a href={`/window-cleaning/${c.slug}/`}>{c.name}</a></li>
+        <li><a href={`/window-cleaning/${c.slug}/`}>Window cleaning in {c.name}</a></li>
       ))}
     </ul>
   </section>
@@ -621,7 +501,7 @@ const faqSchema = {
     <p class="section-sub">Common questions about our {serviceKeywordPlural}</p>
     {faqs.map((faq, i) => (
       <div class="faq-item">
-        <p class="faq-q">{faq.question}</p>
+        <h3 class="faq-q">{faq.question}</h3>
         <p class="faq-a">{faq.answer}</p>
       </div>
     ))}

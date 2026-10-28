@@ -1,4 +1,7 @@
 {
+  "github": {
+    "silent": true
+  },
   "redirects": [
     {
       "source": "/window-cleaning/:city(cold-spring-ky|bellevue-ky|taylor-mill-ky|villa-hills-ky|crescent-springs-ky|lakeside-park-ky|park-hills-ky|walnut-hills-oh|hyde-park-oh|norwood-oh|montgomery-oh|deer-park-oh|amberly-oh|westwood-oh|fort-heights-oh|mt-adams-oh|mt-lookout-oh|oakley-oh|columbia-tusculum-oh|pleasant-ridge-oh)",

@@ -11,7 +11,7 @@ export function getStaticPaths() {
 }
 
 const { city } = Astro.props as { city: City };
-const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, region, services, cities, testimonials, faqs } = siteConfig;
+const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city: regionCity, services, cities, guides } = siteConfig;
 
 // City-specific schema
 const cityServiceSchema = {
@@ -33,16 +33,26 @@ const breadcrumbSchema = {
   ],
 };
 
-const nearbyCities = cities.filter((c) => c.slug !== city.slug).slice(0, 12);
+const cityFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": city.faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+  })),
+};
+
+const nearbyCities = cities.filter((c) => c.slug !== city.slug);
 const cityName = city.name.replace(/, KY$/, '').replace(/, OH$/, '');
 const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
 ---
 
 <BaseLayout
   title={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city.name} | ${businessName}`}
-  description={`Need ${serviceKeyword} in ${city.name}? ${businessName} provides residential and commercial ${serviceKeywordPlural} in ${cityName} and all across ${regionCity}. Call ${phone} for a free estimate.`}
+  description={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${cityName}, ${city.county}: inside and out, screens and tracks included. Free estimates for homes and storefronts — call ${phone}.`}
   canonicalURL={`${siteUrl}/window-cleaning/${city.slug}/`}
-  schema={[breadcrumbSchema, cityServiceSchema]}
+  schema={[breadcrumbSchema, cityServiceSchema, cityFaqSchema]}
 >
 
 <style>
@@ -52,55 +62,6 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
   .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
   @media (min-width: 769px) {
     .container { padding: 0 2rem; }
-  }
-
-  /* Header — matches landing page */
-  .site-header {
-    background: #1a6bb5;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.85rem 1rem;
-    gap: 1rem;
-  }
-  @media (min-width: 769px) {
-    .header-inner { padding: 0.85rem 2rem; }
-  }
-  .mobile-quote-text {
-    display: block;
-    color: #cce4f7;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  .phone-btn {
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-decoration: none;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  }
-  .nav-wrap { display: none; }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .nav-links a { color: #fff; text-decoration: none; }
-  @media (min-width: 769px) {
-    .nav-wrap { display: block; }
-    .mobile-quote-text { display: none; }
   }
 
   /* Hero — matches landing page style */
@@ -242,6 +203,12 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
     font-size: 1.1rem;
     flex-shrink: 0;
   }
+
+  /* FAQ */
+  .faq-item { padding: 1rem 0; border-bottom: 1px solid #e5e7eb; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { font-weight: 700; color: #1a6bb5; margin: 0 0 0.4rem 0; font-size: 1.05rem; }
+  .faq-a { color: #555; font-size: 0.95rem; line-height: 1.75; margin: 0; }
 
   /* Nearby cities grid */
   .cities-grid {
@@ -386,27 +353,11 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
   }
 </style>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="container header-inner">
-    <a href={`tel:${phoneE164}`} class="phone-btn">📞 {phone}</a>
-    <span class="mobile-quote-text">Call us for a quote</span>
-    <nav class="nav-wrap">
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/window-cleaning/">Services</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/reviews/">Reviews</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
 <!-- HERO -->
 <section class="page-hero">
   <div class="container">
     <h1>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city.name}</h1>
-    <p class="hero-sub">Residential and commercial {serviceKeyword} in {cityName}, {stateAbbr}. Streak-free results, every time.</p>
+    <p class="hero-sub">Homes and storefronts in {cityName}, {stateAbbr} ({city.county}). Inside and out, screens and tracks included.</p>
     <a href={`tel:${phoneE164}`} class="call-now-btn">CALL NOW — {phone}</a>
   </div>
 </section>
@@ -425,10 +376,27 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
 
   <!-- City intro -->
   <section class="section">
-    <h2 class="section-title" style="text-align:left;">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services in {cityName}</h2>
+    <h2 class="section-title" style="text-align:left;">Window Cleaning in {cityName}</h2>
     <p class="content-text">{city.intro}</p>
-    <p class="content-text">If you're looking for reliable {serviceKeyword} in {cityName}, look no further. {businessName} has been serving {cityName} and the surrounding communities for years. We clean windows on homes, offices, storefronts, and commercial buildings throughout {cityName}. Whether you need residential {serviceKeyword} or commercial {serviceKeyword}, we've got you covered.</p>
-    <p class="content-text">Our {serviceKeyword} service in {cityName} includes interior and exterior window cleaning, screen cleaning, track cleaning, and hard water stain removal. We use professional-grade equipment and eco-friendly cleaning solutions that are safe for your family and pets. Our purified water system leaves zero residue, so your windows stay cleaner longer.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" style="text-align:left;">{cityName} Homes and Their Windows</h2>
+    <p class="content-text">{city.homes}</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" style="text-align:left;">What Gets {cityName} Windows Dirty</h2>
+    <p class="content-text">{city.challenges}</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" style="text-align:left;">Where We Work in {cityName}</h2>
+    <ul class="benefits-grid">
+      {city.areas.map((a) => (
+        <li class="benefit-item"><span class="check">✓</span> {a}</li>
+      ))}
+    </ul>
   </section>
 
   <!-- Mid CTA -->
@@ -462,8 +430,8 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
         <input type="email" name="email" required />
       </div>
       <div class="form-group">
-        <label>Comment *</label>
-        <textarea name="comment" required rows="4"></textarea>
+        <label>Details (optional)</label>
+        <textarea name="comment" rows="4" placeholder="Number of windows, inside/outside, storm windows, etc."></textarea>
       </div>
       <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
     </form>
@@ -486,23 +454,30 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
     </div>
   </section>
 
-  <!-- Why choose us -->
+  <!-- City FAQ -->
   <section class="section">
-    <h2 class="section-title">Why {cityName} Residents Choose Us</h2>
-    <p class="section-sub">What sets {businessName} apart in {cityName}</p>
-    <ul class="benefits-grid">
-      <li class="benefit-item"><span class="check">✓</span> Licensed and insured {serviceKeyword} company</li>
-      <li class="benefit-item"><span class="check">✓</span> Background-checked, professional technicians</li>
-      <li class="benefit-item"><span class="check">✓</span> Flexible scheduling — we work around you</li>
-      <li class="benefit-item"><span class="check">✓</span> Eco-friendly, professional-grade solutions</li>
-      <li class="benefit-item"><span class="check">✓</span> 100% satisfaction guarantee</li>
-      <li class="benefit-item"><span class="check">✓</span> Locally owned — we're your {regionCity} neighbors</li>
+    <h2 class="section-title">{cityName} Window Cleaning Questions</h2>
+    {city.faqs.map((f) => (
+      <div class="faq-item">
+        <h3 class="faq-q">{f.question}</h3>
+        <p class="faq-a">{f.answer}</p>
+      </div>
+    ))}
+  </section>
+
+  <!-- Guides -->
+  <section class="section">
+    <h2 class="section-title">Helpful Guides</h2>
+    <ul class="cities-grid">
+      {guides.map((g) => (
+        <li><a href={`/guides/${g.slug}/`}>{g.title}</a></li>
+      ))}
     </ul>
   </section>
 
   <!-- Nearby cities -->
   <section class="section">
-    <h2 class="section-title">We Also Serve These Nearby Cities</h2>
+    <h2 class="section-title">Nearby Cities We Serve</h2>
     <p class="section-sub">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} services across {regionCity}</p>
     <ul class="cities-grid">
       {nearbyCities.map((c) => (
@@ -520,7 +495,7 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
   <a href={`tel:${phoneE164}`} class="final-cta-btn">Call {phone}</a>
 </section>
 
-<script define:vars={{ businessName }}>
+<script define:vars={{ businessName, phoneE164 }}>
   (function() {
     var form = document.getElementById('quote-form');
     if (!form) return;
@@ -544,7 +519,7 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
       };
 
       var controller = new AbortController();
-      setTimeout(function() { controller.abort(); }, 10000);
+      setTimeout(function() { controller.abort(); }, 30000);
 
       fetch('/api/lead', {
         method: 'POST',
@@ -557,13 +532,14 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
         return resp.json();
       })
       .then(function() {
+        if (window.nkyTrack) window.nkyTrack('generate_lead', { form: 'city' });
         var card = document.querySelector('.form-card');
         if (card) {
           card.innerHTML = '<div style="text-align:center;padding:48px 24px;">' +
             '<div style="font-size:48px;margin-bottom:16px;">✅</div>' +
             '<h3 style="color:#1b4332;font-size:22px;margin-bottom:8px;">Thank You!</h3>' +
             '<p style="color:#52b788;font-size:15px;margin-bottom:24px;">We received your request and will get back to you within 24 hours.</p>' +
-            '<a href="tel:' + (form.phone ? form.phone.value : '') + '" style="display:inline-block;background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:14px 36px;border-radius:8px;">Call Us Now</a>' +
+            '<a href="tel:' + phoneE164 + '" style="display:inline-block;background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:14px 36px;border-radius:8px;">Call Us Now</a>' +
             '</div>';
         }
         btn.textContent = 'Submitted!';

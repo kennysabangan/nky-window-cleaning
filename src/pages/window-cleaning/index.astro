@@ -14,7 +14,7 @@ const serviceSchema = {
     "name": businessName,
     "telephone": phoneE164,
   },
-  "areaServed": { "@type": "State", "name": "Kentucky" },
+  "areaServed": siteConfig.cities.map((c) => ({ "@type": "City", "name": c.name })),
   "description": `Professional ${serviceKeywordPlural} for residential and commercial properties in ${city}.`,
 };
 
@@ -29,7 +29,7 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout
-  title={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Services ${city} | ${businessName}`}
+  title={`Window Cleaning Service Areas in Northern Kentucky | ${businessName}`}
   description={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} services in ${city}. We provide ${serviceKeywordPlural} on homes, offices, and commercial buildings across ${region}. Call ${phone} for a free estimate.`}
   canonicalURL={`${siteUrl}/window-cleaning/`}
   schema={[breadcrumbSchema, serviceSchema]}
@@ -78,19 +78,19 @@ const breadcrumbSchema = {
 
   <p><strong>Step 1: Call Us.</strong> Give us a call at {phone} and tell us about the windows you need cleaned. We'll ask how many windows you have and whether you want inside and outside cleaned.</p>
 
-  <p><strong>Step 2: Get Your Free Estimate.</strong> We'll give you a clear, upfront price for your {serviceKeyword}. No hidden fees, no surprises. Most homeowners are surprised at how affordable professional {serviceKeyword} can be.</p>
+  <p><strong>Step 2: Get Your Free Estimate.</strong> You'll get a clear price before any work starts. Most Northern Kentucky homes fall between $150 and $350 for inside and outside — the <a href="/guides/window-cleaning-cost/">cost guide</a> explains what changes the price.</p>
 
   <p><strong>Step 3: We Clean Your Windows.</strong> Our team arrives on time with all the equipment and supplies needed to clean your windows. We work efficiently and treat your property with respect.</p>
 
-  <p><strong>Step 4: Enjoy the View.</strong> Your windows will be crystal clear, inside and out. Not happy with the results? We'll come back and re-clean any windows for free. That's our satisfaction guarantee.</p>
+  <p><strong>Step 4: Walk-Through.</strong> Before the crew leaves, look the windows over with them. Anything missed gets redone on the spot.</p>
 
   <h2 class="text-brand text-xl md:text-2xl font-bold mb-4 mt-8">{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} Service Areas</h2>
 
-  <p>We provide {serviceKeywordPlural} across {city}. We serve:</p>
+  <p>Each city page covers the homes, window types, and local problems we see most in that area:</p>
 
   <ul>
     {cities.map((c) => (
-      <li><a href={`/window-cleaning/${c.slug}/`}>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {c.name}</a></li>
+      <li><a href={`/window-cleaning/${c.slug}/`}>{serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {c.name}</a> — {c.county}</li>
     ))}
   </ul>
 </div>
@@ -108,7 +108,7 @@ const breadcrumbSchema = {
 <section class="bg-brand-dark text-white">
   <div class="cta-strip container">
     <h2 class="text-white text-xl md:text-2xl font-bold mb-2">Call Now for {serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in {city}</h2>
-    <p class="text-white/90 text-base mb-4">We provide ${serviceKeywordPlural} across {region}.</p>
+    <p class="text-white/90 text-base mb-4">We provide {serviceKeywordPlural} across {region}.</p>
     <PhoneCTA label="Call Now" />
   </div>
 </section>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhoneCTA from '../../components/PhoneCTA.astro';
+import { siteConfig } from '../../config';
+
+const { businessName, siteUrl, guides } = siteConfig;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": `${siteUrl}/guides/` },
+  ],
+};
+---
+
+<BaseLayout
+  title={`Window Cleaning Guides | ${businessName}`}
+  description="Practical guides on window cleaning costs, hard water stains, paint removal, and post-construction cleanup for Northern Kentucky homeowners."
+  canonicalURL={`${siteUrl}/guides/`}
+  schema={breadcrumbSchema}
+>
+
+<section class="hero-section">
+  <div class="container">
+    <h1>Window Cleaning Guides</h1>
+    <p class="hero-sub">Straight answers to the window questions Northern Kentucky homeowners ask most.</p>
+  </div>
+</section>
+
+<div class="content-section">
+  {guides.map((g) => (
+    <div class="mb-8">
+      <h2 class="text-brand text-xl font-bold mb-2"><a href={`/guides/${g.slug}/`}>{g.title}</a></h2>
+      <p>{g.summary}</p>
+    </div>
+  ))}
+</div>
+
+<section class="bg-gray-50 border-y-2 border-brand">
+  <div class="cta-strip container">
+    <p class="cta-heading">Rather Have Someone Else Do It?</p>
+    <p class="cta-sub">Call for a free window cleaning estimate.</p>
+    <PhoneCTA />
+  </div>
+</section>
+
+</BaseLayout>

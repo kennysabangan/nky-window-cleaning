@@ -1,0 +1,95 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import { siteConfig } from '../../config';
+
+const { phone } = siteConfig;
+
+const faqs = [
+  {
+    question: "How much does it cost to clean windows on a typical Northern Kentucky house?",
+    answer: "Most NKY homes fall between $150 and $350 for inside and outside glass with screens and tracks. A small ranch can come in under that range; a large two-story with tall foyer glass or many divided-light panes can run higher.",
+  },
+  {
+    question: "Is exterior-only window cleaning cheaper?",
+    answer: "Yes. Exterior-only usually costs 40–50% less than inside and outside, and you don't need to be home. It's a popular choice for spring cleanings when the outside glass takes the most abuse over winter.",
+  },
+  {
+    question: "Do window cleaners charge per window or per pane?",
+    answer: "Most quote by the window for standard double-hungs and by the pane for divided-light windows, French doors, and sunrooms, since small panes take much longer per square foot of glass.",
+  },
+  {
+    question: "Is it cheaper to get windows cleaned more often?",
+    answer: "Per visit, usually yes. Glass that's cleaned two to four times a year doesn't build up the film, pollen, and hard-water spotting that slow down a first-time cleaning, so recurring visits are often discounted.",
+  },
+  {
+    question: "What's not included in a standard window cleaning price?",
+    answer: "Heavy hard-water stain removal, post-construction cleanup (stickers, paint, adhesive), skylights, sloped sunroom glass, and very tall interior windows are usually priced as add-ons because they take far longer than a maintenance cleaning.",
+  },
+];
+---
+
+<GuideLayout
+  slug="window-cleaning-cost"
+  title="Window Cleaning Cost in Northern Kentucky (Price Guide)"
+  description="What window cleaning costs in Northern Kentucky: typical prices for ranches, two-story homes, and storefronts, what makes a job cost more, and how to get an accurate quote."
+  heading="How Much Does Window Cleaning Cost in Northern Kentucky?"
+  lede="Typical price ranges for NKY homes and storefronts, and the handful of things that push a quote up or down."
+  faqs={faqs}
+>
+  <p>Window cleaning is priced by how much glass there is and how hard it is to reach. Two houses with the same square footage can have very different prices — a ranch with 15 big vinyl windows is a quick job, while a 1920s Fort Thomas Colonial with divided-light sashes and storm windows takes several times longer.</p>
+
+  <p>The ranges below are what Northern Kentucky homeowners should expect to see. They're a starting point, not a quote — call {phone} with your window count for an exact number.</p>
+
+  <h2>Typical Window Cleaning Prices for NKY Homes</h2>
+
+  <table>
+    <thead>
+      <tr><th>Home</th><th>Exterior only</th><th>Inside &amp; outside</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ranch or small home (10–15 windows)</td><td>$90–$150</td><td>$150–$225</td></tr>
+      <tr><td>Typical two-story (20–30 windows)</td><td>$140–$220</td><td>$225–$350</td></tr>
+      <tr><td>Large home (35+ windows, tall foyer or great-room glass)</td><td>$200–$350</td><td>$350–$600+</td></tr>
+    </tbody>
+  </table>
+
+  <p>Prices assume standard double-hung or casement windows with screens and tracks included in the inside-and-outside price. Storefronts are usually priced per visit on a recurring schedule: a single small storefront often runs $25–$75 per visit, depending on the amount of glass and how often it's cleaned.</p>
+
+  <h2>What Makes a Window Cleaning Cost More</h2>
+
+  <h3>Divided-light windows</h3>
+  <p>A window with 12 small panes per sash has a lot more edges to detail than one large pane. Older homes in Fort Thomas, Fort Mitchell, and Covington often have true divided lights, which are priced by the pane. Snap-in grilles on newer windows are popped out and cleaned separately, which is much faster.</p>
+
+  <h3>Height and access</h3>
+  <p>Anything that can't be reached from the ground or a short ladder takes extra time: second-story windows without tilt-in sashes, two-story foyer and great-room glass, dormers, and windows above decks or on steep lots. Water-fed poles keep most upper exterior glass reasonable; tall interior glass needs a ladder inside and is usually quoted separately.</p>
+
+  <h3>Storm windows</h3>
+  <p>Storm windows double the glass — the storm panel gets cleaned on both sides, and the prime window behind it does too. Common on older Covington and Newport homes.</p>
+
+  <h3>Hard water stains</h3>
+  <p>White spots from sprinklers or hose spray don't come off with a normal wash. Light spotting can be handled during the cleaning for a small add-on; heavy, years-old buildup is priced per window because it takes several minutes of treatment per pane. See the <a href="/guides/hard-water-stains-on-windows/">hard water stain guide</a>.</p>
+
+  <h3>Construction and paint cleanup</h3>
+  <p>Stickers, protective film adhesive, paint specks, and drywall dust on new or remodeled homes take two to three times as long as a maintenance cleaning. See the <a href="/guides/post-construction-window-cleaning/">post-construction guide</a>.</p>
+
+  <h3>How long since the last cleaning</h3>
+  <p>Glass that hasn't been cleaned in years has bonded-on film, packed tracks, and screens that need real scrubbing. The second cleaning is almost always faster — and cheaper — than the first.</p>
+
+  <h2>How to Get an Accurate Quote</h2>
+
+  <p>Most window cleaning quotes can be given over the phone if you have these handy:</p>
+  <ol>
+    <li><strong>Window count.</strong> Walk around the house and count windows, including basement and garage windows you want done. Note any French doors or sliders.</li>
+    <li><strong>Inside, outside, or both.</strong> And whether you want screens and tracks included.</li>
+    <li><strong>Number of stories</strong> and whether second-floor windows tilt in.</li>
+    <li><strong>Anything unusual:</strong> storm windows, divided-light panes, tall foyer or great-room windows, skylights, sprinkler spots, paint or stickers.</li>
+  </ol>
+
+  <div class="callout">
+    <p><strong>Tip:</strong> If you're comparing quotes, make sure they cover the same thing. "Window cleaning" from one company might mean exterior glass only; another's price might include inside, screens, tracks, and sills.</p>
+  </div>
+
+  <h2>Is Professional Window Cleaning Worth It?</h2>
+
+  <p>For single-story homes with easy-to-reach windows, plenty of people do it themselves. Where hiring out makes sense is upper-story glass (ladder work is the main safety risk), large homes where a DIY job eats a whole weekend, hard-water or construction residue that needs the right tools, and storefronts that need to look clean every week.</p>
+</GuideLayout>

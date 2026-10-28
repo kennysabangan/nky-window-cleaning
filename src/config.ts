@@ -54,7 +54,7 @@ export const siteConfig = {
   phone: "(714) 494-9486",
   phoneE164: "+17144949486",
   domain: "nkywindowcleaningpros.com",
-  siteUrl: "https://nkywindowcleaningpros.com",
+  siteUrl: "https://www.nkywindowcleaningpros.com",
 
   // ── Form Webhook ───────────────────────────────────────────────
   // Google Sheets web app URL (set after deploying google-sheets-webhook.gs)

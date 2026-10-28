@@ -1,11 +1,64 @@
 {
   "redirects": [
-    { "source": "/window-cleaning/:city(cold-spring-ky|bellevue-ky|taylor-mill-ky|villa-hills-ky|crescent-springs-ky|lakeside-park-ky|park-hills-ky|walnut-hills-oh|hyde-park-oh|norwood-oh|montgomery-oh|deer-park-oh|amberly-oh|westwood-oh|fort-heights-oh|mt-adams-oh|mt-lookout-oh|oakley-oh|columbia-tusculum-oh|pleasant-ridge-oh)", "destination": "/window-cleaning/", "permanent": true },
-    { "source": "/window-cleaning/:city(cold-spring-ky|bellevue-ky|taylor-mill-ky|villa-hills-ky|crescent-springs-ky|lakeside-park-ky|park-hills-ky|walnut-hills-oh|hyde-park-oh|norwood-oh|montgomery-oh|deer-park-oh|amberly-oh|westwood-oh|fort-heights-oh|mt-adams-oh|mt-lookout-oh|oakley-oh|columbia-tusculum-oh|pleasant-ridge-oh)/", "destination": "/window-cleaning/", "permanent": true },
-    { "source": "/case-studies/hard-water-stain-removal/:rest*", "destination": "/guides/hard-water-stains-on-windows/", "permanent": true },
-    { "source": "/case-studies/paint-splatter-storm-door/:rest*", "destination": "/guides/removing-paint-from-window-glass/", "permanent": true },
-    { "source": "/case-studies/post-construction-cleanup/:rest*", "destination": "/guides/post-construction-window-cleaning/", "permanent": true },
-    { "source": "/case-studies/:rest*", "destination": "/guides/", "permanent": true },
-    { "source": "/reviews/:rest*", "destination": "/", "permanent": true }
+    {
+      "source": "/window-cleaning/:city(cold-spring-ky|bellevue-ky|taylor-mill-ky|villa-hills-ky|crescent-springs-ky|lakeside-park-ky|park-hills-ky|walnut-hills-oh|hyde-park-oh|norwood-oh|montgomery-oh|deer-park-oh|amberly-oh|westwood-oh|fort-heights-oh|mt-adams-oh|mt-lookout-oh|oakley-oh|columbia-tusculum-oh|pleasant-ridge-oh)",
+      "destination": "/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning/:city(cold-spring-ky|bellevue-ky|taylor-mill-ky|villa-hills-ky|crescent-springs-ky|lakeside-park-ky|park-hills-ky|walnut-hills-oh|hyde-park-oh|norwood-oh|montgomery-oh|deer-park-oh|amberly-oh|westwood-oh|fort-heights-oh|mt-adams-oh|mt-lookout-oh|oakley-oh|columbia-tusculum-oh|pleasant-ridge-oh)/",
+      "destination": "/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/hard-water-stain-removal/:rest*",
+      "destination": "/guides/hard-water-stains-on-windows/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/hard-water-stain-removal/:rest*/",
+      "destination": "/guides/hard-water-stains-on-windows/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/paint-splatter-storm-door/:rest*",
+      "destination": "/guides/removing-paint-from-window-glass/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/paint-splatter-storm-door/:rest*/",
+      "destination": "/guides/removing-paint-from-window-glass/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/post-construction-cleanup/:rest*",
+      "destination": "/guides/post-construction-window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/post-construction-cleanup/:rest*/",
+      "destination": "/guides/post-construction-window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/:rest*",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/:rest*/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/:rest*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/:rest*/",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }

@@ -526,50 +526,12 @@ const faqSchema = {
 
 <script define:vars={{ businessName, phoneE164, ga4Id: siteConfig.ga4MeasurementId }}>
   (function() {
-    // ── GA4 helper ──
     function trackEvent(name, params) {
-      if (typeof gtag === 'function') {
-        gtag('event', name, params || {});
-      }
+      if (window.nkyTrack) window.nkyTrack(name, params || {});
     }
 
-    // ── GA4: phone_click events ──
-    document.querySelectorAll('[data-ga-event="phone_click"]').forEach(function(el) {
-      el.addEventListener('click', function() {
-        trackEvent('phone_click', {
-          event_category: 'engagement',
-          event_label: el.getAttribute('data-ga-source') || 'header',
-          phone_number: phoneE164,
-        });
-      });
-    });
-
-    // Also track header & hero phone links
-    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
-      if (!el.getAttribute('data-ga-event')) {
-        el.addEventListener('click', function() {
-          trackEvent('phone_click', {
-            event_category: 'engagement',
-            event_label: 'phone_link',
-            phone_number: phoneE164,
-          });
-        });
-      }
-    });
-
-    // ── GA4: form_start event ──
     var form = document.getElementById('quote-form');
     if (!form) return;
-    var formStarted = false;
-    form.addEventListener('focusin', function() {
-      if (!formStarted) {
-        formStarted = true;
-        trackEvent('form_start', {
-          event_category: 'engagement',
-          event_label: 'quote_form',
-        });
-      }
-    });
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();

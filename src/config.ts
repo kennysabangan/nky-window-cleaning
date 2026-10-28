@@ -51,8 +51,8 @@ export interface Guide {
 export const siteConfig = {
   // ── Business identity ──────────────────────────────────────────────
   businessName: "NKY Window Cleaning Pros",
-  phone: "(859) 900-8044",
-  phoneE164: "+18599008044",
+  phone: "(714) 494-9486",
+  phoneE164: "+17144949486",
   domain: "nkywindowcleaningpros.com",
   siteUrl: "https://nkywindowcleaningpros.com",
 
@@ -160,7 +160,7 @@ export const siteConfig = {
     {
       question: "How much does window cleaning cost in Northern Kentucky?",
       answer:
-        "It depends mostly on how many panes you have, whether you want inside and outside, and whether any windows need a tall ladder. Most NKY homes land between $150 and $350 for inside and outside with screens. Exterior-only is usually 40–50% less. Call (859) 900-8044 for a free estimate over the phone.",
+        "It depends mostly on how many panes you have, whether you want inside and outside, and whether any windows need a tall ladder. Most NKY homes land between $150 and $350 for inside and outside with screens. Exterior-only is usually 40–50% less. Call (714) 494-9486 for a free estimate over the phone.",
     },
     {
       question: "How often should I get my windows cleaned?",
@@ -195,7 +195,7 @@ export const siteConfig = {
     {
       question: "How do I schedule an appointment?",
       answer:
-        "Call (859) 900-8044 or use the quote form on this page. Tell us roughly how many windows you have and whether you want inside, outside, or both, and you'll get a price and the next open dates.",
+        "Call (714) 494-9486 or use the quote form on this page. Tell us roughly how many windows you have and whether you want inside, outside, or both, and you'll get a price and the next open dates.",
     },
   ] as FAQ[],
 

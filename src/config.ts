@@ -51,6 +51,8 @@ export interface Guide {
 export const siteConfig = {
   // ── Business identity ──────────────────────────────────────────────
   businessName: "NKY Window Cleaning Pros",
+  /** Short brand used in <title> tags when the full name would push them past 60 chars. */
+  shortBrand: "NKY Pros",
   phone: "(714) 494-9486",
   phoneE164: "+17144949486",
   domain: "nkywindowcleaningpros.com",
@@ -91,7 +93,7 @@ export const siteConfig = {
   brandColor: "#1a6bb5",
 
   // ── Hero content ─────────────────────────────────────────────────
-  heroTagline: "Window Cleaning in Northern Kentucky",
+  heroTagline: "Window Cleaning in Cincinnati & Northern Kentucky",
   heroSubtext: "Inside and out, with screens and tracks included. Free estimates for homes and storefronts across Boone, Kenton, and Campbell counties.",
   heroAlt: "Window cleaner washing the exterior glass of a two-story home",
 
@@ -413,3 +415,16 @@ export const siteConfig = {
     },
   ] as City[],
 };
+
+/**
+ * Build a page <title> that stays within 60 characters (the length Google
+ * shows before truncating). Uses "main | Full Brand" when it fits, then
+ * "main | Short Brand", then the main phrase alone.
+ */
+export function fitTitle(main: string, max = 60): string {
+  for (const brand of [siteConfig.businessName, siteConfig.shortBrand]) {
+    const t = `${main} | ${brand}`;
+    if (t.length <= max) return t;
+  }
+  return main;
+}

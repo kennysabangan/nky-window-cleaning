@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PhoneCTA from '../../components/PhoneCTA.astro';
-import { siteConfig } from '../../config';
+import { siteConfig, fitTitle } from '../../config';
 
 const { businessName, phone, phoneE164, siteUrl, serviceKeyword, serviceKeywordPlural, city, region, services, cities } = siteConfig;
 
@@ -29,8 +29,8 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout
-  title={`Window Cleaning Service Areas in Northern Kentucky | ${businessName}`}
-  description={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} services in ${city}. We provide ${serviceKeywordPlural} on homes, offices, and commercial buildings across ${region}. Call ${phone} for a free estimate.`}
+  title={fitTitle('Window Cleaning Service Areas in Northern KY')}
+  description={`Window cleaning service areas in Northern Kentucky: homes, offices, and storefronts in Boone, Kenton, and Campbell counties. Free estimates: ${phone}.`}
   canonicalURL={`${siteUrl}/window-cleaning/`}
   schema={[breadcrumbSchema, serviceSchema]}
 >

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { siteConfig } from '../../config';
+import { siteConfig, fitTitle } from '../../config';
 import type { City } from '../../config';
 
 export function getStaticPaths() {
@@ -49,7 +49,7 @@ const stateAbbr = city.name.includes('OH') ? 'OH' : 'KY';
 ---
 
 <BaseLayout
-  title={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${city.name} | ${businessName}`}
+  title={fitTitle(`Window Cleaning in ${city.name}`)}
   description={`${serviceKeyword.charAt(0).toUpperCase() + serviceKeyword.slice(1)} in ${cityName}, ${city.county}: inside and out, screens and tracks included. Free estimates for homes and storefronts — call ${phone}.`}
   canonicalURL={`${siteUrl}/window-cleaning/${city.slug}/`}
   schema={[breadcrumbSchema, cityServiceSchema, cityFaqSchema]}

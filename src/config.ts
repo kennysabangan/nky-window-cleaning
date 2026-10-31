@@ -70,7 +70,7 @@ export const siteConfig = {
 
   // Google Search Console → Add property → URL prefix → "HTML tag" method.
   // Paste only the content="..." value here. Leave empty if verified via DNS.
-  googleSiteVerification: "",
+  googleSiteVerification: "SUoebbCCrVvQ_GWBbbbEDqIX4s-lx3v76o4W4XvPRO0",
 
   // helper: truthy only when the value looks like a real ID
   get hasGA4() {
